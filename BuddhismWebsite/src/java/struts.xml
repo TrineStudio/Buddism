@@ -1,0 +1,119 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.objectFactory" value="spring"/>
+    
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <interceptors>
+            <interceptor name="WebInfoPath" class="com.stockvote.interceptor.WebInfointerceptor"></interceptor>
+
+                    <interceptor-stack name="defaultStack1">
+                    <!--interceptor-ref name="log"></interceptor-ref!-->
+                    <interceptor-ref name="defaultStack"></interceptor-ref>
+                    <interceptor-ref name="WebInfoPath"></interceptor-ref>
+
+                    </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="defaultStack1"></default-interceptor-ref>
+        
+        <action name="logIn" class="logAction">
+            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+            <result name="INPUT">/WEB-INF/admin/login.jsp</result>
+        </action>
+        <action name="nextPageAction" class="manage" method="nextPage">
+            <result name="SUCCESS" type="redirect">/WEB-INF/admin/articleList.jsp</result>
+        </action>
+        <action name="getByTypeAction" class="manage" method="getByType">
+            <result name="SUCCESS" type="redirect">managementAction.action</result>
+        </action>
+        <action name="JumpToManagement" class="manage" method="jumpTo">
+            <result name="SUCCESS" type="redirect">/WEB-INF/admin/articleList.jsp</result>
+        </action>
+        <action name="previousPageAction" class="manage" method="previousPage">
+            <result name="SUCCESS" type="redirect">/WEB-INF/admin/articleList.jsp</result>
+        </action>
+        <action name="managementAction" class="manage">
+            <result name="SUCCESS">/WEB-INF/admin/articleList.jsp</result>
+        </action>
+        <action name="newPage" class="newArticle">
+            <result name="SUCCESS">/WEB-INF/admin/addArticle.jsp</result>
+        </action>    
+        <action name="articleAction" class="article">
+            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+            <result name="CANCEL">/WEB-INF/admin/index.jsp</result>
+        </action> 
+        <action name="register" class="register">
+            <result name="SUCCESS" type="redirect">managementAction.action</result>
+            <result name="CANCEL"  type="redirect">managementAction.action</result>
+            <result name="input">/WEB-INF/jsp/register.jsp</result>
+        </action>
+        <action name="teacherPage" class="teacherPage">
+            <result name="SUCCESS">/WEB-INF/jsp/teachers.jsp</result>
+        </action>
+        <action name="mainPage" class="mainPage">
+            <result name="SUCCESS">/WEB-INF/jsp/mainPage.jsp</result>
+        </action>
+        <action name="logOut" class="logOut">
+            <result name="SUCCESS">/WEB-INF/admin/login.jsp</result>
+        </action>
+        <action name="UpAction" class="UpAction">
+            <result name="SUCCESS" type="redirect">managementAction.action</result>
+        </action>
+        <action name="aboutUs" class="aboutUs">
+            <result name="SUCCESS">/WEB-INF/jsp/aboutUs.jsp</result>
+        </action>          
+        <action name="knowUs" class="knowUs">
+            <result name="SUCCESS">/WEB-INF/jsp/knowUs.jsp</result>
+        </action>    
+        <action name="contactUs" class="contactUs">
+            <result name="SUCCESS">/WEB-INF/jsp/contactUs.jsp</result>
+        </action>    
+        <action name="joinUs" class="joinUs">
+            <result name="SUCCESS">/WEB-INF/jsp/joinUs.jsp</result>
+        </action>          
+        <action name="removeToTrash" class="removeToTrash">
+            <result name="SUCCESS" type="redirect">managementAction.action</result>
+        </action>
+        <action name="adminIndex" class="adminIndex">
+            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+        </action>
+        <action name="articleTrash" class="articleTrash">
+            <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
+        </action>
+        <action name="nextPageTrash" class="articleTrash" method="nextPage">
+            <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
+        </action>
+        <action name="previousPageTrash" class="articleTrash" method="previousPage">
+            <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
+        </action>        
+        <action name="jumpTpPageTrash" class="articleTrash" method="jumpTo">
+            <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
+        </action>                
+        <action name="deleteArticle" class="deleteArticle">
+            <result name="SUCCESS" type="redirect">articleTrash.action</result>
+        </action>
+        <action name="photoPage" class="photoPage">
+            <result name="SUCCESS">/WEB-INF/admin/photoList.jsp</result>
+        </action>
+        <action name="articlePage" class="articlePage">
+            <result name="SUCCESS">/WEB-INF/jsp/articlePage.jsp</result>
+        </action>
+        <action name="mainPageArticle" class="mainPageArticle">
+            <result name="SUCCESS">/WEB-INF/jsp/mainPageArticles.jsp</result>
+        </action>
+        <action name="articleList" class="articleList">
+            <result name="SUCCESS">/WEB-INF/jsp/articleList.jsp</result>
+        </action>
+        
+            
+        
+    </package>
+    <package  name="json" extends="json-default" namespace="/">
+       <action name="upload" class="upload">
+            <result name="SUCCESS" type="json">imgfilePath</result>
+        </action>
+     </package>
+</struts>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-7-1 3:41:49 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.buddhism.model.Administrator" table="administrator" catalog="buddhismdb">
+        <id name="id" type="java.lang.Short">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="adName" type="string">
+            <column name="ad_Name" length="60" not-null="true" />
+        </property>
+        <property name="adPassword" type="string">
+            <column name="ad_Password" length="60" not-null="true" />
+        </property>
+        <property name="adRanNum" type="int">
+            <column name="ad_RanNum" not-null="true" />
+        </property>
+        <property name="adLevel" type="int">
+            <column name="ad_Level" not-null="true" />
+        </property>
+        <set name="posts" inverse="true" lazy="false">
+            <key>
+                <column name="post_Author" not-null="true" />
+            </key>
+            <one-to-many class="com.buddhism.model.Post" />
+        </set>
+    </class>
+</hibernate-mapping>
