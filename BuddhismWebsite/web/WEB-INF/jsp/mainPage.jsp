@@ -99,20 +99,20 @@ String path = request.getContextPath();
                                     <div class="left">
                                         <div id="left_title">甘露教言</div>
                                         <s:iterator value="buddleWords" id="buddleWord">
-                                             <a href="articlePage?id=${id}" class="bold f14 cr1"><s:property value="#buddleWord.postTitle"/></a><br/>
+                                             <a href="articlePage?id=${id}&&parentType=4&&index=-1" class="bold f14 cr1"><s:property value="#buddleWord.postTitle"/></a><br/>
                                         </s:iterator>
                                     </div>
                                     <div class="right">
                                         <div id="left_title">正法蘭若</div>
                                         <s:iterator value="temples" id="temples">
-                                           <a href="articlePage?id=${id}" class="bold f14 cr1"><s:property value="postTitle"/></a><br/>
+                                           <a href="articlePage?id=${id}&&parentType=16&&index=-1" class="bold f14 cr1"><s:property value="postTitle"/></a><br/>
                                         </s:iterator>
                                         </div>
                                     </div>
 	  			<div class="last">
 	  			<div id="left_title">清涼共享</div>
                                     <s:iterator value="shares" id="shares">
-                                         <a href="articlePage?id=${id}" class="bold f14 cr1"><s:property value="postTitle"/></a><br/>
+                                         <a href="articlePage?id=${id}&&parentType=14&&index=-1" class="bold f14 cr1"><s:property value="postTitle"/></a><br/>
                                     </s:iterator>
 	  			</div>
 	  		</div>

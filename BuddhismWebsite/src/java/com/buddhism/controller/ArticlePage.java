@@ -5,9 +5,12 @@ package com.buddhism.controller;
  * and open the template in the editor.
  */
 
+import com.buddhism.model.ActionPair;
+import com.buddhism.model.Constants;
 import com.buddhism.model.Post;
 import com.buddhism.service.postService;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -27,6 +30,12 @@ public class ArticlePage extends ActionSupport implements SessionAware{
     
     protected Map session;
     
+    private int parentType;
+    
+    private String nav;
+    
+   
+    
     @Override
     public void setSession(Map session) {   
   
@@ -35,12 +44,33 @@ public class ArticlePage extends ActionSupport implements SessionAware{
   
     }  
     
+    public void pairToNav(List<ActionPair> actionPair)
+    {
+        setNav("");
+        
+        for (int i = 0; i != actionPair.size(); i++)
+        {
+            ActionPair temp = actionPair.get(i);
+            setNav(getNav() + "<a href=" + temp.getActionUrl() + " style=\"color:white\">" + temp.getActionName() + "</a> >> ");
+        }
+        
+        nav += "正文";
+    }    
+    
     public ArticlePage() {
     }
     
     public String execute() throws Exception {
         
         post = service.getPost(id);
+        
+        List<ActionPair> actionPair = ActionPair.getUrls(parentType);
+        
+        actionPair.add(new ActionPair(Constants.columns[parentType], Constants.actionUrl + parentType));
+        
+        pairToNav(actionPair);
+        
+        
         
         session.put("index", index);
         
@@ -101,5 +131,33 @@ public class ArticlePage extends ActionSupport implements SessionAware{
      */
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    /**
+     * @return the parentType
+     */
+    public int getParentType() {
+        return parentType;
+    }
+
+    /**
+     * @param parentType the parentType to set
+     */
+    public void setParentType(int parentType) {
+        this.parentType = parentType;
+    }
+
+    /**
+     * @return the nav
+     */
+    public String getNav() {
+        return nav;
+    }
+
+    /**
+     * @param nav the nav to set
+     */
+    public void setNav(String nav) {
+        this.nav = nav;
     }
 }

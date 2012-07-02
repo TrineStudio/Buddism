@@ -25,8 +25,8 @@
                 <div class="primary">
                     <div class="article">
                         <div class="location">
-                            文章栏目>>文章栏目
-                        </div>
+                            <s:property value="nav" escape="false"/>
+                    </div>
                         <%
                             List<Post> posts = (List<Post>)session.getAttribute("posts");
                             
@@ -35,7 +35,7 @@
                         %>
 
                             <div class="article-list-item">
-                                <div class="title  f16 cb1"><a href="articlePage?id=<%= posts.get(i).getId() %>&&index=<%= i %>" style="color: black"><%= posts.get(i).getPostTitle() %></a></div>
+                                <div class="title  f16 cb1"><a href="articlePage?id=<%= posts.get(i).getId() %>&&index=<%= i %>&&parentType=<s:property value="type"/>" style="color: black"><%= posts.get(i).getPostTitle() %></a></div>
                                 <div class="bold cr1">浏览10次</div>
                                 <div class="info cb2">asdfasdfasdfasdfasdf</div>
                             </div>

@@ -22,10 +22,10 @@
                 <div class="primary">
                     <div class="article clear">
 				<div class="location">
-				文章栏目>>文章栏目
+                                    <s:property value="nav" escape="false"/>
 				</div>
 				<div class="article_title">
-				<s:property value="post.postTitle" />
+                                    <s:property value="post.postTitle" />
 				</div>
 				
 				<div class="article_content">
@@ -52,10 +52,12 @@
                 <%@include file="/jsp/right_nav.jsp" %>
             </div>
             <%
+            int index = (Integer)session.getAttribute("index");
+            
+            if (index != -1)
+            {
                 List<Post> posts = (List<Post>)session.getAttribute("posts");
-                
-                int index = (Integer)session.getAttribute("index");
-                
+
                 int nextId = -1;
                 int previousId = -1;
                 int nextIndex = -1;
@@ -63,7 +65,7 @@
                 if (index != 0)
                     previousId = posts.get(index - 1).getId();
                 
-                if (index < posts.size() - 1)
+                if (index < posts.size() - 1 && index >= 0)
                     nextId = posts.get(index + 1).getId();
                 
                 if (previousId != -1)
@@ -80,7 +82,8 @@
             %>
             <a href="articlePage?id=<%=nextId%>&&index=<%=nextIndex%>" style="color:black">下一页</a>
             <%
-                }            
+                }     
+            }                      
             %>
             <%@include  file="/jsp/footer.jsp" %>
         </div>
