@@ -5,15 +5,17 @@
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
-
+<%
+String path = request.getContextPath();
+%>
 <html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-    <link rel="stylesheet" media="all" type="text/css" href="css/buddhism_page.css">
-    <script type='text/javascript' src='js/dropdown.js'></script>
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type='text/javascript' src='js/picture_show.js'></script>	
+    <link rel="stylesheet" media="all" type="text/css" href="<%=path%>/css/buddhism_page.css">
+    <script type='text/javascript' src='<%=path%>/js/dropdown.js'></script>
+    <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+    <script type='text/javascript' src='<%=path%>/js/picture_show.js'></script>	
     <title>果硕普利协会</title>
     
     <script type="text/javascript">
@@ -94,20 +96,20 @@
                                     <div class="left">
                                         <div id="left_title">甘露教言</div>
                                         <s:iterator value="buddleWords" id="buddleWord">
-                                            <p><a href="articlePage?id=${id}" style=" color: black"><s:property value="#buddleWord.postTitle"/></a></p>
+                                             <a href="articlePage?id=${id}" class="bold f14 cr1"><s:property value="#buddleWord.postTitle"/></a><br/>
                                         </s:iterator>
                                     </div>
                                     <div class="right">
                                         <div id="left_title">正法蘭若</div>
                                         <s:iterator value="temples" id="temples">
-                                            <p><a href="articlePage?id=${id}" style="color:black"><s:property value="postTitle"/></a></p>
+                                           <a href="articlePage?id=${id}" class="bold f14 cr1"><s:property value="postTitle"/></a><br/>
                                         </s:iterator>
                                         </div>
                                     </div>
 	  			<div class="last">
 	  			<div id="left_title">清涼共享</div>
                                     <s:iterator value="shares" id="shares">
-                                        <p><a href="articlePage?id=${id}" style="color:black"><s:property value="postTitle"/></a></p>
+                                         <a href="articlePage?id=${id}" class="bold f14 cr1"><s:property value="postTitle"/></a><br/>
                                     </s:iterator>
 	  			</div>
 	  		</div>

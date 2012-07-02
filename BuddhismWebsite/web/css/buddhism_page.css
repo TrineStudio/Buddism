@@ -34,6 +34,22 @@ body{
 	background: url(../images/banner.jpg) repeat-y;
 	height:155px;
 }
+/*清除float*/
+.clear
+{
+zoom:1;
+}
+.clear::before,.clear::after{
+content: ".";
+display: block;
+height: 0;
+visibility: hidden;
+}
+
+.clear::after
+{
+	clear: both;
+}
 /*样式*/
 .bold{
 	font-weight: bold;
@@ -284,6 +300,10 @@ padding-left: 15px;
 .article .article_content
 {
 	padding: 10px;
+}
+.article .article_share{
+	padding: 10px;
+	float: right;
 }
 /*文章列表*/
 .article-list-item{

@@ -20,20 +20,32 @@
             <%@ include file="/jsp/banner_nav.jsp" %>
             <div class="content">
                 <div class="primary">
-                    <div class="article">
+                    <div class="article clear">
 				<div class="location">
 				文章栏目>>文章栏目
 				</div>
 				<div class="article_title">
 				<s:property value="post.postTitle" />
 				</div>
-				<div id="article_share">
-				</div>
+				
 				<div class="article_content">
                                     <s:property value="post.postContent" escape="false"/>
 				</div>
-				<div id="article_share">
-				</div>
+				<div class="article_share">
+					<!-- JiaThis Button BEGIN -->
+					<div id="ckepop">
+						<a class="jiathis_button_qzone"></a>
+						<a class="jiathis_button_tsina"></a>
+						<a class="jiathis_button_tqq"></a>
+						<a class="jiathis_button_renren"></a>
+						<a class="jiathis_button_kaixin001"></a>
+						<a href="http://www.jiathis.com/share?uid=1641922" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+						<a class="jiathis_counter_style"></a>
+					</div>
+					<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+					<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1334590586743539" charset="utf-8"></script>
+					<!-- JiaThis Button END -->				
+					</div>
 			</div>
 
                 </div>
