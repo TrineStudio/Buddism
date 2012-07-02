@@ -151,6 +151,12 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/modifyArticle.jsp</result>
         </action>
+        <action name="addPhoto" class="addPhoto">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>    
+            <result name="SUCCESS">/WEB-INF/admin/addPhoto.jsp</result>
+        </action>
+                
     </package>
     <package  name="json" extends="json-default" namespace="/">
        <action name="upload" class="upload">

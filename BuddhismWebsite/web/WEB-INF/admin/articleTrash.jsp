@@ -159,7 +159,7 @@
             </li>
             <li><a class="expanded heading">图片管理</a>
                 <ul class="navigation">
-                    <li><a href="#" title="">上传照片</a></li>
+                    <li><a href="addPhoto" title="">上传照片</a></li>
                     <li><a href="photoPage" title="">相册管理</a></li>
                 </ul>
             </li>

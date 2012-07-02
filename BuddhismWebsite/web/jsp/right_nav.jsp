@@ -6,7 +6,6 @@
 
 <%@page import="com.buddhism.model.Post"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -32,7 +31,8 @@
         <div id="right_title">最新法訊<div id="more">更多</div></div>
         <%
             List<Post> lastestMessages = (List<Post>) session.getAttribute("messages");
-            for (int i = 0; i != lastestMessages.size(); i++) {
+            for (int i = 0; i != lastestMessages.size(); i++) 
+            {
         %>
         <p><a href="articlePage?id=<%= lastestMessages.get(i).getId()%>" style="color:black"><%= lastestMessages.get(i).getPostTitle()%></a></p>
         <%

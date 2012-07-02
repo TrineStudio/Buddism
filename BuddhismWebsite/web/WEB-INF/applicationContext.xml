@@ -183,4 +183,7 @@
             <ref bean="postService"/>
         </property>                           
     </bean>
+    <bean id="addPhoto" class="com.buddhism.controller.AddPhoto">
+        
+    </bean>
 </beans>
