@@ -131,8 +131,7 @@
         	<li>
                 <ul class="navigation">
                     <li class="heading selected">网站状态</li>
-                    <li><a href="newPage" title="">发布文章</a></li>
-                    <li><a href="#" title="">上传照片</a></li>
+                  
                 </ul>
             </li>
             <li>

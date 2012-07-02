@@ -18,8 +18,28 @@
     <body>
         <div class="wrapper">
             <%@ include file="/jsp/banner_nav.jsp" %>
-            <h2><s:property value="post.postTitle" /></h2>
-            <p style="color:black"><s:property value="post.postContent" escape="false"/></p>
+            <div class="content">
+                <div class="primary">
+                    <div class="article">
+				<div class="location">
+				文章栏目>>文章栏目
+				</div>
+				<div class="article_title">
+				<s:property value="post.postTitle" />
+				</div>
+				<div id="article_share">
+				</div>
+				<div class="article_content">
+                                    <s:property value="post.postContent" escape="false"/>
+				</div>
+				<div id="article_share">
+				</div>
+			</div>
+
+                </div>
+                <%@include file="/jsp/right_nav.jsp" %>
+            </div>
+            
             <%@include  file="/jsp/footer.jsp" %>
         </div>
     </body>

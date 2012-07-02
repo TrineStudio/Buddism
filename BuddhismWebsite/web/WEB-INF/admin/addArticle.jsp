@@ -40,41 +40,7 @@
         });
 });
 </script>
-<script type="text/javascript">
-    $(function(){
-        $("#fileupload").uploadify({
-                                    /*注意前    面需要书写path的代码*/ 
 
-        'swf'            : '<%=path%>/images/uploadify.swf', 
-        'uploader'       : '<%=path%>/upload', 
-        'cancelImg'      : '<%=path%>/images/uploadify-cancel.png', 
-        'queueID'        : 'fileQueue',  //和存放队列的DIV的id一致 
-        'fileObjName'    : 'fileupload', //和以下input的name属性一致 
-        'auto'           : true, //是否自动开始 
-        'multi'          : true, //是否支持多文件上传 
-        'buttonText'     : '上传照片', //按钮上的文字 
-        'fileSizeLimit'  : '5MB', //设置单个文件大小限制5m 
-        'queueSizeLimit' : 5, //队列中同时存在的文件个数限制 
-        'fileTypeDesc'       : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的 
-        'fileTypeExt'        : '*.jpg;*.gif;*.jpeg;*.png;*.bmp',//允许的格式   
-        'onUploadSuccess'    : function(file, data, response) { 
-            filepath =eval("(" + data + ")");                  
-            $("#target").attr("src", filepath);
-            $("#photolist").after("<img src='"+filepath+"' width=\"200px\"/>");
-        }, 
-        'onUploadError' : function(file, errorCode, errorMsg, errorString) {
-            // $.facebox('文件' + file.name + '不能上传' + errorString);
-            alert('文件' + file.name + '不能上传 ' + errorString);
-            
-        },
-        'onCancel' : function(file) {
-            // $.facebox('文件 ' + file.name + '取消了上传');
-            alert("cancel");
-        } 
-    }); 
-
-    })
-</script>
 </head>
 <body id="homepage">
 	<div id="header">
@@ -140,14 +106,12 @@
         	<li>
                 <ul class="navigation">
                     <li><a href="adminIndex">网站状态</a></li>
-                    <li  class="heading selected">发布文章</li>
-                    <li><a href="#" title="">上传照片</a></li>
                 </ul>
             </li>
             <li>
                 <a class="expanded heading">文章管理</a>
                  <ul class="navigation">
-                    <li><a href="#" title="">发布文章</a></li>
+                    <li class="heading selected">发布文章</li>
                     <li><a href="managementAction" title="">文章列表</a></li>
                     <li><a href="articleTrash" title="">文章回收站</a></li>
                 </ul>

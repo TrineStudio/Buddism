@@ -147,8 +147,6 @@
         	<li>
                 <ul class="navigation">
                     <li><a href="adminIndex">网站状态</a></li>
-                    <li ><a href="newPage" title="">发布文章</a></li>
-                    <li><a href="#" title="">上传照片</a></li>
                 </ul>
             </li>
             <li>

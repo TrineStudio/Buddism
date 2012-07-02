@@ -32,7 +32,7 @@
         {
         if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-            document.getElementById("mainContent").innerHTML=xmlhttp.responseText;
+            document.getElementById("article-items").innerHTML=xmlhttp.responseText;
             }
         }
         xmlhttp.open("POST","mainPageArticle.action",true);
@@ -92,8 +92,13 @@
 		</div>
                 <%@include file="/jsp/right_nav.jsp" %>
                 <!--文章列表-->
-                <div id="mainContent">
-                </div>
+                
+                <div class="article-items">
+				<div class="item">
+					<div class="title"></div>
+					<div class="content"></div>
+			 	</div>
+		</div>
                 <a href="#" onclick="loadXMLDoc()" ><div id="viewmore">瀏覽更多資訊</div></a>
 
 
