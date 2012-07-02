@@ -19,6 +19,7 @@ String path = request.getContextPath();
     <title>果硕普利协会</title>
     
     <script type="text/javascript">
+<<<<<<< HEAD
         function loadXMLDoc()
         {
         var xmlhttp;
@@ -62,18 +63,69 @@ String path = request.getContextPath();
             xmlhttp.open("POST","mainPageArticle.action",true);
             xmlhttp.send();
         }
+=======
+//        function loadXMLDoc()
+//        {
+//        var xmlhttp;
+//        if (window.XMLHttpRequest)
+//        {// code for IE7+, Firefox, Chrome, Opera, Safari
+//        xmlhttp=new XMLHttpRequest();
+//        }
+//        else
+//        {// code for IE6, IE5
+//        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//        }
+//        xmlhttp.onreadystatechange=function()
+//        {
+//        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+//            {
+//            document.getElementById("article-items").innerHTML=xmlhttp.responseText;
+//            }
+//        }
+//        xmlhttp.open("POST","mainPageArticle.action",true);
+//        xmlhttp.send();
+//        }
+          function loadArticles()
+          {
+              $("#viewmore").html("加载中...");
+              $.ajax({
+                url: 'mainPageArticle.action',
+                success: function(data) {
+                  $("#addflag").before(data);   
+                  
+                  $("#viewmore").html("瀏覽更多資訊");
+                },
+                error:function(){
+                    $("#viewmore").html("没有更多資訊");
+                }
+                });
+          }
+          $(function(){
+            loadArticles();
+          })
+          $(function(){
+              $("#viewmore").click(function(){
+              loadArticles();
+          })
+          })
+          
+>>>>>>> 首页查看更多实现
 </script>
 </head>
 <body >
 <script type="text/javascript">
+<<<<<<< HEAD
     startDoc();
+=======
+//    loadXMLDoc();
+    
+>>>>>>> 首页查看更多实现
 </script>    
 <div class="wrapper">
         <%@ include file="/jsp/banner_nav.jsp" %>
         <div class="content">
 		<div class="primary">
 			<div id="pictureswall_bk">
-			
 			<div id="pictures_bg" >
 			<div id="pictures_info"></div> <!--标题-->
 			<ul>
@@ -113,11 +165,25 @@ String path = request.getContextPath();
                                     </s:iterator>
 	  			</div>
 	  		</div>
+<<<<<<< HEAD
                      <div class="article-items" id="article-items">
                      </div>
                     <a href="#" onclick="loadXMLDoc()" ><div id="viewmore">瀏覽更多資訊</div></a>
 		</div>
                 <%@include file="/jsp/right_nav.jsp" %>
+=======
+                     
+                            <div class="article-items">
+                                <div id="addflag"></div>
+                            </div>
+                    <div id="viewmore" style="cursor:pointer;">瀏覽更多資訊</div>
+		</div>
+                <%@include file="/jsp/right_nav.jsp" %>
+                <!--文章列表-->
+               
+
+
+>>>>>>> 首页查看更多实现
 </div>
 
         <%@include  file="/jsp/footer.jsp" %>

@@ -33,7 +33,6 @@ public class MainPageArticle extends SinglePostAction {
     @Override
     public void getPost()
     {
-  
         posts.clear();
         
         // List<Post> temp = new ArrayList<Post>();
@@ -45,8 +44,7 @@ public class MainPageArticle extends SinglePostAction {
         {
             posts = service.getPost((short)type, currentIndex * max, maxIndex);
             isEnd = true;
-        }
-            //posts = service.getPage(currentIndex * max, maxIndex);
+        }         
         else
             posts = service.getPost((short)type, currentIndex * max, max);
 

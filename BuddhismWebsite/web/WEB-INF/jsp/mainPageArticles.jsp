@@ -11,9 +11,10 @@
 
 
 <s:iterator id="post" value="posts">
-<div class="article">
-    <a href="articlePage?id=${id}"><div class="title" style="color: black"><s:property value="postTitle" /></div></a>
+<div class="item">
+    <a href="articlePage?id=${id}"><div class="title f16 cr1"><s:property value="postTitle" /></div></a>
     <div class="content"><s:property  value="postContent" escape="false"/></div>
 </div>
+    
 </s:iterator>
 
