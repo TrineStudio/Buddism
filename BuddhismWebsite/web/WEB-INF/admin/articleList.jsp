@@ -124,12 +124,14 @@
                         int maxIndex = (Integer)(request.getAttribute("maxIndex"));
                     
                         int pageCount = maxIndex - currentIndex;
-                        
+     
                         if (pageCount > 3)
                             pageCount = 3; 
                         
                         for (int i = 0; i < pageCount; i++)
                         {
+                            
+                            
                     %>
                         <li><a href="JumpToManagement.action?currentIndex=<%=currentIndex + i%>" title=""><%=i + currentIndex + 1%></a></li>
                     <%

@@ -23,6 +23,20 @@ public class ArticleList extends SinglePostAction {
         return title;
     }
 
+    public void putToSession()
+    {
+        session.put("posts", posts);
+    }
+    
+    @Override
+    public String execute()
+    {
+        super.execute(); 
+        putToSession();
+        
+        return "SUCCESS";
+    }
+    
     /**
      * @param title the title to set
      */

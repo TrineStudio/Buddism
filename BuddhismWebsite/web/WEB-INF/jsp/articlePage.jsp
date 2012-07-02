@@ -51,7 +51,37 @@
                 </div>
                 <%@include file="/jsp/right_nav.jsp" %>
             </div>
-            
+            <%
+                List<Post> posts = (List<Post>)session.getAttribute("posts");
+                
+                int index = (Integer)session.getAttribute("index");
+                
+                int nextId = -1;
+                int previousId = -1;
+                int nextIndex = -1;
+                
+                if (index != 0)
+                    previousId = posts.get(index - 1).getId();
+                
+                if (index < posts.size() - 1)
+                    nextId = posts.get(index + 1).getId();
+                
+                if (previousId != -1)
+                {
+                    nextIndex = index - 1;
+            %>
+            <a href="articlePage?id=<%=previousId%>&&index=<%=nextIndex%>" style="color:black">上一页</a>
+            <%
+                }
+                
+                if (nextId != -1)
+                {
+                    nextIndex = index + 1;
+            %>
+            <a href="articlePage?id=<%=nextId%>&&index=<%=nextIndex%>" style="color:black">下一页</a>
+            <%
+                }            
+            %>
             <%@include  file="/jsp/footer.jsp" %>
         </div>
     </body>

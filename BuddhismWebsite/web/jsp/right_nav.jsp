@@ -17,7 +17,7 @@
         <p>sdfasdfasdfasdfsadfasdfasdf</p>
     </div>
     <div class="block">
-        <div id="right_title">重要公告<div id="more">更多</div></div>
+        <div id="right_title">重要公告<div id="more"><a href="articleList.action?title=重要公告&&type=1">更多</a></div></div>
         <%
             List<Post> informs = (List<Post>) session.getAttribute("informs");
             for (int i = 0; i != informs.size(); i++) {
@@ -28,7 +28,7 @@
         %>
     </div>
     <div class="block">
-        <div id="right_title">最新法訊<div id="more">更多</div></div>
+        <div id="right_title">最新法訊<div id="more"><a href="articleList.action?title=最新法訊&&type=13">更多</a></div></div>
         <%
             List<Post> lastestMessages = (List<Post>) session.getAttribute("messages");
             for (int i = 0; i != lastestMessages.size(); i++) 

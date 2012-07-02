@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="com.buddhism.model.Post"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
@@ -25,17 +27,22 @@
                         <div class="location">
                             文章栏目>>文章栏目
                         </div>
-                        <s:iterator id="singlePost" value="posts">
+                        <%
+                            List<Post> posts = (List<Post>)session.getAttribute("posts");
+                            
+                            for (int i = 0; i != posts.size(); i++)
+                            {
+                        %>
 
                             <div class="article-list-item">
-                                <div class="title  f16 cb1"><a href="articlePage?id=${id}" style="color: black"><s:property value="postTitle"/></a></div>
+                                <div class="title  f16 cb1"><a href="articlePage?id=<%= posts.get(i).getId() %>&&index=<%= i %>" style="color: black"><%= posts.get(i).getPostTitle() %></a></div>
                                 <div class="bold cr1">浏览10次</div>
                                 <div class="info cb2">asdfasdfasdfasdfasdf</div>
                             </div>
                             <div class="dashline"></div>
-                        </s:iterator>   
-
-
+                        <%
+                            }
+                        %>
                     </div>
 
                 </div>

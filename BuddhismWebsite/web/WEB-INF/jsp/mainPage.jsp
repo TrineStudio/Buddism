@@ -19,6 +19,28 @@ String path = request.getContextPath();
     <title>果硕普利协会</title>
     
     <script type="text/javascript">
+
+//        function loadXMLDoc()
+//        {
+//        var xmlhttp;
+//        if (window.XMLHttpRequest)
+//        {// code for IE7+, Firefox, Chrome, Opera, Safari
+//        xmlhttp=new XMLHttpRequest();
+//        }
+//        else
+//        {// code for IE6, IE5
+//        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//        }
+//        xmlhttp.onreadystatechange=function()
+//        {
+//        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+//            {
+//            document.getElementById("article-items").innerHTML=xmlhttp.responseText;
+//            }
+//        }
+//        xmlhttp.open("POST","mainPageArticle.action",true);
+//        xmlhttp.send();
+//        }
           function loadArticles()
           {
               $("#viewmore").html("加载中...");
@@ -42,12 +64,14 @@ String path = request.getContextPath();
               $.post('mainPageArticle.action',function(data){
                     $("#addflag").before(data); 
             })
+            
           });
+           
+            
 
 </script>
 </head>
-<body >
-
+<body>
 <div class="wrapper">
         <%@ include file="/jsp/banner_nav.jsp" %>
         <div class="content">
@@ -98,6 +122,8 @@ String path = request.getContextPath();
                     <div id="viewmore" style="cursor:pointer;">瀏覽更多資訊</div>
 		</div>
                 <%@include file="/jsp/right_nav.jsp" %>
+       
+               
 
 </div>
 

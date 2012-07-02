@@ -8,18 +8,32 @@ package com.buddhism.controller;
 import com.buddhism.model.Post;
 import com.buddhism.service.postService;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author GodBlessedMay
  */
-public class ArticlePage extends ActionSupport {
+public class ArticlePage extends ActionSupport implements SessionAware{
     
     private Post post;
     
     private postService service;
     
     private int id;
+
+    private int index;
+    
+    protected Map session;
+    
+    @Override
+    public void setSession(Map session) {   
+  
+       this.session = session;   
+  
+  
+    }  
     
     public ArticlePage() {
     }
@@ -27,6 +41,8 @@ public class ArticlePage extends ActionSupport {
     public String execute() throws Exception {
         
         post = service.getPost(id);
+        
+        session.put("index", index);
         
         return "SUCCESS";
     }
@@ -71,5 +87,19 @@ public class ArticlePage extends ActionSupport {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the index
+     */
+    public int getIndex() {
+        return index;
+    }
+
+    /**
+     * @param index the index to set
+     */
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
