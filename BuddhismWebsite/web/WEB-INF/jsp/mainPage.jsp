@@ -35,14 +35,36 @@
             document.getElementById("article-items").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("POST","mainPageArticle.action",true);
+        xmlhttp.open("POST","moreArticle.action",true);
         xmlhttp.send();
+        }
+        
+        function startDoc()
+        {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp=new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function()
+            {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                document.getElementById("article-items").innerHTML=xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("POST","mainPageArticle.action",true);
+            xmlhttp.send();
         }
 </script>
 </head>
 <body >
 <script type="text/javascript">
-    loadXMLDoc();
+    startDoc();
 </script>    
 <div class="wrapper">
         <%@ include file="/jsp/banner_nav.jsp" %>
@@ -89,19 +111,11 @@
                                     </s:iterator>
 	  			</div>
 	  		</div>
+                     <div class="article-items" id="article-items">
+                     </div>
+                    <a href="#" onclick="loadXMLDoc()" ><div id="viewmore">瀏覽更多資訊</div></a>
 		</div>
                 <%@include file="/jsp/right_nav.jsp" %>
-                <!--文章列表-->
-                
-                <div class="article-items">
-				<div class="item">
-					<div class="title"></div>
-					<div class="content"></div>
-			 	</div>
-		</div>
-                <a href="#" onclick="loadXMLDoc()" ><div id="viewmore">瀏覽更多資訊</div></a>
-
-
 </div>
 
         <%@include  file="/jsp/footer.jsp" %>

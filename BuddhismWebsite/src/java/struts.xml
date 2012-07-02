@@ -142,6 +142,9 @@
         </action>
         <action name="previousArticleList" class="articleList" method="previousPage">
             <result name="SUCCESS">/WEB-INF/jsp/articleList.jsp</result>
+        </action>
+        <action name="moreArticle" class="mainPageArticle" method="nextPage">
+            <result name="SUCCESS">/WEB-INF/jsp/mainPageArticles.jsp</result>
         </action>        
         <action name="editArticle" class="editArticle">
             <interceptor-ref name="myDefault" />

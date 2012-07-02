@@ -4,15 +4,13 @@
  */
 package com.buddhism.controller;
 
-import com.buddhism.model.Post;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author GodBlessedMay
  */
 public class MainPageArticle extends SinglePostAction {
+    
+    private boolean isEnd = false;
     
     public MainPageArticle() {
         type = 0;
@@ -23,6 +21,9 @@ public class MainPageArticle extends SinglePostAction {
     @Override
     public String execute()
     {
+        currentIndex = -1;
+        isEnd = false;
+        
         maxIndex = service.getPostNumber(type);
         maxPage = maxIndex / max;
         
@@ -33,21 +34,25 @@ public class MainPageArticle extends SinglePostAction {
     public void getPost()
     {
   
-        List<Post> temp = new ArrayList<Post>();
+        posts.clear();
         
-        if (posts.size() == maxIndex)
+        // List<Post> temp = new ArrayList<Post>();
+        
+        if (isEnd)
             return;
         
         if (max * currentIndex + max > maxIndex)
-            temp = service.getPost((short)type, currentIndex * max, maxIndex);
+        {
+            posts = service.getPost((short)type, currentIndex * max, maxIndex);
+            isEnd = true;
+        }
             //posts = service.getPage(currentIndex * max, maxIndex);
         else
-            temp = service.getPost((short)type, currentIndex * max, max);
+            posts = service.getPost((short)type, currentIndex * max, max);
 
-        for (int i = 0; i != temp.size(); i++)
+        for (int i = 0; i != posts.size(); i++)
         {
-            temp.get(i).setType();
-            posts.add(temp.get(i));
+            posts.get(i).setType();
         }
         
     }
