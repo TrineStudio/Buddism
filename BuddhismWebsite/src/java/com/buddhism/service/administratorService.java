@@ -12,6 +12,8 @@ import com.buddhism.model.Administrator;
  */
 public interface administratorService 
 {
-    public Administrator getAdministrator(String adName);
-    public void setAdministrator(String adName, String adPassword, int adLevel, int adRandom);
+    public Administrator getAdministrator(int id);
+    public Administrator getAdministrator();
+    public void setAdministrator(String adName, String adPassword, int adLevel, String adRan);
+    public int loginCheck(String adName, String password);
 }

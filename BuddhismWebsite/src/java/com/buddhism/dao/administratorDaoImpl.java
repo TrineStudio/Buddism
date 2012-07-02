@@ -5,6 +5,7 @@
 package com.buddhism.dao;
 
 import com.buddhism.model.Administrator;
+import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  */
 public class administratorDaoImpl extends HibernateDaoSupport implements administratorDao
 {   
+    private Administrator administrator;
     @Override
     public void add(Administrator ad) throws Exception 
     {
@@ -28,13 +30,40 @@ public class administratorDaoImpl extends HibernateDaoSupport implements adminis
     @Override
     public Administrator getAdministrator(int id) 
     {
-        throw new UnsupportedOperationException("Not supported yet.");
+       return (Administrator)getHibernateTemplate().load(Administrator.class, id);
     }
 
     @Override
-    public Administrator getAdministrator(String adName) 
+    public int getAdministrator(String adName) 
     {
-        
-       return (Administrator)getHibernateTemplate().find("from Administrator as a where a.adName = ?", adName).get(0);
-    }    
+          List<Administrator> administrators = getHibernateTemplate().find("from Administrator as a where a.adName = ?", adName);
+      
+      if(administrators.isEmpty())
+          return 1;//there is no such user
+      else
+      {
+          this.setAdministrator(administrators.get(0));
+          return 2;//there is such a user
+      }
+    }
+
+    @Override
+    public Administrator getRanString(String adName) 
+    {
+      return (Administrator)getHibernateTemplate().find("from Administrator as a where a.adName = ?", adName).get(0);
+    }
+
+    /**
+     * @return the administrator
+     */
+    public Administrator getAdministrator() {
+        return administrator;
+    }
+
+    /**
+     * @param administrator the administrator to set
+     */
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
+    }
 }

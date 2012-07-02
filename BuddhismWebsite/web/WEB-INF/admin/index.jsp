@@ -143,7 +143,7 @@
                     <li><a href="articleTrash" title="">文章回收站</a></li>
                 </ul>
             </li>
-            <li><a class="expanded heading">相册管理</a>
+            <li><a class="expanded heading">图片管理</a>
                 <ul class="navigation">
                     <li><a href="#" title="">上传照片</a></li>
                     <li><a href="photoPage" title="">相册管理</a></li>
@@ -159,7 +159,7 @@
                 <ul class="navigation">
                     <li><a href="#" title="">用户资料</a></li>
                     <s:if test="#session.User.adLevel == 0">
-                        <li><a href="#" title="">添加帐户</a></li>
+                        <li><a href="register" title="">添加帐户</a></li>
                     </s:if>
                     
                 </ul>

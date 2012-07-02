@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-1 3:41:49 by Hibernate Tools 3.2.1.GA
+// Generated 2012-7-2 18:29:24 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class Administrator  implements java.io.Serializable {
      private Short id;
      private String adName;
      private String adPassword;
-     private int adRanNum;
+     private String adRanNum;
      private int adLevel;
      private Set<Post> posts = new HashSet<Post>(0);
 
@@ -22,13 +22,13 @@ public class Administrator  implements java.io.Serializable {
     }
 
 	
-    public Administrator(String adName, String adPassword, int adRanNum, int adLevel) {
+    public Administrator(String adName, String adPassword, String adRanNum, int adLevel) {
         this.adName = adName;
         this.adPassword = adPassword;
         this.adRanNum = adRanNum;
         this.adLevel = adLevel;
     }
-    public Administrator(String adName, String adPassword, int adRanNum, int adLevel, Set<Post> posts) {
+    public Administrator(String adName, String adPassword, String adRanNum, int adLevel, Set<Post> posts) {
        this.adName = adName;
        this.adPassword = adPassword;
        this.adRanNum = adRanNum;
@@ -57,11 +57,11 @@ public class Administrator  implements java.io.Serializable {
     public void setAdPassword(String adPassword) {
         this.adPassword = adPassword;
     }
-    public int getAdRanNum() {
+    public String getAdRanNum() {
         return this.adRanNum;
     }
     
-    public void setAdRanNum(int adRanNum) {
+    public void setAdRanNum(String adRanNum) {
         this.adRanNum = adRanNum;
     }
     public int getAdLevel() {

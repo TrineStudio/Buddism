@@ -1,19 +1,20 @@
 <%-- 
-    Document   : articleList
-    Created on : 2012-6-28, 23:38:04
-    Author     : GodBlessedMay
+    Document   : photoList
+    Created on : 2012-6-29, 22:14:27
+    Author     : EthanPan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
 <%
     String path = request.getContextPath(); 
-%>          
+%> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>文章回收站</title>
+<title>注册</title>
 <link href="<%=path%>/admin/styles/layout.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/admin/styles/wysiwyg.css" rel="stylesheet" type="text/css" />
 <!-- Theme Start -->
@@ -35,89 +36,39 @@
     	<ul>	
         	<li><img src="<%=path%>/admin/img/icons/icon_breadcrumb.png" alt="Location" /></li>
         	<li><strong>当前位置:</strong></li>
-            <li><a href="#" title="">文章管理</a></li>
+            <li><a href="#" title="">用户管理</a></li>
             <li>/</li>
-            <li class="current">文章回收站</li>
-            
+            <li class="current">注册</li>
         </ul>
     </div>
     <!-- Top Breadcrumb End -->
      
     <!-- Right Side/Main Content Start -->
-    <div id="rightside">
-
-        <div class="contentcontainer" >
-       	</div>      
+    <div id="rightside">   
         <!-- Alternative Content Box Start -->
          <div class="contentcontainer">
             <div class="headings altheading">
-                <h2>文章列表</h2>
+                <h2>注册</h2>
             </div>
             <div class="contentbox">
-            	<table width="100%">
-                	<thead>
-                    	<tr>
-                            <th>作者</th>
-                            <th>标题</th>
-                            <th>时间</th>
-                            <th>操作</th>
-                            <th><input name="" type="checkbox" value="" id="checkboxall" /></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         <s:iterator value="posts" id="singlePost">
-                         <tr class="alt">
-                        
-                            <td><s:property value="administrator.adName"/></td>
-                            <td><s:property value="postTitle"/></td>
-                            <td><s:date name="postDate" format="yyyy-MM-dd" /></td>
-                            
-                            <td>
-                                <a href="deleteArticle.action?id=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
-                            </td>
-                            <td><input type="checkbox" value="" name="checkall" /></td>
-                        </tr>
-                        </s:iterator>
-                    </tbody>
-                </table>
-                <div class="extrabottom">
-                	<ul>
-                        <li><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /> 删除</li>
-                    </ul>
-                    <div class="bulkactions">
-                    	<select>
-                        	<option>操作</option>
-                        </select>
-                        <input type="submit" value="应用" class="btn" />
-                    </div>
-                </div>
-                <ul class="pagination">
-                    <s:if test="currentIndex != 0">
-                        <li class="text"><a href="previousPageTrash">前一页</a></li>
-                    </s:if>
-                    <li class="page"><a href="#" title=""><s:property value="currentIndex + 1"/></a></li>
-                    <%
-                    
-                        int currentIndex = (Integer)request.getAttribute("currentIndex");
-                        int maxIndex = (Integer)(request.getAttribute("maxIndex"));
-                    
-                        int pageCount = maxIndex - currentIndex;
-                        
-                        if (pageCount > 3)
-                            pageCount = 3; 
-                        
-                        for (int i = 0; i < pageCount; i++)
-                        {
-                    %>
-                        <li><a href="jumpTpPageTrash?currentIndex = <%=i + currentIndex%>" title=""><%=i + currentIndex + 1%></a></li>
-                    <%
-                        }
-                    %>
-                    <s:if test="currentIndex == maxIndex">
-                        <li class="text"><a href="nextPageTrash" title="">后一页</a></li>
-                    </s:if>
-                </ul>
-                <div style="clear: both;"></div>
+            <form action="register.action">
+                <span class="smltxt">用户类别</span>
+                <s:select list="users" name="userTypeId" listKey="userTypeId" listValue="userType" emptyOption="false"/> 
+                <p>
+                    <label for="userName">用户名</label>
+                    <input type="textfield" id="userName" name="userName" />
+                </p>
+                <p>
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" />                    
+                </p>
+                <p>
+                    <label title="passwordAck">再次输入密码</label>
+                    <input type="password" id="passwordAck" name="passwordAck" />
+                </p>
+                <s:submit value="注册" method="register"/>
+                <s:submit value="取消" method="cancel"/>
+            </form>            
             </div>
             
         </div>
@@ -152,11 +103,11 @@
                 </ul>
             </li>
             <li>
-                <a class="expanded heading">文章管理</a>
+                <a class="collapsed heading">文章管理</a>
                  <ul class="navigation">
                     <li><a href="newPage" title="">发布文章</a></li>
                     <li><a href="managementAction" title="">文章列表</a></li>
-                    <li  class="heading selected">文章回收站</li>
+                    <li><a href="articleTrash" title="">文章回收站</a></li>
                 </ul>
             </li>
             <li><a class="expanded heading">图片管理</a>
@@ -170,13 +121,11 @@
                     <li><a href="#" title="">上传视频</a></li>
                     <li><a href="#" title="">视频管理</a></li>
                 </ul>
-            </li>            
-            <li><a class="expanded heading">帐户管理</a>
+            </li>
+            <li><a class="collapsed heading">帐户管理</a>
                 <ul class="navigation">
                     <li><a href="#" title="">用户资料</a></li>
-                    <s:if test="#session.User.adLevel == 0">
-                        <li><a href="register" title="">添加帐户</a></li>
-                    </s:if>
+                    <li  class="heading selected">添加用户</li>
                 </ul>
             </li>            
         </ul>
@@ -194,10 +143,11 @@
     <script type="text/javascript" src='<%=path%>/admin/scripts/functions.js'></script>
     
     <!--[if IE 6]>
-    <script type='text/javascript' src='<%=path%>/admin/scripts/png_fix.js'></script>
+    <script type='text/javascript' src='scripts/png_fix.js'></script>
     <script type='text/javascript'>
       DD_belatedPNG.fix('img, .notifycount, .selected');
     </script>
     <![endif]--> 
 </body>
 </html>
+

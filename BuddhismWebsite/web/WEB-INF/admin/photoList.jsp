@@ -203,7 +203,9 @@
             <li><a class="collapsed heading">帐户管理</a>
                 <ul class="navigation">
                     <li><a href="#" title="">用户资料</a></li>
-                    <li><a href="#" title="">添加帐户</a></li>
+                    <s:if test="#session.User.adLevel == 0">
+                        <li><a href="register" title="">添加帐户</a></li>
+                    </s:if>
                 </ul>
             </li>            
         </ul>

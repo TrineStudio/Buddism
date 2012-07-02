@@ -4,8 +4,13 @@
  */
 package com.buddhism.controller;
 
+import com.buddhism.model.User;
 import com.buddhism.service.administratorService;
+import com.buddhism.tool.SHA1;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -16,6 +21,11 @@ public class Register extends ActionSupport {
     private String userName;
     private String password;
     private String passwordAck;
+    
+    private int userTypeId;
+    
+    private List<User> users = new ArrayList<User>();
+    
     
     private boolean isTop;
     
@@ -72,12 +82,29 @@ public class Register extends ActionSupport {
     }
     
     public Register() {
+        
+    }
+    
+    public String register(){
+        
+        if (!password.equals(passwordAck))
+            return "INPUT";
+
+        String randString = SHA1.generateSalt();
+        String passWord = SHA1.generatePasswordInDatabase(password, randString);
+        
+        this.getService().setAdministrator(userName, passWord, userTypeId, randString);
+        
+        return "REGISTER";
     }
     
     @Override
     public String execute() throws Exception {
         
-        service.setAdministrator(userName, password, statue,1);
+        users.clear();
+        
+        users.add(new User(0, "超级管理员"));
+        users.add(new User(1, "管理员"));
         
         return "SUCCESS";
     }
@@ -86,17 +113,32 @@ public class Register extends ActionSupport {
         
         return "CANCEL";
     }
-    
-    @Override
-    public void validate()
-    {
-     if (userName.length() == 0)
-         addFieldError("userName", "用户名不能为空");
-     if (password.length() == 0)
-        addFieldError("password", "密码不能为空");
-     if (passwordAck.length() == 0)
-        addFieldError("passwordAck", "密码确认不能为空");
-     if (!(passwordAck.equals(password)))
-         addFieldError("passwordAck", "两次输入的密码不同");
+
+    /**
+     * @return the users
+     */
+    public List<User> getUsers() {
+        return users;
+    }
+
+    /**
+     * @param users the users to set
+     */
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    /**
+     * @return the userTypeId
+     */
+    public int getUserTypeId() {
+        return userTypeId;
+    }
+
+    /**
+     * @param userTypeId the userTypeId to set
+     */
+    public void setUserTypeId(int userTypeId) {
+        this.userTypeId = userTypeId;
     }
 }

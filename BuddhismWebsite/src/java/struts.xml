@@ -8,50 +8,62 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <interceptors>
-            <interceptor name="WebInfoPath" class="com.stockvote.interceptor.WebInfointerceptor"></interceptor>
-
-                    <interceptor-stack name="defaultStack1">
-                    <!--interceptor-ref name="log"></interceptor-ref!-->
-                    <interceptor-ref name="defaultStack"></interceptor-ref>
-                    <interceptor-ref name="WebInfoPath"></interceptor-ref>
-
-                    </interceptor-stack>
+            <interceptor name="authority" class="com.buddhism.controller.AuthorizationInterceptor"/>
+                
+            <interceptor-stack name="myDefault">
+                <interceptor-ref name="authority"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>            
+            
         </interceptors>
-        <default-interceptor-ref name="defaultStack1"></default-interceptor-ref>
         
         <action name="logIn" class="logAction">
             <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
             <result name="INPUT">/WEB-INF/admin/login.jsp</result>
         </action>
         <action name="nextPageAction" class="manage" method="nextPage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>
             <result name="SUCCESS" type="redirect">/WEB-INF/admin/articleList.jsp</result>
         </action>
         <action name="getByTypeAction" class="manage" method="getByType">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">managementAction.action</result>
         </action>
         <action name="JumpToManagement" class="manage" method="jumpTo">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">/WEB-INF/admin/articleList.jsp</result>
         </action>
         <action name="previousPageAction" class="manage" method="previousPage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">/WEB-INF/admin/articleList.jsp</result>
         </action>
         <action name="managementAction" class="manage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/articleList.jsp</result>
         </action>
         <action name="newPage" class="newArticle">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/addArticle.jsp</result>
         </action>    
         <action name="articleAction" class="article">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
             <result name="CANCEL">/WEB-INF/admin/index.jsp</result>
         </action> 
         <action name="register" class="register">
-            <result name="SUCCESS" type="redirect">managementAction.action</result>
-            <result name="CANCEL"  type="redirect">managementAction.action</result>
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
+            <result name="SUCCESS">/WEB-INF/admin/register.jsp</result>
+            <result name="CANCEL">/WEB-INF/admin/index.jsp</result>
             <result name="input">/WEB-INF/jsp/register.jsp</result>
-        </action>
-        <action name="teacherPage" class="teacherPage">
-            <result name="SUCCESS">/WEB-INF/jsp/teachers.jsp</result>
+            <result name="REGISTER">/WEB-INF/admin/index.jsp</result>
         </action>
         <action name="mainPage" class="mainPage">
             <result name="SUCCESS">/WEB-INF/jsp/mainPage.jsp</result>
@@ -60,6 +72,8 @@
             <result name="SUCCESS">/WEB-INF/admin/login.jsp</result>
         </action>
         <action name="UpAction" class="UpAction">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">managementAction.action</result>
         </action>
         <action name="aboutUs" class="aboutUs">
@@ -75,27 +89,43 @@
             <result name="SUCCESS">/WEB-INF/jsp/joinUs.jsp</result>
         </action>          
         <action name="removeToTrash" class="removeToTrash">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">managementAction.action</result>
         </action>
         <action name="adminIndex" class="adminIndex">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
         </action>
         <action name="articleTrash" class="articleTrash">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
         </action>
         <action name="nextPageTrash" class="articleTrash" method="nextPage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
         </action>
         <action name="previousPageTrash" class="articleTrash" method="previousPage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
         </action>        
         <action name="jumpTpPageTrash" class="articleTrash" method="jumpTo">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/articleTrash.jsp</result>
         </action>                
         <action name="deleteArticle" class="deleteArticle">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">articleTrash.action</result>
         </action>
         <action name="photoPage" class="photoPage">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/photoList.jsp</result>
         </action>
         <action name="articlePage" class="articlePage">
@@ -114,6 +144,8 @@
             <result name="SUCCESS">/WEB-INF/jsp/articleList.jsp</result>
         </action>        
         <action name="editArticle" class="editArticle">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/modifyArticle.jsp</result>
         </action>
     </package>

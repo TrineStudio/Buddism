@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-1 3:41:49 by Hibernate Tools 3.2.1.GA
+// Generated 2012-7-2 18:29:24 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;

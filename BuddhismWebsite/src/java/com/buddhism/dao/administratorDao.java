@@ -14,5 +14,6 @@ public interface administratorDao
 {
     public void add(Administrator ad) throws Exception;
     public Administrator getAdministrator(int id);
-    public Administrator getAdministrator(String adName);
+    public int getAdministrator(String adName);
+    public Administrator getRanString(String adName);
 }

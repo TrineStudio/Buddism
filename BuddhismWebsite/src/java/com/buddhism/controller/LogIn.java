@@ -59,16 +59,20 @@ public class LogIn extends ActionSupport implements SessionAware{
     {
         if (userName == null)
             return "INPUT";
-        Administrator ad = getAdministratorService().getAdministrator(userName);
+        String test = userName;
+        
+        int result = getAdministratorService().loginCheck(userName, password);
+        
+        if (result != 3)
+            return "INPUT";
+        
+        Administrator ad = getAdministratorService().getAdministrator();
         
         if(ad != null)
         {
-            if(password.equals(ad.getAdPassword()))
-            {   
                 session.put("User", ad);
                 
                 return "SUCCESS";
-            }
         }
         return "INPUT";
     }
