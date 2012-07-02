@@ -62,6 +62,12 @@ public class MainPageAction implements SessionAware
     public void setService(postService service) {
         this.service = service;
     }
+    
+    public void putSession()
+    {
+        session.put("informs", informs);
+        session.put("messages", lastestMessage);
+    }
 
     public String execute(){
     
@@ -73,6 +79,7 @@ public class MainPageAction implements SessionAware
         temples = service.getPost((short)Constants.temples, 1, 5);
         shares = service.getPost((short)Constants.shares, 1, 5);
         
+        putSession();
         
  
         return "SUCCESS";

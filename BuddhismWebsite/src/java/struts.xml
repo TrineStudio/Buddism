@@ -107,9 +107,15 @@
         <action name="articleList" class="articleList">
             <result name="SUCCESS">/WEB-INF/jsp/articleList.jsp</result>
         </action>
-        
-            
-        
+        <action name="nextArticleList" class="articleList" method="nextPage">
+            <result name="SUCCESS">/WEB-INF/jsp/articleList.jsp</result>
+        </action>
+        <action name="previousArticleList" class="articleList" method="previousPage">
+            <result name="SUCCESS">/WEB-INF/jsp/articleList.jsp</result>
+        </action>        
+        <action name="editArticle" class="editArticle">
+            <result name="SUCCESS">/WEB-INF/admin/modifyArticle.jsp</result>
+        </action>
     </package>
     <package  name="json" extends="json-default" namespace="/">
        <action name="upload" class="upload">

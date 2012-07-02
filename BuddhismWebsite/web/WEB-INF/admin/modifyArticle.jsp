@@ -93,7 +93,7 @@
         	<li><strong>当前位置:</strong></li>
             <li><a href="#" title="">文章管理</a></li>
             <li>/</li>
-            <li class="current">发布文章</li>
+            <li class="current">编辑文章</li>
         </ul>
     </div>
     <!-- Top Breadcrumb End -->
@@ -106,14 +106,14 @@
             <form action="articleAction.action" method="post">
                 <p>		
                     <label for="textfield"><strong>文章标题</strong></label>
-                    <input type="text" name="title" id="textfield" class="inputbox" style="width: 580px;"/> 
+                    <input type="text" name="title" id="textfield" value="<s:property value="post.postTitle"/>" class="inputbox" style="width: 580px;"/> 
                     <span class="smltxt">文章类别</span>
-                    <s:select list="cataList" name="articleCat" listKey="catId" listValue="catName" emptyOption="false"/> 
+                    <s:select list="cataList" name="articleCat" listKey="catId" listValue="catName" value="post.postCategory" emptyOption="false"/> 
                 </p>
                 <textarea id="editor_id" name="content" style="width:900px;height:300px;" class="text-input textarea">
-                &lt;strong&gt;HTML内容&lt;/strong&gt;
+                    <s:property value="post.postContent" />
                 </textarea>
-                <input type="submit" value="发布" class="btn" /> 
+                <input type="submit" value="保存" class="btn" /> 
             </form>
          </div>        
         <div style="clear:both;"></div>
@@ -171,7 +171,7 @@
                         <li><a href="#" title="">添加帐户</a></li>
                     </s:if>
                 </ul>
-            </li>    
+            </li>          
         </ul>
     </div>
     <!-- Left Dark Bar End --> 

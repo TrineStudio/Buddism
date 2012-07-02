@@ -90,28 +90,7 @@
 	  			</div>
 	  		</div>
 		</div>
-		<div class="secondly">
-			<div class="teacherbox">
-                            <div id="right_title">指導上師</div>
-
-                            </div>
-			<div class="notificationbox">
-			<div id="right_title">重要公告</div>
-                                <s:iterator value="informs" id="informs">
-                                    <p><a href="articlePage?id=${id}" style="color:black"><s:property value="postTitle"/></a></p>
-                                </s:iterator>                     
-			</div>
-			<div class="newsbox">
-                        <div id="right_title">最新法訊</div>
-                            <s:iterator value="lastestMessage" id="lastestMessage">
-                                <p><a href="articlePage?id=${id}" style="color:black"><s:property value="postTitle"/></a></p>
-                            </s:iterator>                            
-			</div>
-			<div class="supportbox">
-			<div id="right_title">贊助護持</div>
-			</div>
-			
-		</div>
+                <%@include file="/jsp/right_nav.jsp" %>
                 <!--文章列表-->
                 <div id="mainContent">
                 </div>

@@ -19,9 +19,14 @@
     <body>
         <div class="wrapper">
         <%@ include file="/jsp/banner_nav.jsp" %>
-        <s:iterator id="singlePost" value="posts">
-            <p><a href="articlePage?id=${id}" style="color: black"><s:property value="postTitle"/></a></p>
-        </s:iterator>        
+        <div class="content">
+            <div class="primary">
+                <s:iterator id="singlePost" value="posts">
+                    <p><a href="articlePage?id=${id}" style="color: black"><s:property value="postTitle"/></a></p>
+                </s:iterator>   
+            </div>
+            <%@include file="/jsp/right_nav.jsp" %>
+        </div>
         <%@include  file="/jsp/footer.jsp" %>
         </div>
     </body>

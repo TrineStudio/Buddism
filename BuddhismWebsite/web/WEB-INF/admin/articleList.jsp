@@ -83,7 +83,7 @@
                             <!--<td><s:property value="type"/></td> -->
                             
                             <td>
-                            	<a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
+                            	<a href="editArticle?postId=${id}" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
                                 <s:if test="postMedia == true">
                                     <s:if test="postUp == true">
                                         <a href="UpAction.action?id=${id}&&isUp=false" title=""><img src="<%=path%>/admin/img/icons/icon_unapprove.png" alt="Unapprove" /></a>

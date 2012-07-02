@@ -178,4 +178,9 @@
             <ref bean="postService"/>
         </property>                   
     </bean>
+    <bean id="editArticle" class="com.buddhism.controller.EditArticle">
+        <property name="service">
+            <ref bean="postService"/>
+        </property>                           
+    </bean>
 </beans>
