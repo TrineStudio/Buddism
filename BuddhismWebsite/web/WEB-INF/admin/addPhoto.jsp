@@ -41,9 +41,9 @@
                     'fileTypeDesc'       : '支持格式:jpg/gif/jpeg/png/bmp.', //如果配置了以下的'fileExt'属性，那么这个属性是必须的 
                     'fileTypeExt'        : '*.jpg;*.gif;*.jpeg;*.png;*.bmp',//允许的格式   
                     'onUploadSuccess'    : function(file, data, response) { 
-                        filepath =eval("(" + data + ")");                  
-                        
-                        $("#photolist").after("<img src='"+filepath+"' width=\"200px\"/>");
+//                        filepath =eval("(" + data + ")");                  
+//                        alert("成功上传照片！");
+//                        $("#photolist").after("<img src='"+filepath+"' width=\"200px\"/>");
                     }, 
                     'onUploadError' : function(file, errorCode, errorMsg, errorString) {
                         // $.facebox('文件' + file.name + '不能上传' + errorString);
@@ -77,6 +77,7 @@
             <li><a href="#" title="">图片管理</a></li>
             <li>/</li>
             <li class="current">上传图片</li>
+            
         </ul>
     </div>
     <!-- Top Breadcrumb End -->
@@ -90,8 +91,9 @@
                 <option></option>
             </select>
             <input type="file" name="fileupload" id="fileupload" />
-            <a  href="javascript:$('#fileupload').uploadifyUpload()" ><input type="button" value="上传" class="btn" /></a>
-            <a  href="javascript:$('#fileupload').uploadifyClearQueue()"><input type="button" value="清空上传列表" class="btn" /></a>
+            <a  href="javascript:$('#fileupload').uploadify('upload','*')" ><input type="button" value="上传" class="btn" /></a>
+            <a  href="javascript:$('#fileupload').uploadify('cancel')"><input type="button" value="清空上传列表" class="btn" /></a>
+            <div id="fileQueue"></div>
             <div id="photolist"></div>
          </div>        
         <div style="clear:both;"></div>
@@ -157,7 +159,6 @@
     <script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>	
     <script type='text/javascript' src='http://dwpe.googlecode.com/svn/trunk/charting/js/excanvas.js'></script>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'></script>
-	<script type='text/javascript' src='<%=path%>/admin/scripts/jquery.wysiwyg.js'></script>
     <script type='text/javascript' src='<%=path%>/admin/scripts/visualize.jQuery.js'></script>
     <script type="text/javascript" src='<%=path%>/admin/scripts/functions.js'></script>
     
