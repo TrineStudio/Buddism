@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2012-7-2 18:29:28 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 2012-7-3 15:09:37 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="com.buddhism.model.Administrator" table="administrator" catalog="buddhismdb">
         <id name="id" type="java.lang.Short">
@@ -20,7 +20,7 @@
         <property name="adLevel" type="int">
             <column name="ad_Level" not-null="true" />
         </property>
-        <set name="posts" inverse="true">
+        <set name="posts" inverse="true" lazy="false">
             <key>
                 <column name="post_Author" not-null="true" />
             </key>

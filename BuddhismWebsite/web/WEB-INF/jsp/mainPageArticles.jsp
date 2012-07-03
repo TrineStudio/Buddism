@@ -12,7 +12,7 @@
 
 <s:iterator id="post" value="posts">
 <div class="item">
-    <a href="articlePage?id=${id}"><div class="title f16 cr1"><s:property value="postTitle" /></div></a>
+    <a href="articlePage?id=${id}&&index=-1&&parentType=${postCategory}"><div class="title f16 cr1"><s:property value="postTitle" /></div></a>
     <div class="content"><s:property  value="postContent" escape="false"/></div>
 </div>
     

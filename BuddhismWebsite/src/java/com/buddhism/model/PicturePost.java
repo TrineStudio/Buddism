@@ -4,9 +4,6 @@
  */
 package com.buddhism.model;
 
-import java.util.Iterator;
-import java.util.Set;
-
 /**
  *
  * @author Trine
@@ -18,12 +15,12 @@ public class PicturePost {
     public PicturePost(Post post)
     {
         this.title = post.getPostTitle();
-        Set<Media> medium = post.getMedias();
+        // Set<Media> medium = post.getMedias();
         
-        Iterator it = medium.iterator();
+        // Iterator it = medium.iterator();
         
-        Media media = (Media) it.next();
-        url = media.getMediaUrl();
+        // Media media = (Media) it.next();
+        // url = media.getMediaUrl();
         
         int index = 0;
         

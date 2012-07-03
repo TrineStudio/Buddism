@@ -69,17 +69,20 @@
 
         
         <div class="contentbox">
-            <form action="articleAction.action" method="post">
+            <form action="saveArticle.action" method="post">
                 <p>		
                     <label for="textfield"><strong>文章标题</strong></label>
                     <input type="text" name="title" id="textfield" value="<s:property value="post.postTitle"/>" class="inputbox" style="width: 580px;"/> 
                     <span class="smltxt">文章类别</span>
-                    <s:select list="cataList" name="articleCat" listKey="catId" listValue="catName" value="post.postCategory" emptyOption="false"/> 
+                    <s:select list="cataList" name="typeIndex" listKey="catId" listValue="catName" value="post.postCategory" emptyOption="false"/> 
                 </p>
                 <textarea id="editor_id" name="content" style="width:900px;height:300px;" class="text-input textarea">
                     <s:property value="post.postContent" />
                 </textarea>
+                
+                <input type="hidden" name="id" value="<s:property value="postId" />" />
                 <input type="submit" value="保存" class="btn" /> 
+                
             </form>
          </div>        
         <div style="clear:both;"></div>

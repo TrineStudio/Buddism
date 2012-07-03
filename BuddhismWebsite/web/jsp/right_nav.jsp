@@ -39,7 +39,16 @@
             }
         %>    
     </div>
-    <div class="block">
-        <div id="right_title">贊助護持<div id="more">更多</div></div>
+    <div class="block">    
+        <div id="right_title">贊助護持<div id="more"><a href="articleList.action?type=17">更多</a></div></div>
+        <%
+            List<Post> supports = (List<Post>) session.getAttribute("supports");
+            for (int i = 0; i != supports.size(); i++) 
+            {
+        %>
+        <p><a href="articlePage?id=<%= supports.get(i).getId()%>&&parentType=17&&index=-1" style="color:black"><%= supports.get(i).getPostTitle()%></a></p>
+        <%
+            }
+        %>             
     </div>
 </div>

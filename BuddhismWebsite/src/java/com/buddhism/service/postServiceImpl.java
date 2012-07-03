@@ -43,7 +43,7 @@ public class postServiceImpl implements postService
     }
 
     @Override
-    public Post setPost(Administrator postAuthor, String postTitle, String postContent, int postCategory, boolean postMedia, boolean postUp) throws Exception 
+    public Post setPost(Administrator postAuthor, String postTitle, String postContent, int postCategory, boolean postUp) throws Exception 
     {
         Post post = new Post();
         
@@ -52,7 +52,6 @@ public class postServiceImpl implements postService
         post.setPostCategory((short)postCategory);
         post.setPostClickTimes(0);
         post.setPostContent(postContent);
-        post.setPostMedia(postMedia);
         post.setPostTitle(postTitle);
         Date date = new Date(System.currentTimeMillis());
         //java.sql.Date sql_Date = new java.sql.Date(date.getTime());
@@ -140,6 +139,18 @@ public class postServiceImpl implements postService
     public Post getPost(int id) 
     {
        return postDao.getPost(id);
+    }
+
+    @Override
+    public void UpdatePost(Post post) 
+    {
+        int id = post.getId();
+        int type = post.getPostCategory();
+        String title = post.getPostTitle();
+        String content = post.getPostContent();
+        Date date = new Date();
+
+       postDao.UpdatePost(id, type, title, content, date);
     }
 
     

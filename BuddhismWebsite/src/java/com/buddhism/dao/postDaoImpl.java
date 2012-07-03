@@ -6,18 +6,16 @@ package com.buddhism.dao;
 
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Constants;
-import com.buddhism.model.Media;
 import com.buddhism.model.Post;
-import java.io.File;
 import java.sql.SQLException;
-import java.util.Iterator;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 
 /**
  *
@@ -167,28 +165,10 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
     public void delete(int  id) 
     {
         //throw new UnsupportedOperationException("Not supported yet.");
-        Post post = this.getPost(id);
         
         Session s = this.getSession();
         s.beginTransaction();
         
-        Set<Media> mediaList = post.getMedias();
-        Iterator it = mediaList.iterator();
-        
-        while(it.hasNext())
-        {
-            Media media = (Media)it.next();
-            Query query = s.createQuery("delete from Media m where m.post = :post");
-            query.setParameter("post", post);
-            query.executeUpdate();
-            
-            //delete the dish file
-            File file = new File(media.getMediaUrl());
-            if(file.isFile() && file.exists())
-            {
-                file.delete();
-            }
-        }
         Query query2 = s.createQuery("delete from Post p where p.id ="+ id);
         
         query2.executeUpdate();
@@ -315,5 +295,26 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
                 return null;
             }
         });
+    }
+
+    @Override
+    public void UpdatePost(int id, int type, String title, String content, Date date) 
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        String hqlString = "update Post p set p.postDate = :date, p.postTitle = :title,"
+                + " p.postContent = :content, p.postCategory = :category"
+                + " where p.id = :id";
+        Query query = s.createQuery(hqlString);
+        query.setParameter("date", date);
+        query.setParameter("title", title);
+        query.setParameter("content", content);
+        query.setParameter("category", (short)type);
+        query.setParameter("id", id);
+        
+        query.executeUpdate();
+        
+        s.getTransaction().commit();
     }
 }

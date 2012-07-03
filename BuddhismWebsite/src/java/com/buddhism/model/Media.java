@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-2 18:29:24 by Hibernate Tools 3.2.1.GA
+// Generated 2012-7-3 15:09:31 by Hibernate Tools 3.2.1.GA
 
 
 
@@ -10,7 +10,6 @@ public class Media  implements java.io.Serializable {
 
 
      private Integer id;
-     private Post post;
      private Packet packet;
      private String mediaUrl;
      private short mediaType;
@@ -18,8 +17,7 @@ public class Media  implements java.io.Serializable {
     public Media() {
     }
 
-    public Media(Post post, Packet packet, String mediaUrl, short mediaType) {
-       this.post = post;
+    public Media(Packet packet, String mediaUrl, short mediaType) {
        this.packet = packet;
        this.mediaUrl = mediaUrl;
        this.mediaType = mediaType;
@@ -31,13 +29,6 @@ public class Media  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
-    }
-    public Post getPost() {
-        return this.post;
-    }
-    
-    public void setPost(Post post) {
-        this.post = post;
     }
     public Packet getPacket() {
         return this.packet;

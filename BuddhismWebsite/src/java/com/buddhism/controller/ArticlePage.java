@@ -10,6 +10,7 @@ import com.buddhism.model.Constants;
 import com.buddhism.model.Post;
 import com.buddhism.service.postService;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
@@ -64,9 +65,17 @@ public class ArticlePage extends ActionSupport implements SessionAware{
         
         post = service.getPost(id);
         
-        List<ActionPair> actionPair = ActionPair.getUrls(parentType);
+        List<ActionPair> actionPair = new ArrayList<ActionPair>();
         
-        actionPair.add(new ActionPair(Constants.columns[parentType], Constants.actionUrl + parentType));
+        if (parentType != -1)
+        {
+            actionPair = ActionPair.getUrls(parentType);
+            actionPair.add(new ActionPair(Constants.columns[parentType], Constants.actionUrl + parentType));
+        }
+        else
+            actionPair.add(new ActionPair("首页", Constants.mainPageUrl));
+        
+        
         
         pairToNav(actionPair);
         

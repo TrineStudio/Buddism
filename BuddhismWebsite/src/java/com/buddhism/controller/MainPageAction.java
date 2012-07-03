@@ -23,6 +23,7 @@ public class MainPageAction implements SessionAware
     private List<Post> temples = new ArrayList<Post>();
     private List<Post> shares = new ArrayList<Post>();
     private List<Post> posts = new ArrayList<Post>();
+    private List<Post> supports = new ArrayList<Post>();
 
     private int count;
     
@@ -67,17 +68,19 @@ public class MainPageAction implements SessionAware
     {
         session.put("informs", informs);
         session.put("messages", lastestMessage);
+        session.put("supports", supports);
     }
 
     public String execute(){
     
         getSession().remove("pictures");
         
-        informs = service.getPost((short)Constants.informs, 1, 5);
-        buddleWords = service.getPost((short)Constants.buddleWords, 1, 5);
-        lastestMessage = service.getPost((short)Constants.lastestNews, 1, 5);
-        temples = service.getPost((short)Constants.temples, 1, 5);
-        shares = service.getPost((short)Constants.shares, 1, 5);
+        informs = service.getPost((short)Constants.informs, 0, 5);
+        buddleWords = service.getPost((short)Constants.buddleWords, 0, 5);
+        lastestMessage = service.getPost((short)Constants.lastestNews, 0, 5);
+        temples = service.getPost((short)Constants.temples, 0, 5);
+        shares = service.getPost((short)Constants.shares, 0, 5);
+        supports = service.getPost((short)Constants.supports, 0, 5);
         
         putSession();
         
@@ -160,6 +163,20 @@ public class MainPageAction implements SessionAware
      */
     public Map getSession() {
         return session;
+    }
+
+    /**
+     * @return the supports
+     */
+    public List<Post> getSupports() {
+        return supports;
+    }
+
+    /**
+     * @param supports the supports to set
+     */
+    public void setSupports(List<Post> supports) {
+        this.supports = supports;
     }
     
     

@@ -151,6 +151,11 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/modifyArticle.jsp</result>
         </action>
+        <action name="saveArticle" class="editArticle" method="saveChange">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
+            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+        </action>        
         <action name="addPhoto" class="addPhoto">
             <interceptor-ref name="myDefault" />
             <result name="login">/WEB-INF/admin/login.jsp</result>    

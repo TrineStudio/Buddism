@@ -43,6 +43,7 @@ public class newPageAction {
         cataList.add(new Category(Constants.teacher2,"經論講座老師"));
         cataList.add(new Category(Constants.temple1,"康果洛寺"));
         cataList.add(new Category(Constants.temple2,"尼泊尔圆满法洲寺"));
+        cataList.add(new Category(Constants.supports, "贊助護持"));
         
         
         return "SUCCESS";

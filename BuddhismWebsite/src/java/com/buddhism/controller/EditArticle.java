@@ -24,12 +24,28 @@ public class EditArticle extends ActionSupport {
     
     private postService service;
     
+    private String title;
+    private String content;
+    
+    private int typeIndex;
         
     private List<Category> cataList = new ArrayList<Category>();
     
     
     public List<Category> getCataList() {
         return cataList;
+    }
+    
+    public String saveChange()
+    {
+        post.setPostCategory((short)typeIndex);
+        post.setPostContent(content);
+        post.setPostTitle(title);
+        post.setId(postId);
+        
+        service.UpdatePost(post);
+        
+        return "SUCCESS";
     }
     
     public void setCataList(List<Category> cataList) {
@@ -55,6 +71,7 @@ public class EditArticle extends ActionSupport {
         cataList.add(new Category(Constants.teacher2,"經論講座老師"));
         cataList.add(new Category(Constants.temple1,"康果洛寺"));
         cataList.add(new Category(Constants.temple2,"尼泊尔圆满法洲寺"));
+        cataList.add(new Category(Constants.supports, "贊助護持"));
         
         
         post = service.getPost(postId);
@@ -103,5 +120,47 @@ public class EditArticle extends ActionSupport {
      */
     public void setService(postService service) {
         this.service = service;
+    }
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * @return the content
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * @param content the content to set
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
+     * @return the typeIndex
+     */
+    public int getTypeIndex() {
+        return typeIndex;
+    }
+
+    /**
+     * @param typeIndex the typeIndex to set
+     */
+    public void setTypeIndex(int typeIndex) {
+        this.typeIndex = typeIndex;
     }
 }

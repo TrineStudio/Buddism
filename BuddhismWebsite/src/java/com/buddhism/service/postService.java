@@ -17,7 +17,7 @@ public interface postService
     public List getPage(final int offset, final int length);
     public void setPost(Post post) throws Exception;
     public Post setPost(Administrator postAuthor, String postTitle, String postContent, int postCategory, 
-            boolean postMedia, boolean postUp) throws Exception;
+           boolean postUp) throws Exception;
     public int getPostNumber(int type);
     public int getUpPostNumber();
     public void UpdatePost(int id, boolean update);
@@ -29,4 +29,5 @@ public interface postService
     public List<Post> getPostFromTrash(final Administrator administrator, final int offset, final int length);
     public void deletePost(int id);
     public void removePost(int id);
+    public void UpdatePost(Post post);
 }

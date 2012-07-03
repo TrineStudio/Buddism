@@ -41,7 +41,6 @@ public class mediaServiceImpl implements mediaService
         media.setId(1);
         media.setMediaType((short)mediaType);
         media.setMediaUrl(mediaUrl);
-        media.setPost(post);
         try {
             getMediadao().addMedia(media);
         } catch (Exception ex) {

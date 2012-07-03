@@ -6,6 +6,7 @@ package com.buddhism.dao;
 
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Post;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,4 +32,5 @@ public interface postDao
     public void Update(int id, boolean update);
     public void delete(int id);
     public void remove(int id);
+    public void UpdatePost(int id, int type, String title, String content, Date date);
 }

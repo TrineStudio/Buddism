@@ -54,11 +54,11 @@ public class newArticle extends ActionSupport implements SessionAware{
     public String execute()
     {
         Administrator admin = (Administrator) session.get("User");
-        boolean hasMedia = false;
+        
         try 
         {
            
-            Post post = postService.setPost(admin, title, content, articleCat, hasMedia, false);
+            Post post = postService.setPost(admin, title, content, articleCat, false);
             //TODO : Add the pic part
 
         } catch (Exception ex) {
