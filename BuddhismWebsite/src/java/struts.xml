@@ -168,6 +168,16 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>    
             <result name="SUCCESS">/WEB-INF/admin/addPhoto.jsp</result>
         </action>
+        <action name="newAlbum" class="addAlbum">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>    
+            <result name="SUCCESS">/WEB-INF/admin/addAlbum.jsp</result>
+        </action>
+        <action name="addAlbum" class="addAlbum" method="add">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>    
+            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+        </action> 
                 
     </package>
     

@@ -50,9 +50,8 @@
             <h2>相册</h2>
         </div>
          <div class="contentbox">
-            <select>
-            	<option>相册名</option>
-            </select>
+                <s:select list="catList" name="type" listKey="catId" listValue="catName" emptyOption="false" /> <input type="submit" value="确定" class="btn" /> 
+             <a href="newAlbum.action?type=0" style="color:black">添加相册</a>
             <p>
                 <label for="textfield"><strong></strong></label>
                 <strong>相册名:&nbsp;</strong><input type="text" id="smallbox" class="inputbox smallbox" /><br/>

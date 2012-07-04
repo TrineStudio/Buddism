@@ -186,4 +186,7 @@
     <bean id="addPhoto" class="com.buddhism.controller.AddPhoto">
         
     </bean>
+    <bean id="addAlbum" class="com.buddhism.controller.AddAlbum">
+        
+    </bean>
 </beans>
