@@ -4,9 +4,16 @@
 
 <struts>
     <constant name="struts.objectFactory" value="spring"/>
-    
+    <constant name="struts.multipart.saveDir" value="/tmp" />
+    <constant name= "struts.multipart.maxSize" value="5242280"/>
+    <constant name="struts.devMode" value="true"/>
+    <package  name="default" extends="json-default" namespace="/">
+       <action name="upload" class="upload">
+            <result type="json">imgfilePath</result>
+        </action>
+     </package>
     <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default">
+    <package name="struts" extends="default">
         <interceptors>
             <interceptor name="authority" class="com.buddhism.controller.AuthorizationInterceptor"/>
                 
@@ -163,9 +170,5 @@
         </action>
                 
     </package>
-    <package  name="json" extends="json-default" namespace="/">
-       <action name="upload" class="upload">
-            <result name="SUCCESS" type="json">imgfilePath</result>
-        </action>
-     </package>
+    
 </struts>

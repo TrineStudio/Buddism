@@ -53,7 +53,8 @@ public class UploadUtilAction extends ActionSupport{
 
     
     
-    public String uploadimg() throws Exception
+    @Override
+    public String execute() throws Exception
     {
         String extName = ""; //保存文件拓展名 
         SimpleDateFormat sDateFormat;
@@ -72,7 +73,7 @@ public class UploadUtilAction extends ActionSupport{
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
         }
         
-        String path = "/media/photos/";        
+        String path = "/media/photos/image/";        
         
         String filename = sDateFormat.format(new Date()) +"_"+rannum + extName;
         File folder = new File(ServletActionContext.getServletContext().getRealPath(path));
