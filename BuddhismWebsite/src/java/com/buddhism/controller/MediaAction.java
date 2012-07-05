@@ -7,7 +7,7 @@ package com.buddhism.controller;
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Media;
 import com.buddhism.service.mediaService;
-import com.buddhism.service.postService;
+import com.buddhism.service.packetService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
@@ -36,6 +36,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     protected Map session;
     
     protected mediaService service;
+    protected packetService packet;
     
     @Override
     public void setSession(Map session) {   
@@ -187,5 +188,19 @@ public class MediaAction extends ActionSupport implements SessionAware{
      */
     public void setType(int type) {
         this.type = type;
+    }
+
+    /**
+     * @return the packet
+     */
+    public packetService getPacket() {
+        return packet;
+    }
+
+    /**
+     * @param packet the packet to set
+     */
+    public void setPacket(packetService packet) {
+        this.packet = packet;
     }
 }

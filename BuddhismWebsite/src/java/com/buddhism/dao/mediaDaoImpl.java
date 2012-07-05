@@ -50,7 +50,7 @@ public class mediaDaoImpl extends HibernateDaoSupport implements mediaDao
 
             @Override
             public Object doInHibernate(Session sn) throws HibernateException, SQLException {
-               Query query = sn.createQuery("from Media as m where m.media_Type = :type");
+               Query query = sn.createQuery("from Media as m where m.mediaType  = :type");
                query.setParameter("type", (short)mediaType);
                return (List<Media>)query.list();
             }
@@ -60,11 +60,9 @@ public class mediaDaoImpl extends HibernateDaoSupport implements mediaDao
     @Override
     public int getMediaNumber(int mediaType) 
     {
-        Query query = this.getSession().createQuery("from Media as m where m.media_Type = :type");
-        query.setParameter("type", (short)mediaType);
-        
-        return ((Number)query.uniqueResult()).intValue();
-    }
+        List list = getHibernateTemplate().find("select count (*) from Media as m where m.mediaType = ?",(short)mediaType);
+        return ((Long)list.iterator().next()).intValue();
+    }   
 
     
 }

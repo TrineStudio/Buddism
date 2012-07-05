@@ -171,7 +171,12 @@
     
     </bean>
     <bean id="photoPage" class="com.buddhism.controller.PhotoPage">
-        
+        <property name="service">
+            <ref bean="mediaService"/>
+        </property>
+        <property name="packet">
+            <ref bean="packetService"/>
+        </property>        
     </bean>
     <bean id="articlePage" class="com.buddhism.controller.ArticlePage">
         <property name="service">
@@ -197,6 +202,8 @@
         
     </bean>
     <bean id="addAlbum" class="com.buddhism.controller.AddAlbum">
-        
+        <property name="service">
+            <ref bean="packetService"/>
+        </property>            
     </bean>
 </beans>

@@ -28,7 +28,7 @@ public class AddAlbum extends ActionSupport {
     public String add()
     {
         // title 相册名
-        service.setPacket(title, type, pageTitle);
+        service.setPacket(title, type, "");
         
         return "SUCCESS";
     }
