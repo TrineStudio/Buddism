@@ -5,6 +5,7 @@
 package com.buddhism.controller;
 
 import com.buddhism.model.Category;
+import com.buddhism.service.packetService;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +20,15 @@ public class AddAlbum extends ActionSupport {
     
     private int type;
     
+    private packetService service;
+    
     public AddAlbum() {
     }
     
     public String add()
     {
         // title 相册名
+        service.setPacket(title, type, pageTitle);
         
         return "SUCCESS";
     }
@@ -79,5 +83,19 @@ public class AddAlbum extends ActionSupport {
      */
     public void setType(int type) {
         this.type = type;
+    }
+
+    /**
+     * @return the service
+     */
+    public packetService getService() {
+        return service;
+    }
+
+    /**
+     * @param service the service to set
+     */
+    public void setService(packetService service) {
+        this.service = service;
     }
 }
