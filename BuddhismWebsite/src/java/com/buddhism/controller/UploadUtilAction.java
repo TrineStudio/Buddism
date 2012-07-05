@@ -4,6 +4,7 @@
  */
 package com.buddhism.controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 
@@ -96,6 +98,15 @@ public class UploadUtilAction extends ActionSupport{
         inStream.close();  
         outStream.close();  
         setImgfilePath(ServletActionContext.getRequest().getContextPath()+path+filename);
+        
+        ActionContext ctx = ActionContext.getContext();       
+
+        HttpServletRequest request = (HttpServletRequest)ctx.get(ServletActionContext.HTTP_REQUEST);       
+              
+        int packetId = Integer.parseInt(request.getParameter("type"));
+        
+        // packetId 集合 ID imgfilePath URL Type为照片
+        // TODO: 将照片添加到数据库的Media中
         
         return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
     }

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <%
     String path = request.getContextPath();
@@ -31,6 +32,8 @@
                     'swf'            : '<%=path%>/images/uploadify.swf', 
                     'uploader'       : '<%=path%>/upload', 
                     'cancelImg'      : '<%=path%>/images/uploadify-cancel.png', 
+                    'method'         : 'post',
+                    'formData'       :{'type':$('#type').val()},
                     'queueID'        : 'fileQueue',  //和存放队列的DIV的id一致 
                     'fileObjName'    : 'fileupload', //和以下input的name属性一致 
                     'auto'           : false, //是否自动开始 
@@ -87,9 +90,7 @@
 
         
         <div class="contentbox">
-            <select>
-                <option></option>
-            </select>
+            <s:select list="catList" name="type" listKey="catId" listValue="catName" id="type" emptyOption="false" />
             <input type="file" name="fileupload" id="fileupload" />
             <a  href="javascript:$('#fileupload').uploadify('upload','*')" ><input type="button" value="上传" class="btn" /></a>
             <a  href="javascript:$('#fileupload').uploadify('cancel')"><input type="button" value="清空上传列表" class="btn" /></a>

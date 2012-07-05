@@ -49,7 +49,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     public String jumpTo()
     {
     
-        getPost();
+        getMedia();
         putIntoRequest();
         
         return "SUCCESS";
@@ -79,13 +79,13 @@ public class MediaAction extends ActionSupport implements SessionAware{
     @Override
     public String execute(){
         
-        // 换Media的Service 获取Media数量 方法与getPostNumber一致
-        // maxIndex = service.getPostNumber(type);
+        // 换Media的Service 获取Media数量 方法与getMediaNumber一致
+        // maxIndex = service.getMediaNumber(type);
         maxIndex = service.getMediaNumber(type);
         maxPage = maxIndex / max;
             
         
-        getPost();
+        getMedia();
         putIntoRequest();
         
         return "SUCCESS";
@@ -101,20 +101,13 @@ public class MediaAction extends ActionSupport implements SessionAware{
         request.setAttribute("maxIndex", maxPage);
     }
     
-    public void getPost()
+    public void getMedia()
     {
         Administrator ad = (Administrator)session.get("User");
-        
-        if (type == 0)
-        {
-            // 获取所有 Media
-            // medium = 
-            medium = service.getMedia(type);
-        }
-        else 
-        {
-           // 获取对应集合ID(从1开始)的Media
-        }
+       
+        // medium = service.getMedia(ad, type, currentIndex * max, maxIndex); 
+        // TODO : 所能获取的媒体是和管理员身份有关 同时有一个选取范围的。
+        medium = service.getMedia(type);
         
     }
 
@@ -123,7 +116,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
         if (currentIndex != maxPage)
             currentIndex++;
         
-        getPost();
+        getMedia();
         putIntoRequest();
                 
         return "SUCCESS";
@@ -135,7 +128,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
         if(currentIndex > 1)
             currentIndex--;
         
-        getPost();
+        getMedia();
         putIntoRequest();
 
         return "SUCCESS";
