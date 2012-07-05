@@ -38,7 +38,8 @@ public class mediaDaoImpl extends HibernateDaoSupport implements mediaDao
     }
 
     @Override
-    public Media getMedia(String mediaTitle) {
+    public Media getMedia(String mediaTitle) 
+    {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
