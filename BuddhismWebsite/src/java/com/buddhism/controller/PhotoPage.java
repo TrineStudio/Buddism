@@ -6,6 +6,7 @@ package com.buddhism.controller;
 
 import com.buddhism.model.Category;
 import com.buddhism.model.Packet;
+import com.buddhism.service.packetService;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class PhotoPage extends MediaAction {
     
     private List<Category> catList = new ArrayList<Category>();
+    private packetService packetSer;
+    
     
     public PhotoPage() {
     }
@@ -26,6 +29,7 @@ public class PhotoPage extends MediaAction {
         List<Packet> packets = new ArrayList<Packet>();
         
         // TODO: 获取所有集合(Packet)
+        packets = packetSer.getPackets(type);
         
         catList.add(new Category(0, "所有相册"));
         
@@ -59,6 +63,20 @@ public class PhotoPage extends MediaAction {
      */
     public void setCatList(List<Category> catList) {
         this.catList = catList;
+    }
+
+    /**
+     * @return the packetSer
+     */
+    public packetService getPacketSer() {
+        return packetSer;
+    }
+
+    /**
+     * @param packetSer the packetSer to set
+     */
+    public void setPacketSer(packetService packetSer) {
+        this.packetSer = packetSer;
     }
 
    

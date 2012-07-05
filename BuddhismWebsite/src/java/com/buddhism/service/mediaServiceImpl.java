@@ -6,7 +6,9 @@ package com.buddhism.service;
 
 import com.buddhism.dao.mediaDaoImpl;
 import com.buddhism.model.Media;
+import com.buddhism.model.Packet;
 import com.buddhism.model.Post;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,19 +30,22 @@ public class mediaServiceImpl implements mediaService
     }
 
     @Override
-    public int getMediaNumber(boolean mediaType) 
+    public int getMediaNumber(int mediaType) 
     {
         //return getMediadao().getMedia(mediaType).size();
         return getMediadao().getMediaNumber(mediaType);
     }
 
     @Override
-    public void setMedia(Post post, String mediaUrl, int mediaType) 
+    public void setMedia(Packet packet, String mediaUrl, int mediaType) 
     {
         Media media = new Media();
         media.setId(1);
         media.setMediaType((short)mediaType);
         media.setMediaUrl(mediaUrl);
+        media.setPacket(packet);
+        
+        
         try {
             getMediadao().addMedia(media);
         } catch (Exception ex) {
@@ -60,6 +65,12 @@ public class mediaServiceImpl implements mediaService
      */
     public void setMediadao(mediaDaoImpl mediadao) {
         this.mediadao = mediadao;
+    }
+
+    @Override
+    public List<Media> getMedia(int mediaType) 
+    {
+        return mediadao.getMediaByType(mediaType);
     }
     
 }

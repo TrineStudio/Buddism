@@ -86,6 +86,16 @@
             <ref bean="mediaDao"></ref>
         </property>
     </bean>
+    <bean id="packetDao" class="com.buddhism.dao.packetDaoImpl">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"></ref>
+        </property>
+    </bean>
+    <bean id="packetService" class="com.buddhism.service.packetServiceImpl">
+        <property name="packetDao">
+            <ref bean="packetDao"></ref>
+        </property>
+    </bean>
     <bean id="newArticle" class="com.buddhism.controller.newPageAction">
     </bean>
     <bean id="article" class="com.buddhism.controller.newArticle">

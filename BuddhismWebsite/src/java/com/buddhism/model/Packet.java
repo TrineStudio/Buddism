@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-3 15:09:31 by Hibernate Tools 3.2.1.GA
+// Generated 2012-7-6 2:46:09 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -16,21 +16,24 @@ public class Packet  implements java.io.Serializable {
      private String packetTitle;
      private Date packetDate;
      private String packetFirst;
+     private short packetType;
      private Set<Media> medias = new HashSet<Media>(0);
 
     public Packet() {
     }
 
 	
-    public Packet(String packetTitle, Date packetDate, String packetFirst) {
+    public Packet(String packetTitle, Date packetDate, String packetFirst, short packetType) {
         this.packetTitle = packetTitle;
         this.packetDate = packetDate;
         this.packetFirst = packetFirst;
+        this.packetType = packetType;
     }
-    public Packet(String packetTitle, Date packetDate, String packetFirst, Set<Media> medias) {
+    public Packet(String packetTitle, Date packetDate, String packetFirst, short packetType, Set<Media> medias) {
        this.packetTitle = packetTitle;
        this.packetDate = packetDate;
        this.packetFirst = packetFirst;
+       this.packetType = packetType;
        this.medias = medias;
     }
    
@@ -61,6 +64,13 @@ public class Packet  implements java.io.Serializable {
     
     public void setPacketFirst(String packetFirst) {
         this.packetFirst = packetFirst;
+    }
+    public short getPacketType() {
+        return this.packetType;
+    }
+    
+    public void setPacketType(short packetType) {
+        this.packetType = packetType;
     }
     public Set<Media> getMedias() {
         return this.medias;

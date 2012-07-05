@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2012-7-3 15:09:37 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 2012-7-6 2:46:10 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="com.buddhism.model.Packet" table="packet" catalog="buddhismdb">
         <id name="id" type="java.lang.Short">
@@ -16,6 +16,9 @@
         </property>
         <property name="packetFirst" type="string">
             <column name="packet_First" length="100" not-null="true" />
+        </property>
+        <property name="packetType" type="short">
+            <column name="packet_Type" not-null="true" />
         </property>
         <set name="medias" inverse="true" lazy="false">
             <key>

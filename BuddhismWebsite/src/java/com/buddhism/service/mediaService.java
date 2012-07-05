@@ -5,7 +5,8 @@
 package com.buddhism.service;
 
 import com.buddhism.model.Media;
-import com.buddhism.model.Post;
+import com.buddhism.model.Packet;
+import java.util.List;
 
 /**
  *
@@ -14,6 +15,7 @@ import com.buddhism.model.Post;
 public interface mediaService 
 {
     public void setMedia(Media media);
-    public int getMediaNumber(boolean mediaType);
-    public void setMedia(Post post, String mediaUrl, int mediaType);
+    public int getMediaNumber(int mediaType);
+    public void setMedia(Packet packet, String mediaUrl, int mediaType);
+    public List<Media> getMedia(int mediaType);
 }
