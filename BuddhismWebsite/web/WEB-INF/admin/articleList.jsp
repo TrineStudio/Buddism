@@ -137,7 +137,7 @@
                     <%
                         }
                     %>
-                    <s:if test="currentIndex == maxIndex">
+                    <s:if test="currentIndex >= maxIndex">
                         <li class="text"><a href="nextPageAction" title="">后一页</a></li>
                     </s:if>
                 </ul>

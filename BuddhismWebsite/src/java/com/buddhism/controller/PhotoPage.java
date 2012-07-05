@@ -6,7 +6,6 @@ package com.buddhism.controller;
 
 import com.buddhism.model.Category;
 import com.buddhism.model.Packet;
-import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author GodBlessedMay
  */
-public class PhotoPage extends PostAction {
+public class PhotoPage extends MediaAction {
     
     private List<Category> catList = new ArrayList<Category>();
     
@@ -36,8 +35,17 @@ public class PhotoPage extends PostAction {
             catList.add(new Category(temp.getId(), temp.getPacketTitle()));
         }
         
+        super.execute();
+        
         return "SUCCESS";
     }
+    
+    public String getByType()
+    {
+        currentIndex = 0;
+
+        return "SUCCESS";
+    }    
 
     /**
      * @return the catList

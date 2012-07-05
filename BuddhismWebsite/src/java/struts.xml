@@ -135,6 +135,11 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS">/WEB-INF/admin/photoList.jsp</result>
         </action>
+        <action name="getPhotoByType" class="photoPage" method="getByType">
+            <interceptor-ref name="myDefault" />
+            <result name="login">/WEB-INF/admin/login.jsp</result>            
+            <result name="SUCCESS" type="redirect">photoPage.action</result>            
+        </action>
         <action name="articlePage" class="articlePage">
             <result name="SUCCESS">/WEB-INF/jsp/articlePage.jsp</result>
         </action>

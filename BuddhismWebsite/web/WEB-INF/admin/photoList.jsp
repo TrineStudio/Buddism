@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <%
     String path = request.getContextPath(); 
@@ -50,7 +51,9 @@
             <h2>相册</h2>
         </div>
          <div class="contentbox">
+             <form action="getPhotoByType">
                 <s:select list="catList" name="type" listKey="catId" listValue="catName" emptyOption="false" /> <input type="submit" value="确定" class="btn" /> 
+            </form>
              <a href="newAlbum.action?type=0" style="color:black">添加相册</a>
             <p>
                 <label for="textfield"><strong></strong></label>
@@ -138,12 +141,32 @@
                     </div>
                 </div>
                 <ul class="pagination">
-                	<li class="text">前一页</li>
-                    <li class="page"><a href="#" title="">1</a></li>
-                    <li><a href="#" title="">2</a></li>
-                    <li><a href="#" title="">3</a></li>
-                    <li><a href="#" title="">4</a></li>
-                    <li class="text"><a href="#" title="">后一页</a></li>
+                               <s:if test="currentIndex != 0">
+                        <li class="text"><a href="previousPageAction">前一页</a></li>
+                    </s:if>
+                    <li class="page"><a href="#" title=""><s:property value="currentIndex + 1"/></a></li>
+                    <%
+                    
+                        int currentIndex = (Integer)request.getAttribute("currentIndex");
+                        int maxIndex = (Integer)(request.getAttribute("maxIndex"));
+                    
+                        int pageCount = maxIndex - currentIndex;
+     
+                        if (pageCount > 3)
+                            pageCount = 3; 
+                        
+                        for (int i = 0; i < pageCount; i++)
+                        {
+                            
+                            
+                    %>
+                        <li><a href="JumpToManagement.action?currentIndex=<%=currentIndex + i%>" title=""><%=i + currentIndex + 1%></a></li>
+                    <%
+                        }
+                    %>
+                    <s:if test="currentIndex != maxIndex">
+                        <li class="text"><a href="nextPageAction" title="">后一页</a></li>
+                    </s:if>
                 </ul>
                 <div style="clear: both;"></div>
             </div>

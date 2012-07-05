@@ -83,11 +83,16 @@ public class UploadUtilAction extends ActionSupport{
         File outFile = new File(ServletActionContext.getServletContext().getRealPath(path+filename));  
         FileOutputStream outStream = new FileOutputStream(outFile);  
         FileInputStream inStream = new FileInputStream(fileupload);  
+        
         byte[] buffer = new byte[1024];  
+        
         int l = 0;  
-        while ((l = inStream.read(buffer)) > 0) {  
+        
+        while ((l = inStream.read(buffer)) > 0) 
+        {  
             outStream.write(buffer, 0, l);  
         }  
+        
         inStream.close();  
         outStream.close();  
         setImgfilePath(ServletActionContext.getRequest().getContextPath()+path+filename);
