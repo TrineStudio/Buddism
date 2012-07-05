@@ -4,9 +4,9 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/buddhismdb</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/buddhismdb</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.connection.password">123456</property>
     <mapping resource="com/buddhism/model/Post.hbm.xml"/>
     <mapping resource="com/buddhism/model/Administrator.hbm.xml"/>
     <mapping resource="com/buddhism/model/Media.hbm.xml"/>

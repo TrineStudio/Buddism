@@ -6,6 +6,7 @@ package com.buddhism.controller;
 
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Media;
+import com.buddhism.service.mediaService;
 import com.buddhism.service.postService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -34,7 +35,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     
     protected Map session;
     
-    protected postService service;
+    protected mediaService service;
     
     @Override
     public void setSession(Map session) {   
@@ -79,6 +80,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
         
         // 换Media的Service 获取Media数量 方法与getPostNumber一致
         // maxIndex = service.getPostNumber(type);
+        maxIndex = service.getMediaNumber(type);
         maxPage = maxIndex / max;
             
         
@@ -106,6 +108,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
         {
             // 获取所有 Media
             // medium = 
+            medium = service.getMedia(type);
         }
         else 
         {
@@ -137,11 +140,11 @@ public class MediaAction extends ActionSupport implements SessionAware{
         return "SUCCESS";
     }
 
-    public postService getService() {
+    public mediaService getService() {
         return service;
     }
 
-    public void setService(postService service) {
+    public void setService(mediaService service) {
         this.service = service;
     }
     
@@ -164,11 +167,11 @@ public class MediaAction extends ActionSupport implements SessionAware{
         return max;
     }
 
-    public List<Media> getPosts() {
+    public List<Media> getMedias() {
         return medium;
     }
 
-    public void setPosts(List<Media> medium) {
+    public void setMedias(List<Media> medium) {
         this.medium = medium;
     }
 

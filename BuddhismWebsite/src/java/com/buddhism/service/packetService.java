@@ -19,4 +19,5 @@ public interface packetService
     public Packet getPacket(String name);
     public List<Media> getMedia(int id);
     public List<Media> getMedia(String name);
+    public List<Packet> getPackets(int type);
 }

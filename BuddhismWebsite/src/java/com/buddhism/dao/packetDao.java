@@ -21,4 +21,5 @@ public interface packetDao
     public void updateCover(String url, int id);
     public List<Media> getMedia(int id);
     public List<Media> getMedia(String packetName);
+    public List<Packet> getPackets(int type);
 }

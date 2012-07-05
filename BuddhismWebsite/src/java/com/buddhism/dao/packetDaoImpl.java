@@ -19,6 +19,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 public class packetDaoImpl extends HibernateDaoSupport implements packetDao
 {
 
+    //新建一个packet
     @Override
     public void add(Packet packet) throws Exception 
     {
@@ -31,6 +32,7 @@ public class packetDaoImpl extends HibernateDaoSupport implements packetDao
         }
     }
 
+    //删除一个packet
     @Override
     public void delete(int id) 
     {
@@ -42,12 +44,14 @@ public class packetDaoImpl extends HibernateDaoSupport implements packetDao
         s.getTransaction().commit();
     }
 
+    //根据id返回一个packet
     @Override
     public Packet getPacket(int id) 
     {
         return getHibernateTemplate().load(Packet.class, id);
     }
 
+    //根据名字返回一个packet
     @Override
     public Packet getPacket(String packetName) 
     {
@@ -89,6 +93,25 @@ public class packetDaoImpl extends HibernateDaoSupport implements packetDao
         query.setParameter("pack", packet);
         
         return (List<Media>)query.list();
+    }
+
+    @Override
+    public List<Packet> getPackets(int type) 
+    {
+        String hqlString = "from Packet as p ";
+        
+        if(type == 0)
+        {
+            return (List<Packet>)getHibernateTemplate().find(hqlString);
+        }else 
+        {
+            Session s = this.getSession();
+            hqlString += "where p.packetType = :type"; 
+            Query query = s.createQuery(hqlString);
+            query.setParameter("type", (short)type);
+            
+            return (List<Packet>)query.list();
+        }
     }
     
 }

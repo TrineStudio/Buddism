@@ -44,23 +44,24 @@ public class mediaDaoImpl extends HibernateDaoSupport implements mediaDao
     }
 
     @Override
-    public List<Media> getMedia(final boolean mediaType) 
+    public List<Media> getMediaByType(final int mediaType) 
     {
                 return getHibernateTemplate().executeFind(new HibernateCallback(){
 
             @Override
             public Object doInHibernate(Session sn) throws HibernateException, SQLException {
-               Query query = sn.createQuery("from Media as m where m.media_Type = :type").setBoolean("type", mediaType);
+               Query query = sn.createQuery("from Media as m where m.media_Type = :type");
+               query.setParameter("type", (short)mediaType);
                return (List<Media>)query.list();
             }
         });
     }
 
     @Override
-    public int getMediaNumber(boolean mediaType) 
+    public int getMediaNumber(int mediaType) 
     {
-        String hqlString = "select count(*) from Media as m where m.mediaType = '"+mediaType+"'";
-        Query query = this.getSession().createQuery(hqlString);
+        Query query = this.getSession().createQuery("from Media as m where m.media_Type = :type");
+        query.setParameter("type", (short)mediaType);
         
         return ((Number)query.uniqueResult()).intValue();
     }

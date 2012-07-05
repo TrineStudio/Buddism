@@ -16,6 +16,6 @@ public interface mediaDao
     public void addMedia(Media media) throws Exception;
     public Media getMedia(int id);
     public Media getMedia(String mediaTitle);
-    public List<Media> getMedia(boolean mediaType);
-    public int getMediaNumber(boolean mediaType);
+    public List<Media> getMediaByType(int mediaType);
+    public int getMediaNumber(int mediaType);
 }

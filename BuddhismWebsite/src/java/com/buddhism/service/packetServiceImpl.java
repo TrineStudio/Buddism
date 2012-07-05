@@ -19,6 +19,8 @@ import java.util.logging.Logger;
 public class packetServiceImpl implements packetService
 {
     private packetDaoImpl packetDao;
+    
+    //new a packet
     @Override
     public void setPacket(String title, int type, String first) 
     {
@@ -37,25 +39,30 @@ public class packetServiceImpl implements packetService
             Logger.getLogger(packetServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    
+    //delete a packet according to the id
     @Override
     public void deletePacket(int id) 
     {
         packetDao.delete(id);
     }
 
+    //get the packet according to the name
     @Override
     public Packet getPacket(String name) 
     {
         return packetDao.getPacket(name);
     }
 
+    //get all the media in the packet according to the id
     @Override
     public List<Media> getMedia(int id) 
     {
         return packetDao.getMedia(id);
     }
-
+    
+    //get all the media according to the name
     @Override
     public List<Media> getMedia(String name) 
     {
@@ -74,6 +81,12 @@ public class packetServiceImpl implements packetService
      */
     public void setPacketDao(packetDaoImpl packetDao) {
         this.packetDao = packetDao;
+    }
+
+    @Override
+    public List<Packet> getPackets(int type) 
+    {
+        return packetDao.getPackets(type);
     }
     
 }
