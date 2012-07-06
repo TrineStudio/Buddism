@@ -25,7 +25,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     
     protected int type = 0;
     
-    protected List<Media> medium = new ArrayList<Media>();
+    private List<Media> medium = new ArrayList<Media>();
     
     protected int currentIndex = 0;
     protected int max = 20;
@@ -102,7 +102,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
        
         // medium = service.getMedia(ad, type, currentIndex * max, maxIndex); 
         // TODO : 所能获取的媒体是和管理员身份有关 同时有一个选取范围的。
-        medium = getService().getMedias(ad, type, 1, 5);
+        setMedium(getService().getMedias(ad, type, currentIndex * max, maxIndex));
         
     }
 
@@ -148,11 +148,11 @@ public class MediaAction extends ActionSupport implements SessionAware{
     }
 
     public List<Media> getMedias() {
-        return medium;
+        return getMedium();
     }
 
     public void setMedias(List<Media> medium) {
-        this.medium = medium;
+        this.setMedium(medium);
     }
 
     /**
@@ -181,5 +181,19 @@ public class MediaAction extends ActionSupport implements SessionAware{
      */
     public void setService(AVServiceImpl service) {
         this.service = service;
+    }
+
+    /**
+     * @return the medium
+     */
+    public List<Media> getMedium() {
+        return medium;
+    }
+
+    /**
+     * @param medium the medium to set
+     */
+    public void setMedium(List<Media> medium) {
+        this.medium = medium;
     }
 }

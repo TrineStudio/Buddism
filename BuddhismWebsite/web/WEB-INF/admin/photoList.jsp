@@ -80,52 +80,21 @@
                             <th><input name="" type="checkbox" value="" id="checkboxall" /></th>
                         </tr>
                     </thead>
+                        
                     <tbody>
-                    	<tr>
-                        	<td><img src="http://hdn.xnimg.cn/photos/hdn121/20120124/0020/h_tiny_nokg_7a9100041fd82f75.jpg" width="80px" height="80px"/></td>
-                            <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                            <td>ethan</td>
-                            <td>2012-6-20</td>
-                            <td>
-                            	<a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
-                            </td>
-                            
+                        <s:iterator id="media" value="medium">
+                            <tr>
+                                <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"/></td>
+                                <td><s:property value="mediaDesc"/> </td>
+                                <td><s:property value="administrator.adName"/></td>
+                                <td><s:property  value="mediaDate" /></td>
+                                <td>
+                                    <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
+                                    <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
+                                </td>
                             <td><input type="checkbox" value="" name="checkall" /></td>
                         </tr>
-                        <tr class="alt">
-                        	<td><img src="http://hdn.xnimg.cn/photos/hdn121/20120124/0020/h_tiny_nokg_7a9100041fd82f75.jpg" width="80px" height="80px"/></td>
-                            <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                            <td>ethan</td>
-                            <td>2012-6-20</td>
-                            <td>
-                            	<a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
-                            </td>
-                            <td><input type="checkbox" value="" name="checkall" /></td>
-                        </tr>
-                        <tr>
-                        	<td><img src="http://hdn.xnimg.cn/photos/hdn121/20120124/0020/h_tiny_nokg_7a9100041fd82f75.jpg" width="80px" height="80px"/></td>
-                            <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                            <td>ethan</td>
-                            <td>2012-6-20</td>
-                            <td>
-                            	<a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
-                            </td>
-                            <td><input type="checkbox" value="" name="checkall" /></td>
-                        </tr>
-                         <tr class="alt">
-                        	<td><img src="http://hdn.xnimg.cn/photos/hdn121/20120124/0020/h_tiny_nokg_7a9100041fd82f75.jpg" width="80px" height="80px"/></td>
-                            <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</td>
-                            <td>ethan</td>
-                            <td>2012-6-20</td>
-                            <td>
-                            	<a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
-                            </td>
-                            <td><input type="checkbox" value="" name="checkall" /></td>
-                        </tr>
+                        </s:iterator>
                     </tbody>
                 </table>
                 <div class="extrabottom">
@@ -217,7 +186,7 @@
             <li><a class="collapsed heading">视频管理</a>
                 <ul class="navigation">
                     <li><a href="#" title="">上传视频</a></li>
-                    <li><a href="#" title="">视频管理</a></li>
+                    <li><a href="videoPage" title="">视频管理</a></li>
                 </ul>
             </li>
             <li><a class="collapsed heading">帐户管理</a>

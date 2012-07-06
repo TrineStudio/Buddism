@@ -11,13 +11,14 @@ import java.util.List;
 
 /**
  *
- * @author GodBlessedMay
+ * @author hg
  */
-public class PhotoPage extends MediaAction {
-    
+public class VideoPage extends MediaAction {
+        
     private List<Category> catList = new ArrayList<Category>();
     
-    public PhotoPage() {
+    public VideoPage() {
+        type = 1;
     }
     
     @Override
@@ -28,9 +29,9 @@ public class PhotoPage extends MediaAction {
         List<Packet> packets = new ArrayList<Packet>();
         
         // TODO: 获取所有集合(Packet)
-        packets = getService().getPackets(0);
+        packets = getService().getPackets(1);
         
-        catList.add(new Category(0, "所有相册"));
+        catList.add(new Category(0, "所有视频集"));
         
         for (int i = 0; i != packets.size(); i++)
         {

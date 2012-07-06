@@ -201,7 +201,16 @@
             <result name="login">/WEB-INF/admin/login.jsp</result>    
             <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
         </action> 
-                
+        <action name="videoPage" class="videoPage">
+            <interceptor-ref name="myDefault"/>
+            <result name="login">/WEB-INF/admin/login.jsp</result>
+            <result name="SUCCESS">/WEB-INF/admin/videoList.jsp</result>
+        </action>
+        <action name="getVideoByType" class="videoPage" method="getByType">
+            <interceptor-ref name="myDefault"/>
+            <result name="login">/WEB-INF/admin/login.jsp</result>
+            <result name="SUCCESS">/WEB-INF/admin/videoList.jsp</result>
+        </action>        
     </package>
     
 </struts>
