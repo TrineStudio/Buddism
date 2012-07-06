@@ -7,7 +7,6 @@ package com.buddhism.controller;
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Post;
 import com.buddhism.service.administratorServiceImpl;
-import com.buddhism.service.mediaServiceImpl;
 import com.buddhism.service.postServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
@@ -30,7 +29,6 @@ public class newArticle extends ActionSupport implements SessionAware{
     private administratorServiceImpl adService;
     private postServiceImpl postService;
     private Map session;
-    private mediaServiceImpl mediaService;
     
  
     public File getFile() {
@@ -123,19 +121,4 @@ public class newArticle extends ActionSupport implements SessionAware{
     public void setPostService(postServiceImpl postService) {
         this.postService = postService;
     }
-
-    /**
-     * @return the mediaService
-     */
-    public mediaServiceImpl getMediaService() {
-        return mediaService;
-    }
-
-    /**
-     * @param mediaService the mediaService to set
-     */
-    public void setMediaService(mediaServiceImpl mediaService) {
-        this.mediaService = mediaService;
-    }
-    
 }

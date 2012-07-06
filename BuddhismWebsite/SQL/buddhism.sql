@@ -28,11 +28,15 @@ CREATE TABLE `media` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `media_Url` varchar(100) NOT NULL,
   `media_Type` smallint(5) NOT NULL,
-  `media_Packet` smallint(5) unsigned NOT NULL,
   `media_Desc` varchar(100) DEFAULT NULL,
+  `media_Author` smallint(5) unsigned NOT NULL,
+  `media_Date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `media_Packet` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`id`),
+  KEY `media_Author` (`media_Author`),
   KEY `media_Packet` (`media_Packet`),
-  CONSTRAINT `media_ibfk_2` FOREIGN KEY (`media_Packet`) REFERENCES `packet` (`id`)
+  CONSTRAINT `media_ibfk_4` FOREIGN KEY (`media_Packet`) REFERENCES `packet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `media_ibfk_3` FOREIGN KEY (`media_Author`) REFERENCES `administrator` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-06  9:13:25
+-- Dump completed on 2012-07-06 23:54:07

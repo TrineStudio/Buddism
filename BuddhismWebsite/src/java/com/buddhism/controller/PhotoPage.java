@@ -28,7 +28,7 @@ public class PhotoPage extends MediaAction {
         List<Packet> packets = new ArrayList<Packet>();
         
         // TODO: 获取所有集合(Packet)
-        packets = packet.getPackets(0);
+        packets = getService().getPackets(type);
         
         catList.add(new Category(0, "所有相册"));
         

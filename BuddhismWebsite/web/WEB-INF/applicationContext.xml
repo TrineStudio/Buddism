@@ -76,24 +76,14 @@
             <ref bean="postDao"></ref>
         </property>
     </bean>
-       <bean id="mediaDao" class="com.buddhism.dao.mediaDaoImpl">
-         <property name="sessionFactory">
-            <ref bean="sessionFactory"></ref>
-        </property>
-    </bean>
-    <bean id="mediaService" class="com.buddhism.service.mediaServiceImpl">
-         <property name="mediadao">
-            <ref bean="mediaDao"></ref>
-        </property>
-    </bean>
-    <bean id="packetDao" class="com.buddhism.dao.packetDaoImpl">
+    <bean id="avDao" class="com.buddhism.dao.AVDaoImpl">
         <property name="sessionFactory">
             <ref bean="sessionFactory"></ref>
         </property>
     </bean>
-    <bean id="packetService" class="com.buddhism.service.packetServiceImpl">
-        <property name="packetDao">
-            <ref bean="packetDao"></ref>
+    <bean id="avService" class="com.buddhism.service.AVServiceImpl">
+        <property name="avDao">
+            <ref bean="avDao"></ref>
         </property>
     </bean>
     <bean id="newArticle" class="com.buddhism.controller.newPageAction">
@@ -104,9 +94,6 @@
         </property>
         <property name="postService">
             <ref bean="postService"></ref>
-        </property>
-        <property name="mediaService">
-            <ref bean="mediaService"></ref>
         </property>
     </bean>    
     <bean id="register" class="com.buddhism.controller.Register">
@@ -177,11 +164,8 @@
     </bean>
     <bean id="photoPage" class="com.buddhism.controller.PhotoPage">
         <property name="service">
-            <ref bean="mediaService"/>
-        </property>
-        <property name="packet">
-            <ref bean="packetService"/>
-        </property>        
+            <ref bean="avService"/>
+        </property>       
     </bean>
     <bean id="articlePage" class="com.buddhism.controller.ArticlePage">
         <property name="service">
@@ -205,12 +189,12 @@
     </bean>
     <bean id="addPhoto" class="com.buddhism.controller.AddPhoto">
         <property name="packet">
-            <ref bean="packetService"/>
+            <ref bean="avService"/>
         </property>            
     </bean>
     <bean id="addAlbum" class="com.buddhism.controller.AddAlbum">
         <property name="service">
-            <ref bean="packetService"/>
+            <ref bean="avService"/>
         </property>            
     </bean>
 </beans>

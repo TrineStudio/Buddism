@@ -6,8 +6,7 @@ package com.buddhism.controller;
 
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Media;
-import com.buddhism.service.mediaService;
-import com.buddhism.service.packetService;
+import com.buddhism.service.AVServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
@@ -35,8 +34,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     
     protected Map session;
     
-    protected mediaService service;
-    protected packetService packet;
+    private AVServiceImpl service;
     
     @Override
     public void setSession(Map session) {   
@@ -80,7 +78,12 @@ public class MediaAction extends ActionSupport implements SessionAware{
     public String execute(){
         
         // 换Media的Service 获取Media数量 方法与getMediaNumber一致
+<<<<<<< HEAD
         maxIndex = service.getMediaNumber(type);
+=======
+        // maxIndex = service.getMediaNumber(type);
+        maxIndex = getService().getMediasNumber(type);
+>>>>>>> 重构并更新数据库
         maxPage = maxIndex / max;
             
         
@@ -106,7 +109,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
        
         // medium = service.getMedia(ad, type, currentIndex * max, maxIndex); 
         // TODO : 所能获取的媒体是和管理员身份有关 同时有一个选取范围的。
-        medium = service.getMedia(type);
+        medium = getService().getMedias(ad, type, 1, 5);
         
     }
 
@@ -131,16 +134,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
         putIntoRequest();
 
         return "SUCCESS";
-    }
-
-    public mediaService getService() {
-        return service;
-    }
-
-    public void setService(mediaService service) {
-        this.service = service;
-    }
-    
+    }    
     public int getCurrentIndex() {
         return currentIndex;
     }
@@ -183,16 +177,16 @@ public class MediaAction extends ActionSupport implements SessionAware{
     }
 
     /**
-     * @return the packet
+     * @return the service
      */
-    public packetService getPacket() {
-        return packet;
+    public AVServiceImpl getService() {
+        return service;
     }
 
     /**
-     * @param packet the packet to set
+     * @param service the service to set
      */
-    public void setPacket(packetService packet) {
-        this.packet = packet;
+    public void setService(AVServiceImpl service) {
+        this.service = service;
     }
 }

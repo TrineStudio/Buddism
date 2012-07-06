@@ -5,8 +5,7 @@
 package com.buddhism.controller;
 
 import com.buddhism.model.Packet;
-import com.buddhism.service.mediaService;
-import com.buddhism.service.packetService;
+import com.buddhism.service.AVServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
@@ -24,8 +23,8 @@ import org.apache.struts2.ServletActionContext;
  * @author EthanPan
  */
 public class UploadUtilAction extends ActionSupport{
-    private mediaService service;
-    private packetService packetSer;
+    
+    private AVServiceImpl avService;
     
     private File fileupload; //和JSP中input标记name同名 
     
@@ -115,36 +114,30 @@ public class UploadUtilAction extends ActionSupport{
         // TODO: 将照片添加到数据库的Media中
         
         //type=1代表的是添加照片
+<<<<<<< HEAD
         Packet packet = packetSer.getPacket(packetId);
         service.setMedia(packet, imgfilePath, 0, null);
         return SUCCESS; //这里不需要页面转向， 所以返回空就可以了 
+=======
+        Packet packet = getAvService().getPacket(packetId);
+        getAvService().addMedia(ctx, packet, imgfilePath, 1, null);
+        return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
+>>>>>>> 重构并更新数据库
     }
 
     /**
-     * @return the service
+     * @return the avService
      */
-    public mediaService getService() {
-        return service;
+    public AVServiceImpl getAvService() {
+        return avService;
     }
 
     /**
-     * @param service the service to set
+     * @param avService the avService to set
      */
-    public void setService(mediaService service) {
-        this.service = service;
+    public void setAvService(AVServiceImpl avService) {
+        this.avService = avService;
     }
 
-    /**
-     * @return the packetSer
-     */
-    public packetService getPacketSer() {
-        return packetSer;
-    }
-
-    /**
-     * @param packetSer the packetSer to set
-     */
-    public void setPacketSer(packetService packetSer) {
-        this.packetSer = packetSer;
-    }
+ 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2012-7-6 9:07:03 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 2012-7-6 23:08:10 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="com.buddhism.model.Media" table="media" catalog="buddhismdb">
         <id name="id" type="java.lang.Integer">
@@ -11,6 +11,9 @@
         <many-to-one name="packet" class="com.buddhism.model.Packet" fetch="select" lazy="false">
             <column name="media_Packet" not-null="true" />
         </many-to-one>
+        <many-to-one name="administrator" class="com.buddhism.model.Administrator" fetch="select" lazy="false">
+            <column name="media_Author" not-null="true" />
+        </many-to-one>
         <property name="mediaUrl" type="string">
             <column name="media_Url" length="100" not-null="true" />
         </property>
@@ -19,6 +22,9 @@
         </property>
         <property name="mediaDesc" type="string">
             <column name="media_Desc" length="100" />
+        </property>
+        <property name="mediaDate" type="timestamp">
+            <column name="media_Date" length="19" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

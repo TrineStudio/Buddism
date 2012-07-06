@@ -6,7 +6,7 @@ package com.buddhism.controller;
 
 import com.buddhism.model.Category;
 import com.buddhism.model.Packet;
-import com.buddhism.service.packetService;
+import com.buddhism.service.AVServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class AddPhoto extends ActionSupport {
         
     private List<Category> catList = new ArrayList<Category>();
     
-    private packetService packet;
+    private AVServiceImpl packet;
     
     public AddPhoto() {
     }
@@ -59,15 +59,15 @@ public class AddPhoto extends ActionSupport {
     /**
      * @return the packet
      */
-    public packetService getPacket() {
+    public AVServiceImpl getPacket() {
         return packet;
     }
 
     /**
      * @param packet the packet to set
      */
-    public void setPacket(packetService packet) {
+    public void setPacket(AVServiceImpl packet) {
         this.packet = packet;
     }
-   
+
 }
