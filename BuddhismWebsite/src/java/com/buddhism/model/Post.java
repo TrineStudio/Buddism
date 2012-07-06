@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-6 2:46:09 by Hibernate Tools 3.2.1.GA
+// Generated 2012-7-6 9:07:01 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -109,7 +109,8 @@ public class Post  implements java.io.Serializable {
     /**
      * @param type the type to set
      */
-    public void setType() {
+    public void setType() 
+    { 
         this.type = Constants.columns[postCategory];
     }
 

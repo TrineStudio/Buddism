@@ -16,6 +16,6 @@ public interface mediaService
 {
     public void setMedia(Media media);
     public int getMediaNumber(int mediaType);
-    public void setMedia(Packet packet, String mediaUrl, int mediaType);
+    public void setMedia(Packet packet, String mediaUrl, int mediaType, String mediaDesc);
     public List<Media> getMedia(int mediaType);
 }

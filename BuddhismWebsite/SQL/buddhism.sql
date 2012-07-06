@@ -29,6 +29,7 @@ CREATE TABLE `media` (
   `media_Url` varchar(100) NOT NULL,
   `media_Type` smallint(5) NOT NULL,
   `media_Packet` smallint(5) unsigned NOT NULL,
+  `media_Desc` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `media_Packet` (`media_Packet`),
   CONSTRAINT `media_ibfk_2` FOREIGN KEY (`media_Packet`) REFERENCES `packet` (`id`)
@@ -141,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-06  3:24:50
+-- Dump completed on 2012-07-06  9:13:25

@@ -37,14 +37,14 @@ public class mediaServiceImpl implements mediaService
     }
 
     @Override
-    public void setMedia(Packet packet, String mediaUrl, int mediaType) 
+    public void setMedia(Packet packet, String mediaUrl, int mediaType, String mediaDesc) 
     {
         Media media = new Media();
         media.setId(1);
         media.setMediaType((short)mediaType);
         media.setMediaUrl(mediaUrl);
         media.setPacket(packet);
-        
+        media.setMediaDesc(mediaDesc);
         
         try {
             getMediadao().addMedia(media);
