@@ -72,7 +72,7 @@
             	<table width="100%">
                 	<thead>
                     	<tr>
-                        	<th></th>
+                            <th></th>
                             <th>描述</th>
                             <th>作者</th>
                             <th>时间</th>

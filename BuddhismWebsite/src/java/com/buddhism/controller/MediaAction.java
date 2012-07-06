@@ -80,7 +80,6 @@ public class MediaAction extends ActionSupport implements SessionAware{
     public String execute(){
         
         // 换Media的Service 获取Media数量 方法与getMediaNumber一致
-        // maxIndex = service.getMediaNumber(type);
         maxIndex = service.getMediaNumber(type);
         maxPage = maxIndex / max;
             

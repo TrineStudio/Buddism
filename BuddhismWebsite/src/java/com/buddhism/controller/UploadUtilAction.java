@@ -116,8 +116,8 @@ public class UploadUtilAction extends ActionSupport{
         
         //type=1代表的是添加照片
         Packet packet = packetSer.getPacket(packetId);
-        service.setMedia(packet, imgfilePath, 1, null);
-        return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
+        service.setMedia(packet, imgfilePath, 0, null);
+        return SUCCESS; //这里不需要页面转向， 所以返回空就可以了 
     }
 
     /**
