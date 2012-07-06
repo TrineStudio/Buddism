@@ -47,7 +47,7 @@ public class mediaServiceImpl implements mediaService
         media.setMediaDesc(mediaDesc);
         
         try {
-            getMediadao().addMedia(media);
+            mediadao.addMedia(media);
         } catch (Exception ex) {
             Logger.getLogger(mediaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

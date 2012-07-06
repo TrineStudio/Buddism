@@ -88,5 +88,11 @@ public class packetServiceImpl implements packetService
     {
         return packetDao.getPackets(type);
     }
+
+    @Override
+    public Packet getPacket(int id) 
+    {
+        return packetDao.getPacket(id);
+    }
     
 }

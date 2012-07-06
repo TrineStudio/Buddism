@@ -17,6 +17,7 @@ public interface packetService
     public void setPacket(String title, int type, String first);
     public void deletePacket(int id);
     public Packet getPacket(String name);
+    public Packet getPacket(int id);
     public List<Media> getMedia(int id);
     public List<Media> getMedia(String name);
     public List<Packet> getPackets(int type);

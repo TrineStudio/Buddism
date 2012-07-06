@@ -4,6 +4,9 @@
  */
 package com.buddhism.controller;
 
+import com.buddhism.model.Packet;
+import com.buddhism.service.mediaService;
+import com.buddhism.service.packetService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
@@ -21,6 +24,9 @@ import org.apache.struts2.ServletActionContext;
  * @author EthanPan
  */
 public class UploadUtilAction extends ActionSupport{
+    private mediaService service;
+    private packetService packetSer;
+    
     private File fileupload; //和JSP中input标记name同名 
     
     //Struts2拦截器获得的文件名,命名规则，File的名字+FileName 
@@ -108,6 +114,37 @@ public class UploadUtilAction extends ActionSupport{
         // packetId 集合 ID imgfilePath URL Type为照片
         // TODO: 将照片添加到数据库的Media中
         
+        //type=1代表的是添加照片
+        Packet packet = packetSer.getPacket(packetId);
+        service.setMedia(packet, imgfilePath, 1, null);
         return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
+    }
+
+    /**
+     * @return the service
+     */
+    public mediaService getService() {
+        return service;
+    }
+
+    /**
+     * @param service the service to set
+     */
+    public void setService(mediaService service) {
+        this.service = service;
+    }
+
+    /**
+     * @return the packetSer
+     */
+    public packetService getPacketSer() {
+        return packetSer;
+    }
+
+    /**
+     * @param packetSer the packetSer to set
+     */
+    public void setPacketSer(packetService packetSer) {
+        this.packetSer = packetSer;
     }
 }
