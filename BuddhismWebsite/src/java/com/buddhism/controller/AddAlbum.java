@@ -4,11 +4,8 @@
  */
 package com.buddhism.controller;
 
-import com.buddhism.model.Category;
 import com.buddhism.service.AVServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

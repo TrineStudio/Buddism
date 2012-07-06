@@ -7,23 +7,41 @@
     <constant name="struts.multipart.saveDir" value="/tmp" />
     <constant name= "struts.multipart.maxSize" value="5242280"/>
     <constant name="struts.devMode" value="true"/>
+
     <package  name="default" extends="json-default" namespace="/">
-       <action name="upload" class="upload">
-            <result type="json">imgfilePath</result>
-        </action>
-     </package>
+
+    </package>
+
+
     <!-- Configuration for the default package. -->
-    <package name="struts" extends="default">
+    <package name="struts" extends="default">     
+        
+        <result-types>              
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>       
+        </result-types>             
+        
         <interceptors>
             <interceptor name="authority" class="com.buddhism.controller.AuthorizationInterceptor"/>
-                
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>  
+            
             <interceptor-stack name="myDefault">
                 <interceptor-ref name="authority"/>
+                <interceptor-ref name="json"/>
                 <interceptor-ref name="defaultStack"/>
-            </interceptor-stack>            
+            </interceptor-stack>        
+            
+           <interceptor-stack name="jsonDefault">
+                <interceptor-ref name="json"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>               
             
         </interceptors>
-        
+            
+        <action name="upload" class="upload">
+            <interceptor-ref name="jsonDefault" />
+            <result type="json">imgfilePath</result>
+        </action>            
+            
         <action name="logIn" class="logAction">
             <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
             <result name="INPUT">/WEB-INF/admin/login.jsp</result>

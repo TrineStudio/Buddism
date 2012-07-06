@@ -22,6 +22,7 @@ public class AuthorizationInterceptor extends AbstractInterceptor{
         ActionContext actionContext = ai.getInvocationContext();
         
         Administrator  user = (Administrator)actionContext.getSession().get("User");
+
         
         if (user != null)
             return ai.invoke();

@@ -4,6 +4,7 @@
     Author     : EthanPan
 --%>
 
+<%@page import="com.buddhism.model.Administrator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
                     /*注意前    面需要书写path的代码*/ 
 
                     'swf'            : '<%=path%>/images/uploadify.swf', 
-                    'uploader'       : '<%=path%>/upload', 
+                    'uploader'       : '<%=path%>/upload.action?admin=<%= ((Administrator)session.getAttribute("User")).getId() %>', 
                     'cancelImg'      : '<%=path%>/images/uploadify-cancel.png', 
                     'method'         : 'post',
                     'formData'       :{'type':$('#type').val()},

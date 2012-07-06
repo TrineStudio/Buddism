@@ -155,12 +155,9 @@
         </property>   
     </bean>
     <bean id="upload" class="com.buddhism.controller.UploadUtilAction">
-        <property name="service">
-            <ref bean="mediaService"/>
+        <property name="avService">
+            <ref bean="avService"/>
         </property>
-        <property name="packetSer">
-            <ref bean="packetService"/>
-        </property>          
     </bean>
     <bean id="photoPage" class="com.buddhism.controller.PhotoPage">
         <property name="service">

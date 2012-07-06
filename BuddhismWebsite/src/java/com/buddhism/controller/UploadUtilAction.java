@@ -4,25 +4,30 @@
  */
 package com.buddhism.controller;
 
+import com.buddhism.model.Administrator;
 import com.buddhism.model.Packet;
 import com.buddhism.service.AVServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 
 
 /**
  *
  * @author EthanPan
  */
-public class UploadUtilAction extends ActionSupport{
+public class UploadUtilAction extends ActionSupport implements SessionAware{
+    
+    private Map session;
     
     private AVServiceImpl avService;
     
@@ -33,6 +38,13 @@ public class UploadUtilAction extends ActionSupport{
     private String fileuploadFileName; //上传来的文件的名字
     private String imgfilePath;
    
+    
+    @Override
+    public void setSession(Map session) {   
+  
+       this.session = session;     
+    }
+    
     public File getFileupload() {
         return fileupload;
     }
@@ -61,7 +73,7 @@ public class UploadUtilAction extends ActionSupport{
     
     
     @Override
-    public String execute() throws Exception
+    public String execute() throws FileNotFoundException, IOException 
     {
         String extName = ""; //保存文件拓展名 
         SimpleDateFormat sDateFormat;
@@ -114,15 +126,17 @@ public class UploadUtilAction extends ActionSupport{
         // TODO: 将照片添加到数据库的Media中
         
         //type=1代表的是添加照片
-<<<<<<< HEAD
-        Packet packet = packetSer.getPacket(packetId);
-        service.setMedia(packet, imgfilePath, 0, null);
-        return SUCCESS; //这里不需要页面转向， 所以返回空就可以了 
-=======
+        
+        String id = request.getParameter("admin");
+        
+        Administrator admin = new Administrator();
+        
+        admin.setId((short)Integer.parseInt(id));
+        
         Packet packet = getAvService().getPacket(packetId);
-        getAvService().addMedia(ctx, packet, imgfilePath, 1, null);
+        getAvService().addMedia(admin, packet, imgfilePath, 0, null);
         return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
->>>>>>> 重构并更新数据库
+        
     }
 
     /**

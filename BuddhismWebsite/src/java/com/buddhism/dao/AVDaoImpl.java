@@ -68,7 +68,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        
        String hql = "p.packetType = :type";
        Query query = s.createQuery(PACKETQUERYSTRING + hql);
-       query.setParameter("title", (short)packetType);
+       query.setParameter("type", (short)packetType);
        return query.list();
     }
 
@@ -129,7 +129,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     @Override
     public int getMN(int type) 
     {
-        List list = getHibernateTemplate().find("select count(*) from Media where m.mediaType = ?", (short)type);
+        List list = getHibernateTemplate().find("select count(*) from Media as m where m.mediaType = " + (short)type);
         return ((Long)list.iterator().next()).intValue();
     }
 
