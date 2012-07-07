@@ -7,9 +7,11 @@ package com.buddhism.dao;
 import com.buddhism.model.Administrator;
 import com.buddhism.model.Media;
 import com.buddhism.model.Packet;
+import java.io.File;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -94,6 +96,20 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     @Override
     public void deleteP(int id) 
     {
+       Packet packet = this.getP(id);
+       Iterator<Media> it = packet.getMedias().iterator();
+       
+       while(it.hasNext())
+       {
+           Media media = it.next();
+           File file = new File(media.getMediaUrl());
+           if(file.isFile() && file.exists())
+           {
+               file.delete();
+           }
+       }
+       
+       
        Session s = this.getSession();
        s.beginTransaction();
        
@@ -174,6 +190,14 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     {
        Session s = this.getSession();
        s.beginTransaction();
+       
+       Media media = this.getM(id);
+       File file = new File(media.getMediaUrl());
+       
+       if(file.isFile() && file.exists())
+       {
+           file.delete();
+       }
        
        Query query = s.createQuery("delete from Media as m where m.id = :id");
        query.setParameter("id", id);
