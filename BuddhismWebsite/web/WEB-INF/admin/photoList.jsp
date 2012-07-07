@@ -52,7 +52,7 @@
         </div>
          <div class="contentbox">
              <form action="getPhotoByType">
-                <s:select list="catList" name="type" listKey="catId" listValue="catName" emptyOption="false" /> <input type="submit" value="确定" class="btn" /> 
+                <s:select list="catList" name="packetId" listKey="catId" listValue="catName" emptyOption="false" /> <input type="submit" value="确定" class="btn" /> 
             </form>
              <a href="newAlbum.action?type=0" style="color:black">添加相册</a>
             <p>
@@ -111,7 +111,7 @@
                 </div>
                 <ul class="pagination">
                                <s:if test="currentIndex != 0">
-                        <li class="text"><a href="previousPageAction">前一页</a></li>
+                        <li class="text"><a href="previousPhotoPage">前一页</a></li>
                     </s:if>
                     <li class="page"><a href="#" title=""><s:property value="currentIndex + 1"/></a></li>
                     <%
@@ -129,12 +129,12 @@
                             
                             
                     %>
-                        <li><a href="JumpToManagement.action?currentIndex=<%=currentIndex + i%>" title=""><%=i + currentIndex + 1%></a></li>
+                        <li><a href="JumpToPhotoList.action?currentIndex=<%=currentIndex + i%>" title=""><%=i + currentIndex + 1%></a></li>
                     <%
                         }
                     %>
-                    <s:if test="currentIndex != maxIndex">
-                        <li class="text"><a href="nextPageAction" title="">后一页</a></li>
+                    <s:if test="currentIndex >= maxIndex">
+                        <li class="text"><a href="nextPhotoPage" title="">后一页</a></li>
                     </s:if>
                 </ul>
                 <div style="clear: both;"></div>
@@ -185,7 +185,7 @@
             </li>
             <li><a class="collapsed heading">视频管理</a>
                 <ul class="navigation">
-                    <li><a href="#" title="">上传视频</a></li>
+                    <li><a href="addVideo" title="">上传视频</a></li>
                     <li><a href="videoPage" title="">视频管理</a></li>
                 </ul>
             </li>

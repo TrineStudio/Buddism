@@ -124,7 +124,7 @@
             </li>
             <li><a class="collapsed heading">视频管理</a>
                 <ul class="navigation">
-                    <li><a href="#" title="">上传视频</a></li>
+                    <li><a href="addVideo" title="">上传视频</a></li>
                     <li><a href="videoPage" title="">视频管理</a></li>
                 </ul>
             </li>            

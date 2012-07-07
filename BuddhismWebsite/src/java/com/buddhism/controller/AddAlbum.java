@@ -4,20 +4,33 @@
  */
 package com.buddhism.controller;
 
+import com.buddhism.model.Administrator;
 import com.buddhism.service.AVServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author GodBlessedMay
  */
-public class AddAlbum extends ActionSupport {
+public class AddAlbum extends ActionSupport implements SessionAware{
     private String title;
     private String pageTitle;
     
     private int type;
     
+    protected Map session;
+    
     private AVServiceImpl service;
+    
+    @Override
+    public void setSession(Map session) {   
+  
+       this.session = session;   
+  
+  
+    }      
     
     public AddAlbum() {
     }
@@ -25,7 +38,9 @@ public class AddAlbum extends ActionSupport {
     public String add()
     {
         // title 相册名
-        service.addPacket(null, title, type, pageTitle);//最后一个参数应该是packet的cover，第一个参数是packet的administrator
+        Administrator ad = (Administrator)session.get("User");
+        
+        service.addPacket(ad, title, type, pageTitle);//最后一个参数应该是packet的cover，第一个参数是packet的administrator
         
         return "SUCCESS";
     }

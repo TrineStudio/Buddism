@@ -38,6 +38,7 @@ public class UploadUtilAction extends ActionSupport implements SessionAware{
     private String fileuploadFileName; //上传来的文件的名字
     private String imgfilePath;
    
+    private int mediaType;
     
     @Override
     public void setSession(Map session) {   
@@ -92,7 +93,12 @@ public class UploadUtilAction extends ActionSupport implements SessionAware{
             extName = fileuploadFileName.substring(fileuploadFileName.lastIndexOf("."));
         }
         
-        String path = "/media/photos/image/";        
+        String path = "";
+        
+        if (mediaType == 0)
+            path = "/media/photos/image/";        
+        else if (mediaType == 1)
+            path = "/media/videos/video/";
         
         String filename = sDateFormat.format(new Date()) +"_"+rannum + extName;
         File folder = new File(ServletActionContext.getServletContext().getRealPath(path));
@@ -134,7 +140,7 @@ public class UploadUtilAction extends ActionSupport implements SessionAware{
         admin.setId((short)Integer.parseInt(id));
         
         Packet packet = getAvService().getPacket(packetId);
-        getAvService().addMedia(admin, packet, imgfilePath, 0, null);
+        getAvService().addMedia(admin, packet, imgfilePath, mediaType, null);
         return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
         
     }
@@ -151,6 +157,20 @@ public class UploadUtilAction extends ActionSupport implements SessionAware{
      */
     public void setAvService(AVServiceImpl avService) {
         this.avService = avService;
+    }
+
+    /**
+     * @return the mediaType
+     */
+    public int getMediaType() {
+        return mediaType;
+    }
+
+    /**
+     * @param mediaType the mediaType to set
+     */
+    public void setMediaType(int mediaType) {
+        this.mediaType = mediaType;
     }
 
  

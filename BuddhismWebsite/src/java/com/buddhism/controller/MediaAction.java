@@ -34,7 +34,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     
     protected Map session;
     
-    private int packetId;
+    private int packetId = 0;
     
     protected AVServiceImpl service;
     
@@ -101,10 +101,11 @@ public class MediaAction extends ActionSupport implements SessionAware{
     public void getMedia()
     {
         Administrator ad = (Administrator)session.get("User");
-       
-        // medium = service.getMedia(ad, type, packetId,currentIndex * max, maxIndex); 
-        // TODO : 所能获取的媒体是和管理员身份有关 同时有一个选取范围的。
-        setMedium(getService().getMedias(ad, type, currentIndex * max, maxIndex));
+        
+        if (packetId != 0)
+            medium = service.getMedias(packetId, currentIndex * max, maxIndex); 
+        else if (packetId == 0)
+            medium = service.getMedias(ad, type, currentIndex * max, maxIndex);
         
     }
 
@@ -118,6 +119,8 @@ public class MediaAction extends ActionSupport implements SessionAware{
                 
         return "SUCCESS";
     }
+    
+    
     
     public String previousPage(){
         
@@ -163,6 +166,13 @@ public class MediaAction extends ActionSupport implements SessionAware{
     public int getType() {
         return type;
     }
+
+    public String getByType()
+    {
+        currentIndex = 0;
+
+        return "SUCCESS";
+    }    
 
     /**
      * @param type the type to set

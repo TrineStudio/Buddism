@@ -4,6 +4,7 @@
  */
 package com.buddhism.controller;
 
+import com.buddhism.model.Administrator;
 import com.buddhism.model.Category;
 import com.buddhism.model.Packet;
 import java.util.ArrayList;
@@ -25,12 +26,14 @@ public class PhotoPage extends MediaAction {
     @Override
     public String execute(){
         
+        Administrator ad = (Administrator)session.get("User");
+        
         catList.clear();
         
         List<Packet> packets = new ArrayList<Packet>();
         
         // TODO: 获取所有集合(Packet)
-        packets = getService().getPackets(0);
+        packets = service.getPackets(ad, 0);
         
         catList.add(new Category(0, "所有相册"));
         
@@ -52,13 +55,6 @@ public class PhotoPage extends MediaAction {
         return "SUCCESS";
     }
     
-    public String getByType()
-    {
-        currentIndex = 0;
-
-        return "SUCCESS";
-    }    
-
     /**
      * @return the catList
      */

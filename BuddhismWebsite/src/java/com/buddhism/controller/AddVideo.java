@@ -18,9 +18,8 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author GodBlessedMay
  */
-public class AddPhoto extends ActionSupport implements SessionAware{
-        
-    private List<Category> catList = new ArrayList<Category>();
+public class AddVideo extends ActionSupport implements SessionAware{
+private List<Category> catList = new ArrayList<Category>();
     
     private AVServiceImpl packet;
     
@@ -34,7 +33,7 @@ public class AddPhoto extends ActionSupport implements SessionAware{
   
     }  
     
-    public AddPhoto() {
+    public AddVideo() {
     }
     
     @Override
@@ -47,7 +46,7 @@ public class AddPhoto extends ActionSupport implements SessionAware{
         List<Packet> packets = new ArrayList<Packet>();
         
         // TODO: 获取所有集合(Packet)
-        packets = packet.getPackets(ad, 0);//第一个参数应该是administrator
+        packets = packet.getPackets(ad, 1);//第一个参数应该是administrator
         
         for (int i = 0; i != packets.size(); i++)
         {
@@ -84,5 +83,5 @@ public class AddPhoto extends ActionSupport implements SessionAware{
     public void setPacket(AVServiceImpl packet) {
         this.packet = packet;
     }
-
+    
 }

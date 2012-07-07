@@ -31,7 +31,7 @@
                     /*注意前    面需要书写path的代码*/ 
 
                     'swf'            : '<%=path%>/images/uploadify.swf', 
-                    'uploader'       : '<%=path%>/upload.action?admin=<%= ((Administrator)session.getAttribute("User")).getId() %>', 
+                    'uploader'       : '<%=path%>/upload.action?admin=<%= ((Administrator)session.getAttribute("User")).getId() %>&&mediaType=0', 
                     'cancelImg'      : '<%=path%>/images/uploadify-cancel.png', 
                     'method'         : 'post',
                     'formData'       :{'type':$('#type').val()},
@@ -140,7 +140,7 @@
             </li>
             <li><a class="collapsed heading">视频管理</a>
                 <ul class="navigation">
-                    <li><a href="#" title="">上传视频</a></li>
+                    <li><a href="addVideo" title="">上传视频</a></li>
                     <li><a href="videoPage" title="">视频管理</a></li>
                 </ul>
             </li>            
