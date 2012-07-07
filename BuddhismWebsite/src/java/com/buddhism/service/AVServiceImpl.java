@@ -32,15 +32,15 @@ public class AVServiceImpl implements AVService
     }
 
     @Override
-    public List<Packet> getPackets(int packetType) 
+    public List<Packet> getPackets(Administrator ad, int packetType) 
     {
-        return getAvDao().getPS(packetType);
+        return getAvDao().getPS(ad, packetType);
     }
 
     @Override
-    public int getPacketsNumber(int packetType) 
+    public int getPacketsNumber(Administrator ad, int packetType) 
     {
-        return getAvDao().getPN(packetType);
+        return getAvDao().getPN(ad, packetType);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class AVServiceImpl implements AVService
     }
 
     @Override
-    public void addPacket(String packetName, int packetType, String packetCover) 
+    public void addPacket(Administrator ad, String packetName, int packetType, String packetCover) 
     {
         Packet packet = new Packet();
         
@@ -60,6 +60,8 @@ public class AVServiceImpl implements AVService
         packet.setPacketType((short)packetType);
         Date date = new Date(System.currentTimeMillis());
         packet.setPacketDate(date);
+        packet.setAdministrator(ad);
+        
         
         getAvDao().addP(packet);
     }
@@ -143,6 +145,12 @@ public class AVServiceImpl implements AVService
      */
     public void setAvDao(AVDaoImpl avDao) {
         this.avDao = avDao;
+    }
+
+    @Override
+    public List<Media> getMedias(int packetId, int offset, int length) 
+    {
+        return avDao.getMS(packetId, offset, length);
     }
     
 }

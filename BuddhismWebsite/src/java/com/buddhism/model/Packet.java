@@ -1,5 +1,5 @@
 package com.buddhism.model;
-// Generated 2012-7-6 23:08:08 by Hibernate Tools 3.2.1.GA
+// Generated 2012-7-7 19:04:37 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -13,6 +13,7 @@ public class Packet  implements java.io.Serializable {
 
 
      private Short id;
+     private Administrator administrator;
      private String packetTitle;
      private Date packetDate;
      private String packetFirst;
@@ -23,13 +24,15 @@ public class Packet  implements java.io.Serializable {
     }
 
 	
-    public Packet(String packetTitle, Date packetDate, String packetFirst, short packetType) {
+    public Packet(Administrator administrator, String packetTitle, Date packetDate, String packetFirst, short packetType) {
+        this.administrator = administrator;
         this.packetTitle = packetTitle;
         this.packetDate = packetDate;
         this.packetFirst = packetFirst;
         this.packetType = packetType;
     }
-    public Packet(String packetTitle, Date packetDate, String packetFirst, short packetType, Set<Media> medias) {
+    public Packet(Administrator administrator, String packetTitle, Date packetDate, String packetFirst, short packetType, Set<Media> medias) {
+       this.administrator = administrator;
        this.packetTitle = packetTitle;
        this.packetDate = packetDate;
        this.packetFirst = packetFirst;
@@ -43,6 +46,13 @@ public class Packet  implements java.io.Serializable {
     
     public void setId(Short id) {
         this.id = id;
+    }
+    public Administrator getAdministrator() {
+        return this.administrator;
+    }
+    
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
     }
     public String getPacketTitle() {
         return this.packetTitle;

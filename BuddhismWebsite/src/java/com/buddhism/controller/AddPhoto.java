@@ -32,7 +32,7 @@ public class AddPhoto extends ActionSupport {
         List<Packet> packets = new ArrayList<Packet>();
         
         // TODO: 获取所有集合(Packet)
-        packets = getPacket().getPackets(0);
+        packets = packet.getPackets(null, 0);//第一个参数应该是administrator
         
         for (int i = 0; i != packets.size(); i++)
         {

@@ -25,7 +25,7 @@ public class AddAlbum extends ActionSupport {
     public String add()
     {
         // title 相册名
-        service.addPacket(title, type, pageTitle);
+        service.addPacket(null, title, type, pageTitle);//最后一个参数应该是packet的cover，第一个参数是packet的administrator
         
         return "SUCCESS";
     }

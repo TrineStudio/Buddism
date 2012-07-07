@@ -62,14 +62,27 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     }
 
     @Override
-    public List<Packet> getPS(int packetType) 
+    public List<Packet> getPS(final Administrator ad, final int packetType) 
     {
-       Session s = this.getSession();
-       
-       String hql = "p.packetType = :type";
-       Query query = s.createQuery(PACKETQUERYSTRING + hql);
-       query.setParameter("type", (short)packetType);
-       return query.list();
+       return getHibernateTemplate().executeFind(new HibernateCallback(){
+
+            @Override
+            public Object doInHibernate(Session sn) throws HibernateException, SQLException 
+            {
+                if(ad.getAdLevel() == 0)
+                {
+                    Query query = sn.createQuery(PACKETQUERYSTRING + "p.packetType = :type order by p.packetDate desc");
+                    query.setParameter("type", (short)packetType);
+                    return query.list();
+                }else
+                {
+                    Query query = sn.createQuery(PACKETQUERYSTRING + "p.packetType = :type and p.administrator = :ad order by p.packetDate desc");
+                    query.setParameter("type", (short)packetType);
+                    query.setParameter("ad", ad);
+                    return query.list();
+                }              
+            }
+        });
     }
 
     @Override
@@ -140,7 +153,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
 
             @Override
             public Object doInHibernate(Session sn) throws HibernateException, SQLException {
-               Query query = sn.createQuery("from Media as m where m.administrator = :ad and m.mediaType = :type");
+               Query query = sn.createQuery("from Media as m where m.administrator = :ad and m.mediaType = :type order by m.mediaDate desc");
                query.setParameter("ad", ad);
                query.setParameter("type", (short)type);
                query.setFirstResult(offset);
@@ -187,6 +200,39 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         query.executeUpdate();
         
         s.getTransaction().commit();
+    }
+
+    @Override
+    public int getPN(Administrator ad, int type) 
+    {
+        Session s = this.getSession();
+        
+        if(ad.getAdLevel() == 0)
+        {
+            return this.getPN(type);
+        }else
+        {
+            Query query = s.createQuery(PACKETQUERYSTRING + "p.packetType = :type and p.administrator = :ad");
+            query.setParameter("type", (short)type);
+            query.setParameter("ad", ad);
+            return query.list().size();
+        }
+    }
+
+    @Override
+    public List<Media> getMS(final int packetId, final int offset, final int length) 
+    {
+        return getHibernateTemplate().executeFind(new HibernateCallback(){
+
+            @Override
+            public Object doInHibernate(Session sn) throws HibernateException, SQLException {
+               Query query = sn.createQuery(MEDIAQUERYSTRING + "m.packet = :packet order by m.mediaDate desc");
+               query.setParameter("packet", getP(packetId));
+               query.setFirstResult(offset);
+               query.setMaxResults(length);
+               return query.list();
+            }
+        });
     }
     
 }

@@ -18,8 +18,9 @@ public interface AVDao
 {
     public Packet getP(int id);
     public Packet getP(String name);
+    public int getPN(Administrator ad, int type);
     public int getPN(int type);
-    public List<Packet> getPS(int packetType);
+    public List<Packet> getPS(Administrator ad, int packetType);
     
     public void addP(Packet p);
     
@@ -37,4 +38,6 @@ public interface AVDao
     public void deleteM(int id);
     
     public void updateM(int id, int type, String desc, Date date);
+    
+    public List<Media> getMS(int packetId, int offset, int length);
 }

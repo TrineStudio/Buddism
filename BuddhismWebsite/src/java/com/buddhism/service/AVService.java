@@ -17,11 +17,11 @@ public interface AVService
 {
     public Packet getPacket(int packetId);
     public Packet getPacket(String packetName);
-    public List<Packet> getPackets(int packetType);
-    public int getPacketsNumber(int packetType);
+    public List<Packet> getPackets(Administrator ad, int packetType);
+    public int getPacketsNumber(Administrator ad, int packetType);
     
     public void addPacket(Packet packet);
-    public void addPacket(String packetName, int packetType, String packetCover);
+    public void addPacket(Administrator ad, String packetName, int packetType, String packetCover);
     
     public void deletePacket(int packetId);
     
@@ -37,4 +37,6 @@ public interface AVService
     public void deleteMedia(int mediaId);
     
     public void updateMedia(Media media);
+    
+    public List<Media> getMedias(int packetId, int offset, int length);
 }
