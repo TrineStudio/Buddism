@@ -163,7 +163,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        s.beginTransaction();
        
        Query query = s.createQuery("delete from Media as m where m.id = :id");
-       query.setParameter("id", (short)id);
+       query.setParameter("id", id);
        query.executeUpdate();
        
        s.getTransaction().commit();

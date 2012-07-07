@@ -91,7 +91,7 @@
 
         
         <div class="contentbox">
-            <s:select list="catList" name="type" listKey="catId" listValue="catName" id="type" emptyOption="false" />
+            <s:select list="catList" name="packetId" listKey="catId" listValue="catName" id="type" emptyOption="false" />
             <input type="file" name="fileupload" id="fileupload" />
             <a  href="javascript:$('#fileupload').uploadify('upload','*')" ><input type="button" value="上传" class="btn" /></a>
             <a  href="javascript:$('#fileupload').uploadify('cancel')"><input type="button" value="清空上传列表" class="btn" /></a>
