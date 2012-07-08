@@ -146,14 +146,18 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     public Media getM(int id) 
     {
         String hql = MEDIAQUERYSTRING + "m.id = ?";
+<<<<<<< HEAD
         return (Media)(getHibernateTemplate().find(hql, id).get(0));
+=======
+        return (Media)getHibernateTemplate().find(hql, id).get(0);
+>>>>>>> 解决包的问题
     }
 
     @Override
     public Media getM(String title) 
     {
         String hql = MEDIAQUERYSTRING + "m.mediaDesc = ?";
-        return (Media)getHibernateTemplate().find(hql, title);
+        return (Media)getHibernateTemplate().find(hql, title).get(0);
     }
 
     @Override
@@ -189,10 +193,8 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     @Override
     public void deleteM(int id) 
     {
-       Session s = this.getSession();
-       s.beginTransaction();
-       
        Media media = this.getM(id);
+<<<<<<< HEAD
        
        String path = ServletActionContext.getServletContext().getRealPath(media.getMediaUrl());
        
@@ -200,6 +202,23 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        File file = new File(path);
        
        file.delete();
+=======
+       String url = media.getMediaUrl();
+       File file = new File(media.getMediaUrl());
+       
+       if(file.isFile())
+       {
+           String test = "file";
+       }
+       if(file.isFile() && file.exists())
+       {
+           file.delete();
+       }
+>>>>>>> 解决包的问题
+       
+       Session s = this.getSession();
+       s.beginTransaction();
+       
        
        Query query = s.createQuery("delete from Media as m where m.id = :id");
        query.setParameter("id", id);
