@@ -159,7 +159,17 @@
             <ref bean="avService"/>
         </property>
     </bean>
+    <bean id="mediaDownload" class="com.buddhism.controller.MediaDownload">
+        <property name="service">
+            <ref bean="avService"/>
+        </property>        
+    </bean>
     <bean id="photoPage" class="com.buddhism.controller.PhotoPage">
+        <property name="service">
+            <ref bean="avService"/>
+        </property>       
+    </bean>
+    <bean id="mediumAction" class="com.buddhism.controller.GetMediumAction">
         <property name="service">
             <ref bean="avService"/>
         </property>       

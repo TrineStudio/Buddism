@@ -90,7 +90,7 @@
                                 <td><s:property  value="mediaDate" /></td>
                                 <td>
                                     <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
-                                    <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
+                                     <a href="deleteVideo?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
                                 </td>
                             <td><input type="checkbox" value="" name="checkall" /></td>
                         </tr>

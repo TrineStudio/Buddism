@@ -18,8 +18,6 @@ public class PhotoPage extends MediaAction {
     
     private List<Category> catList = new ArrayList<Category>();
     
-    private int mediaId;
-    
     public PhotoPage() {
     }
     
@@ -47,14 +45,7 @@ public class PhotoPage extends MediaAction {
         
         return "SUCCESS";
     }
-    
-    public String deletePhoto()
-    {
-        service.deleteMedia(mediaId);
-        
-        return "SUCCESS";
-    }
-    
+
     /**
      * @return the catList
      */
@@ -69,18 +60,5 @@ public class PhotoPage extends MediaAction {
         this.catList = catList;
     }
 
-    /**
-     * @return the mediaId
-     */
-    public int getMediaId() {
-        return mediaId;
-    }
-
-    /**
-     * @param mediaId the mediaId to set
-     */
-    public void setMediaId(int mediaId) {
-        this.mediaId = mediaId;
-    }
    
 }

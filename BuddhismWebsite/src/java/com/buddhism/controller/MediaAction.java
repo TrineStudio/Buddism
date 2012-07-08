@@ -25,12 +25,14 @@ public class MediaAction extends ActionSupport implements SessionAware{
     
     protected int type = 0;
     
-    private List<Media> medium = new ArrayList<Media>();
+    protected List<Media> medium = new ArrayList<Media>();
     
     protected int currentIndex = 0;
     protected int max = 20;
     protected int maxIndex = 0;
     protected int maxPage = 0;
+    private int mediaId;
+    
     
     protected Map session;
     
@@ -160,6 +162,13 @@ public class MediaAction extends ActionSupport implements SessionAware{
         this.setMedium(medium);
     }
 
+    public String deleteMedia()
+    {
+        service.deleteMedia(getMediaId());
+        
+        return "SUCCESS";
+    }    
+    
     /**
      * @return the type
      */
@@ -221,5 +230,19 @@ public class MediaAction extends ActionSupport implements SessionAware{
      */
     public void setPacketId(int packetId) {
         this.packetId = packetId;
+    }
+
+    /**
+     * @return the mediaId
+     */
+    public int getMediaId() {
+        return mediaId;
+    }
+
+    /**
+     * @param mediaId the mediaId to set
+     */
+    public void setMediaId(int mediaId) {
+        this.mediaId = mediaId;
     }
 }

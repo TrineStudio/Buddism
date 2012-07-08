@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -145,7 +146,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     public Media getM(int id) 
     {
         String hql = MEDIAQUERYSTRING + "m.id = ?";
-        return (Media)getHibernateTemplate().find(hql, id);
+        return (Media)(getHibernateTemplate().find(hql, id).get(0));
     }
 
     @Override
@@ -192,12 +193,13 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
        s.beginTransaction();
        
        Media media = this.getM(id);
-       File file = new File(media.getMediaUrl());
        
-       if(file.isFile() && file.exists())
-       {
-           file.delete();
-       }
+       String path = ServletActionContext.getServletContext().getRealPath(media.getMediaUrl());
+       
+       
+       File file = new File(path);
+       
+       file.delete();
        
        Query query = s.createQuery("delete from Media as m where m.id = :id");
        query.setParameter("id", id);
