@@ -68,6 +68,7 @@ public class GetMediumAction extends MediaAction{
     {
         // medium = service.getMedias(0, currentIndex * max, maxIndex);
         // 第一个参数 : type 0 为照片 1 为视频 后两个为偏移。
+        medium = service.getMediaSet(type, currentIndex * max, maxIndex);
     }
     
     /**

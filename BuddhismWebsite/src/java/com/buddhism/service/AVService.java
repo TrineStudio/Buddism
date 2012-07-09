@@ -39,4 +39,6 @@ public interface AVService
     public void updateMedia(Media media);
     
     public List<Media> getMedias(int packetId, int offset, int length);
+    
+    public List<Media> getMediaSet(int type, int offset,int length);
 }

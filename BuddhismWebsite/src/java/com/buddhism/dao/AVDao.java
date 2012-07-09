@@ -18,9 +18,9 @@ public interface AVDao
 {
     public Packet getP(int id);
     public Packet getP(String name);
-    public int getPN(Administrator ad, int type);
-    public int getPN(int type);
-    public List<Packet> getPS(Administrator ad, int packetType);
+    public int getPN(Administrator ad, int type);//获得某个管理员的相册集或者是视频集的数量
+    public int getPN(int type); //获得相册集或者是视频集的数量
+    public List<Packet> getPS(Administrator ad, int packetType); //获得这个用户的所有的相册集或者是视频集
     
     public void addP(Packet p);
     
@@ -31,7 +31,7 @@ public interface AVDao
     public Media getM(int id);
     public Media getM(String title);
     public int getMN(int type);
-    public List<Media> getMS(Administrator ad, int type, int offset, int length);
+    public List<Media> getMS(Administrator ad, int type, int offset, int length);//获得某个管理员的media集合
     
     public void addM(Media m);
     
@@ -40,4 +40,7 @@ public interface AVDao
     public void updateM(int id, int type, String desc, Date date);
     
     public List<Media> getMS(int packetId, int offset, int length);
+    
+    public List<Media> getMSN(int type, int offset, int length);
+    
 }

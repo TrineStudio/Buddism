@@ -146,11 +146,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     public Media getM(int id) 
     {
         String hql = MEDIAQUERYSTRING + "m.id = ?";
-<<<<<<< HEAD
-        return (Media)(getHibernateTemplate().find(hql, id).get(0));
-=======
         return (Media)getHibernateTemplate().find(hql, id).get(0);
->>>>>>> 解决包的问题
     }
 
     @Override
@@ -194,37 +190,30 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     public void deleteM(int id) 
     {
        Media media = this.getM(id);
-<<<<<<< HEAD
        
        String path = ServletActionContext.getServletContext().getRealPath(media.getMediaUrl());
        
+       String url = path;
+       File file = new File(url);
        
-       File file = new File(path);
+       boolean is = file.isFile();
+       boolean ex = file.exists();
        
-       file.delete();
-=======
-       String url = media.getMediaUrl();
-       File file = new File(media.getMediaUrl());
-       
-       if(file.isFile())
-       {
-           String test = "file";
-       }
        if(file.isFile() && file.exists())
        {
            file.delete();
        }
->>>>>>> 解决包的问题
        
        Session s = this.getSession();
        s.beginTransaction();
        
-       
        Query query = s.createQuery("delete from Media as m where m.id = :id");
        query.setParameter("id", id);
-       query.executeUpdate();
+       
+       query.executeUpdate();;
        
        s.getTransaction().commit();
+       
     }
 
     @Override
@@ -273,6 +262,22 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
             public Object doInHibernate(Session sn) throws HibernateException, SQLException {
                Query query = sn.createQuery(MEDIAQUERYSTRING + "m.packet = :packet order by m.mediaDate desc");
                query.setParameter("packet", getP(packetId));
+               query.setFirstResult(offset);
+               query.setMaxResults(length);
+               return query.list();
+            }
+        });
+    }
+
+    @Override
+    public List<Media> getMSN(final int type, final int offset, final int length) 
+    {
+        return getHibernateTemplate().executeFind(new HibernateCallback(){
+
+            @Override
+            public Object doInHibernate(Session sn) throws HibernateException, SQLException {
+               Query query = sn.createQuery(MEDIAQUERYSTRING + "m.mediaType = :type order by m.mediaDate desc");
+               query.setParameter("type", (short)type);
                query.setFirstResult(offset);
                query.setMaxResults(length);
                return query.list();

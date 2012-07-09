@@ -152,5 +152,11 @@ public class AVServiceImpl implements AVService
     {
         return avDao.getMS(packetId, offset, length);
     }
+
+    @Override
+    public List<Media> getMediaSet(int type, int offset, int length) 
+    {
+        return avDao.getMSN(type, offset, length);
+    }
     
 }
