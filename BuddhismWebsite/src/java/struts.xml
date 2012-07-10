@@ -254,14 +254,15 @@
         <action name="deleteVideo" class="videoPage" method="deleteMedia">
             <interceptor-ref name="myDefault" />
             <result name="login">/WEB-INF/admin/login.jsp</result>            
-            <result name="SUCCESS" type="redirect">photoPage.action</result>
+            <result name="SUCCESS" type="redirect">videoPage.action</result>
         </action>        
         <action name="mediaDownload" class="mediaDownload">
             <result name="SUCCESS" type="stream">
                 <param name="contentType">text/plain</param>
                 <param name="inputName">inputStream</param>
-                <param name="contentDisposition">attachment;filename="${filename}"</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
                 <param name="bufferSize">104857600</param>
+                /WEB-INF/jsp/mediaPage.jsp
             </result>
         </action>
         <action name="mediumAction" class="mediumAction">

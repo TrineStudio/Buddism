@@ -191,18 +191,20 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     {
        Media media = this.getM(id);
        
-       String path = ServletActionContext.getServletContext().getRealPath(media.getMediaUrl());
+       String path = media.getMediaUrl();
+            
+       int i = 1;
+            
+       for (; i != path.length(); i++)
+       if (path.charAt(i) == '\\' || path.charAt(i) == '/')
+          break;
+            
+       path = path.substring(i);
+            
+       path = ServletActionContext.getServletContext().getRealPath(path);
+       File file = new File(path);
        
-       String url = path;
-       File file = new File(url);
-       
-       boolean is = file.isFile();
-       boolean ex = file.exists();
-       
-       if(file.isFile() && file.exists())
-       {
-           file.delete();
-       }
+        file.delete();
        
        Session s = this.getSession();
        s.beginTransaction();

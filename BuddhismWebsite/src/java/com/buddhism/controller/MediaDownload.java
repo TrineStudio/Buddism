@@ -36,7 +36,19 @@ public class MediaDownload extends ActionSupport {
         Media media = getService().getMedia(mediaId);
         try 
         {
-            inputStream = new FileInputStream(ServletActionContext.getServletContext().getRealPath(media.getMediaUrl()));
+            String path = media.getMediaUrl();
+            
+            int i = 1;
+            
+            for (; i != path.length(); i++)
+                if (path.charAt(i) == '\\' || path.charAt(i) == '/')
+                    break;
+            
+            path = path.substring(i);
+            
+            path = ServletActionContext.getServletContext().getRealPath(path);
+            
+            setInputStream(new FileInputStream(path));
         } 
         catch (FileNotFoundException ex) 
         {
