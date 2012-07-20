@@ -286,5 +286,20 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
             }
         });
     }
-    
+
+    @Override
+    public List<Packet> getPS(final int packetType) 
+    {
+       return getHibernateTemplate().executeFind(new HibernateCallback(){
+
+            @Override
+            public Object doInHibernate(Session sn) throws HibernateException, SQLException 
+            {
+               
+                    Query query = sn.createQuery(PACKETQUERYSTRING + "p.packetType = :type order by p.packetDate desc");
+                    query.setParameter("type", (short)packetType);
+                    return query.list();
+            }
+        });
+    }
 }

@@ -158,5 +158,11 @@ public class AVServiceImpl implements AVService
     {
         return avDao.getMSN(type, offset, length);
     }
+
+    @Override
+    public List<Packet> getPackets(int packetType) 
+    {
+        return avDao.getPS(packetType);
+    }
     
 }

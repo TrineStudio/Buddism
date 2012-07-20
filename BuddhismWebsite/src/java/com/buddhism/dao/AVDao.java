@@ -21,6 +21,7 @@ public interface AVDao
     public int getPN(Administrator ad, int type);//获得某个管理员的相册集或者是视频集的数量
     public int getPN(int type); //获得相册集或者是视频集的数量
     public List<Packet> getPS(Administrator ad, int packetType); //获得这个用户的所有的相册集或者是视频集
+    public List<Packet> getPS(int packetType);
     
     public void addP(Packet p);
     

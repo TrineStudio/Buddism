@@ -18,6 +18,7 @@ public interface AVService
     public Packet getPacket(int packetId);
     public Packet getPacket(String packetName);
     public List<Packet> getPackets(Administrator ad, int packetType);
+    public List<Packet> getPackets(int packetType);
     public int getPacketsNumber(Administrator ad, int packetType);
     
     public void addPacket(Packet packet);
