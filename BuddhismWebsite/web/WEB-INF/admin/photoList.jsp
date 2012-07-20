@@ -12,7 +12,7 @@
 %> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    
+ 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>相册管理</title>
 <link href="<%=path%>/admin/styles/layout.css" rel="stylesheet" type="text/css" />
@@ -20,6 +20,14 @@
 <!-- Theme Start -->
 <link href="<%=path%>/admin/themes/blue/styles.css" rel="stylesheet" type="text/css" />
 <!-- Theme End -->
+<script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>	
+<script type='text/javascript' src='http://dwpe.googlecode.com/svn/trunk/charting/js/excanvas.js'></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery.magnifier.js"></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'></script>
+<script type='text/javascript' src='<%=path%>/admin/scripts/jquery.wysiwyg.js'></script>
+<script type='text/javascript' src='<%=path%>/admin/scripts/visualize.jQuery.js'></script>
+<script type="text/javascript" src='<%=path%>/admin/scripts/functions.js'></script>
 </head>
 <body id="homepage">
 	<div id="header">
@@ -84,10 +92,10 @@
                     <tbody>
                         <s:iterator id="media" value="medium">
                             <tr>
-                                <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"/></td>
-                                <td><s:property value="mediaDesc"/> </td>
+                                <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"  class="magnify"  data-magnifyby="2" /></td>
+                                <td><s:property value="mediaDesc"/></td>
                                 <td><s:property value="administrator.adName"/></td>
-                                <td><s:property  value="mediaDate" /></td>
+                                <td><s:property value="mediaDate"/></td>
                                 <td>
                                     <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
                                     <a href="deletePhoto?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
@@ -203,13 +211,7 @@
    
     <!-- Notifications Box/Pop-Up End --> 
     
-    <script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>	
-    <script type='text/javascript' src='http://dwpe.googlecode.com/svn/trunk/charting/js/excanvas.js'></script>
-	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'></script>
-	<script type='text/javascript' src='<%=path%>/admin/scripts/jquery.wysiwyg.js'></script>
-    <script type='text/javascript' src='<%=path%>/admin/scripts/visualize.jQuery.js'></script>
-    <script type="text/javascript" src='<%=path%>/admin/scripts/functions.js'></script>
+ 
     
     <!--[if IE 6]>
     <script type='text/javascript' src='scripts/png_fix.js'></script>
