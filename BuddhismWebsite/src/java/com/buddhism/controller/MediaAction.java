@@ -36,7 +36,7 @@ public class MediaAction extends ActionSupport implements SessionAware{
     
     protected Map session;
     
-    private int packetId = 0;
+    protected int packetId = 0;
     
     protected AVServiceImpl service;
     

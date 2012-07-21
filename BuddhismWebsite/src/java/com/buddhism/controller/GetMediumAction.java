@@ -17,9 +17,7 @@ public class GetMediumAction extends MediaAction{
     private String nav;
     
     private List<ActionPair> actionPair;
-    
-    private int columnType;
-    
+ 
     public GetMediumAction() 
     {
     }
@@ -46,15 +44,17 @@ public class GetMediumAction extends MediaAction{
             nav += "<a href=" + temp.getActionUrl() + " style=\"color:white\">" + temp.getActionName() + "</a> >> ";
         }
         
-        nav += title + " >> 列表";
+        nav += "视频";
     }
     
     @Override
     public String execute()
     {
-        title = Constants.columns[getColumnType()];
+        title = Constants.columns[8];
         
-        actionPair = ActionPair.getUrls(getColumnType());
+        actionPair = ActionPair.getUrls(8);
+        actionPair.add(new ActionPair(Constants.columns[8], "albumAction.action?type=8"));
+        
         pairToNav();
         
         super.execute(); 
@@ -66,9 +66,7 @@ public class GetMediumAction extends MediaAction{
     @Override
     public void getMedia()
     {
-        // medium = service.getMedias(0, currentIndex * max, maxIndex);
-        // 第一个参数 : type 0 为照片 1 为视频 后两个为偏移。
-        medium = service.getMediaSet(type, currentIndex * max, maxIndex);
+        medium = service.getMedias(packetId, currentIndex * max, maxIndex);
     }
     
     /**
@@ -106,18 +104,5 @@ public class GetMediumAction extends MediaAction{
         this.nav = nav;
     }
 
-    /**
-     * @return the columnType
-     */
-    public int getColumnType() {
-        return columnType;
-    }
-
-    /**
-     * @param columnType the columnType to set
-     */
-    public void setColumnType(int columnType) {
-        this.columnType = columnType;
-    }
     
 }    

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="com.buddhism.model.Media"%>
+<%@page import="com.buddhism.model.Post"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
@@ -27,22 +27,10 @@
                         <div class="location">
                             <s:property value="nav" escape="false"/>
                     </div>
-                        <%
-                            List<Media> medium = (List<Media>)session.getAttribute("medium");
-                            
-                            for (int i = 0; i != medium.size(); i++)
-                            {
-                        %>
-
-                            <div class="article-list-item">
-                                <div class="title  f16 cb1"><a href="mediaDownload?mediaId=<%= medium.get(i).getId() %>" style="color: black">视频<%=i%></a></div>
-                                <div class="bold cr1">浏览10次</div>
-                                <div class="info cb2"><s:property value="mediaDesc"/></div>
-                            </div>
+                            <s:iterator value="medium" id="media">
+                                <p><img src="<s:property value="mediaUrl" />" width="80" height="80"/></p>
+                            </s:iterator>
                             <div class="dashline"></div>
-                        <%
-                            }
-                        %>
                     </div>
 
                 </div>

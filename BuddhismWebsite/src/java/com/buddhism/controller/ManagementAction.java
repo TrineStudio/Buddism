@@ -37,12 +37,10 @@ public class ManagementAction extends PostAction{
         
         cataList.add(new Category(0, "所有文章"));
         cataList.add(new Category(Constants.informs, "重要公告"));
-        cataList.add(new Category(Constants.activities, "活动剪影"));
         cataList.add(new Category(Constants.associationMessage, "协会法讯"));
         cataList.add(new Category(Constants.buddleWords, "甘露教言"));
         cataList.add(new Category(Constants.eventCalendar, "行事历"));
         cataList.add(new Category(Constants.experienceShare, "经验分享"));
-        cataList.add(new Category(Constants.videoes, "影音专区"));
         cataList.add(new Category(Constants.wisdom, "智慧点滴"));
         cataList.add(new Category(Constants.teacher1,"嘉傑 果碩仁波切"));
         cataList.add(new Category(Constants.teacher2,"經論講座老師"));

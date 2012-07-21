@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="com.buddhism.model.Media"%>
+<%@page import="com.buddhism.model.Post"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
@@ -27,22 +27,20 @@
                         <div class="location">
                             <s:property value="nav" escape="false"/>
                     </div>
-                        <%
-                            List<Media> medium = (List<Media>)session.getAttribute("medium");
-                            
-                            for (int i = 0; i != medium.size(); i++)
-                            {
-                        %>
-
+                            <s:iterator value="albums" id="packet">
                             <div class="article-list-item">
-                                <div class="title  f16 cb1"><a href="mediaDownload?mediaId=<%= medium.get(i).getId() %>" style="color: black">视频<%=i%></a></div>
+                                <s:if test="type==5">
+                                    <div class="title  f16 cb1"><a href="photoListAction?packetId=<s:property value="id"/>" style="color: black"><s:property value="packetTitle"/></a></div>
+                                </s:if>
+                                <s:else>
+                                    <div class="title  f16 cb1"><a href="mediumAction?packetId=<s:property value="id"/>" style="color: black"><s:property value="packetTitle"/></a></div>
+                                </s:else>
                                 <div class="bold cr1">浏览10次</div>
-                                <div class="info cb2"><s:property value="mediaDesc"/></div>
+                                <div class="info cb2"><s:property value=""/></div>
                             </div>
+
                             <div class="dashline"></div>
-                        <%
-                            }
-                        %>
+                            </s:iterator>
                     </div>
 
                 </div>

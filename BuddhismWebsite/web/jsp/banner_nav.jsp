@@ -16,10 +16,11 @@
                     <li><a href="articleList.action?type=13" rel='dropmenu2'>最新法訊</a></li>
                     <li><a href="articleList.action?type=4">甘露教言</a></li>
                     <li><a href="articleList.action?type=16" rel='dropmenu3'>正法蘭若</a></li>
-                    <li><a href="articleList.action?type=5">活動剪影</a></li>
+                    <li><a href="albumAction.action?type=5">活動剪影</a></li>
                     <li><a href="articleList.action?type=17">贊助護持</a></li>
                     <li><a href="articleList.action?type=14" rel='dropmenu4'>清涼共享</a></li>   
-                    <li><a href="mediumAction.action?type=1&&columnType=8">影音專區</a></li>   
+                    <!--<li><a href="mediumAction.action?type=1&&columnType=8">影音專區</a></li>  -->
+                    <li><a href="albumAction.action?type=8">影音專區</a></li>
                     <li><a href="aboutUs.action" rel='dropmenu5'>關於我們</a></li>         
                     <li><a href="logIn.action">管理</a></li>         
 		</ul>

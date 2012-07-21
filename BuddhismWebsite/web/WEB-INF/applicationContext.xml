@@ -111,6 +111,16 @@
             <ref bean="postService"/>
        </property>
     </bean>
+    <bean id="albumAction" class="com.buddhism.controller.AlbumAction">
+        <property name="service">
+            <ref bean="avService"/>
+       </property>
+    </bean>
+    <bean id="photoListAction" class="com.buddhism.controller.photoListAction">
+        <property name="service">
+            <ref bean="avService"/>
+       </property>
+    </bean>
     <bean id="logOut" class="com.buddhism.controller.LogOut">
         
     </bean>
