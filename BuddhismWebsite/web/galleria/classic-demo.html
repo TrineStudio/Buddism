@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>照片浏览</title>
+        <style>
+
+            /* Demo styles */
+            html,body{background:#7e2626;margin:0;}
+            body{border-top:4px solid #000;}
+            .content{color:#ffffff;font:12px "helvetica neue",arial,sans-serif;width:880px;margin:20px auto;}
+            h1{font-size:16px;font-weight:normal;color:#ddd;margin:5;}
+            p{margin:0 0 20px}
+            a {color:#ffffff;text-decoration:none;}
+            .cred{margin-top:20px;font-size:11px;}
+
+            /* This rule is read by Galleria to define the gallery height: */
+            #galleria{height:520px}
+
+        </style>
+
+        <!-- load jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+
+        <!-- load Galleria -->
+        <script src="galleria-1.2.7.min.js"></script>
+
+    </head>
+<body>
+    <div class="content">
+        <h1>相册名</h1>
+        <p>相册描述</p>
+
+        <!-- Adding gallery images. We use resized thumbnails here for better performance, but it’s not necessary -->
+
+        <div id="galleria">
+            <a href="http://fmn.rrimg.com/fmn056/20120806/1215/original_g1I7_0bc7000083cb125d.jpg">
+                <img data-title="图片名称"
+                     data-description="图片描述"
+                     src="http://fmn.rrimg.com/fmn056/20120806/1215/original_g1I7_0bc7000083cb125d.jpg">
+            </a>
+            <a href="http://fmn.rrimg.com/fmn056/20111224/1950/large_NYYs_685f00001e7f125e.jpg">
+                <img data-title="图片名称"
+                     data-description="图片描述"
+                     src="http://fmn.rrimg.com/fmn056/20111224/1950/large_NYYs_685f00001e7f125e.jpg">
+            </a>
+            
+          
+        </div>
+
+        <p class="cred"><<<a href="#">返回相册列表</a>.</p>
+    </div>
+
+    <script>
+
+    // Load the classic theme
+    Galleria.loadTheme('galleria.classic.min.js');
+
+    // Initialize Galleria
+    Galleria.run('#galleria');
+
+    </script>
+    </body>
+</html>

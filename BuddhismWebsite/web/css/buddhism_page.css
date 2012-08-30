@@ -81,6 +81,9 @@ visibility: hidden;
 .cb2{
 	color: #696969;
 }
+.cw{
+	color: #ffffff;
+}
 #nav{  overflow: hidden;background: url(../images/nav.jpg) no-repeat;margin: 0;padding: 0;position: relative;padding-left: 35px;display:block;}
 #nav  li{list-style-type: none;float:left;display: block;margin: 0;padding: 0;line-height:27px;}
 /*#nav > li:hover ul{display:block;}*/
@@ -319,6 +322,28 @@ padding-left: 15px;
 }
 .article-list-item .info{
 	padding-top: 5px;
+}
+/*相册列表*/
+.photo-list .block{
+	width: 150px;
+	height: 180px;
+/*	background-color: #e1e1e1;*/
+	margin: 18px 18px 25px;
+	float: left;
+	border: 1px solid #b5b5b5;
+}
+.photo-list .block .img{
+	width: 150px;
+	height:150px;
+	background-color: #9d2828;
+	
+}
+.photo-list .block .title{
+	width: 140px;
+	height: 20px;
+	padding:5px;
+	background-color: #1d1d1d;
+	opacity: 0.42;
 }
 .footer{
 	overflow:hidden;
