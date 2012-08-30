@@ -273,7 +273,7 @@
             <result name="SUCCESS">/WEB-INF/jsp/mediaPage.jsp</result>
         </action>
         <action name="photoListAction" class="photoListAction">
-            <result name="SUCCESS">/WEB-INF/jsp/photoList.jsp</result>
+            <result name="SUCCESS">/galleria/viewphotos.jsp</result>
         </action>
     </package>
     
