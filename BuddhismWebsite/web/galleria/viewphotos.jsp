@@ -41,7 +41,7 @@
     </head>
     <body>
         <div class="content">
-            <h1>相册名</h1>
+            <h1><s:property value="title"/></h1>
             <p>相册描述</p>
 
             <!-- Adding gallery images. We use resized thumbnails here for better performance, but it’s not necessary -->
@@ -50,15 +50,14 @@
 
                 <s:iterator value="medium" id="media">
                     <p>
-
-                        <img src="<s:property value="mediaUrl" />" />
+                        <img date-description="<s:property value="mediaDesc" />" src="<s:property value="mediaUrl" />" />
                     </p>
                 </s:iterator>
 
 
             </div>
 
-            <p class="cred"><<<a href="#">返回相册列表</a>.</p>
+            <p class="cred"><<<a href="albumAction.action?type=5">返回相册列表</a>.</p>
         </div>
 
         <script>

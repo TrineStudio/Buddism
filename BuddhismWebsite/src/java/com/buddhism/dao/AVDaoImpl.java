@@ -8,7 +8,6 @@ import com.buddhism.model.Administrator;
 import com.buddhism.model.Media;
 import com.buddhism.model.Packet;
 import java.io.File;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
@@ -219,7 +218,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     }
 
     @Override
-    public void updateM(int id, int type, String desc, Date date) 
+    public void updateM(int id, short type, String desc, Date date) 
     {
         Session s = this.getSession();
         s.beginTransaction();
@@ -228,10 +227,10 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
                 + ", m.mediaDate = :date where m.id = :id";
         Query query = s.createQuery(hqlString);
         
-        query.setParameter("type", (short)type);
+        query.setParameter("type", type);
         query.setParameter("desc", desc);
         query.setParameter("date", date);
-        query.setParameter("id", (short)id);
+        query.setParameter("id", id);
         
         query.executeUpdate();
         

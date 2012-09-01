@@ -224,4 +224,14 @@
             <ref bean="avService"/>
         </property>            
     </bean>
+    <bean id="addMediaDes" class="com.buddhism.controller.AddMediaDescription">
+        <property name="service">
+            <ref bean="avService"/>
+        </property>
+    </bean>
+    <bean id="modifyMediaDesc" class="com.buddhism.controller.ModifyMediaDescription">
+        <property name="service">
+            <ref bean="avService"/>
+        </property>        
+    </bean>
 </beans>

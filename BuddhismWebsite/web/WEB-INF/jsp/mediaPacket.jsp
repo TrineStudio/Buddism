@@ -38,10 +38,10 @@
                                         <div class="img"></div>
                                         <div class="title cw f12">
                                             <s:if test="type==5">
-                                                <a href="photoListAction?packetId=<s:property value="id"/>"><s:property value="packetTitle"/></a>
+                                                <a href="photoListAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>"><s:property value="packetTitle"/></a>
                                             </s:if>
                                             <s:else>
-                                                <a href="mediumAction?packetId=<s:property value="id"/>"><s:property value="packetTitle"/></a>
+                                                <a href="mediumAction?packetId=<s:property value="id"/>&title=<s:property value="packetTitle"/>"><s:property value="packetTitle"/></a>
                                             </s:else>
                                         </div>
                                     </div>

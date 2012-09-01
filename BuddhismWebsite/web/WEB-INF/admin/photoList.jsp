@@ -76,8 +76,8 @@
             <div class="headings altheading">
                 <h2>照片列表</h2>
             </div>
-            <div class="contentbox">
-            	<table width="100%">
+            <div class="contentbox"> 
+                    <table width="100%">
                 	<thead>
                     	<tr>
                             <th></th>
@@ -87,32 +87,32 @@
                             <th>操作</th>
                             <th><input name="" type="checkbox" value="" id="checkboxall" /></th>
                         </tr>
-                    </thead>
-                        
-                    <tbody>
-                        <s:iterator id="media" value="medium">
+                        </thead>
+                        <tbody>
+                            <s:iterator id="media" value="medium">
                             <tr>
                                 <td><img src="<s:property value="mediaUrl" />" width="80px" height="80px"  class="magnify"  data-magnifyby="2" /></td>
                                 <td><s:property value="mediaDesc"/></td>
                                 <td><s:property value="administrator.adName"/></td>
                                 <td><s:property value="mediaDate"/></td>
                                 <td>
-                                    <a href="#" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
+                                    <a href="addMediaDes?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /></a>
                                     <a href="deletePhoto?mediaId=<s:property value="id" />" title=""><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /></a>
                                 </td>
-                            <td><input type="checkbox" value="" name="checkall" /></td>
-                        </tr>
-                        </s:iterator>
-                    </tbody>
-                </table>
-                <div class="extrabottom">
+                                <td><input type="checkbox" value="" name="checkall" /></td>
+                            </tr>
+                            </s:iterator>
+                        </tbody>
+                    </table>
+                    <div class="extrabottom">
                 	<ul>
-                    	<li><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /> 编辑</li>
-                        <li><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /> 删除</li>
-                    </ul>
+                            <li><img src="<%=path%>/admin/img/icons/icon_edit.png" alt="Edit" /> 编辑</li>
+                            <li><img src="<%=path%>/admin/img/icons/icon_delete.png" alt="Delete" /> 删除</li>
+                        </ul>
                     <div class="bulkactions">
+                
                     	<select>
-                        	<option>操作</option>
+                            <option>操作</option>
                         </select>
                         <input type="submit" value="应用" class="btn" />
                     </div>

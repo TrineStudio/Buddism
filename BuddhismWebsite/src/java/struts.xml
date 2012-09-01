@@ -265,16 +265,26 @@
                 /WEB-INF/jsp/mediaPage.jsp
             </result>
         </action>
+        <action name="addMediaDes" class="addMediaDes">
+            <interceptor-ref name="myDefault" />
+            <result name="SUCCESS">/WEB-INF/admin/addMediaComment.jsp</result>
+            <result name="login">/WEB-INF/admin/login.jsp</result>
+        </action>
         <action name="albumAction" class="albumAction"> 
             <result name="SUCCESS">/WEB-INF/jsp/mediaPacket.jsp</result>
         </action> 
-
+        <action name="modifyMediaDesc" class="modifyMediaDesc">
+            <interceptor-ref name="myDefault" />
+            <result name="SUCCESS" type="redirect">photoPage.action</result>
+            <result name="login">/WEB-INF/admin/login.jsp</result>
+        </action>
         <action name="mediumAction" class="mediumAction">
             <result name="SUCCESS">/WEB-INF/jsp/mediaPage.jsp</result>
         </action>
         <action name="photoListAction" class="photoListAction">
             <result name="SUCCESS">/galleria/viewphotos.jsp</result>
         </action>
+
     </package>
     
 </struts>

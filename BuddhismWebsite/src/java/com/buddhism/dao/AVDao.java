@@ -38,7 +38,7 @@ public interface AVDao
     
     public void deleteM(int id);
     
-    public void updateM(int id, int type, String desc, Date date);
+    public void updateM(int id, short type, String desc, Date date);
     
     public List<Media> getMS(int packetId, int offset, int length);
     
