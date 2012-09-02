@@ -44,4 +44,9 @@ public interface AVDao
     
     public List<Media> getMSN(int type, int offset, int length);
     
+    public void addMediaClickTimes(int mediaId); //点击书加一
+    
+    public int getMediaClickTimes(int mediaId); //获取该media的点击数
+    
+    public List<Media> getMediaBetweenAnd(); //获取近六个月的media的list
 }

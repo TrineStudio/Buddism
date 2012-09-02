@@ -79,7 +79,7 @@ public class AVServiceImpl implements AVService
     }
 
     @Override
-    public void addMedia(Administrator ad, Packet packet, String mediaUrl, int mediaType, String mediaDesc) 
+    public void addMedia(Administrator ad, Packet packet, String mediaUrl, int mediaType, String mediaDesc, int mediaClickTimes) 
     {
         Media media = new Media();
         
@@ -91,6 +91,7 @@ public class AVServiceImpl implements AVService
         media.setPacket(packet);
         Date date = new Date(System.currentTimeMillis());
         media.setMediaDate(date);
+        media.setMediaClickTimes(mediaClickTimes);
         
         getAvDao().addM(media);
     }
@@ -163,6 +164,24 @@ public class AVServiceImpl implements AVService
     public List<Packet> getPackets(int packetType) 
     {
         return avDao.getPS(packetType);
+    }
+
+    @Override
+    public void addMediaClickTimes(int mediaId) 
+    {
+        avDao.addMediaClickTimes(mediaId);
+    }
+
+    @Override
+    public int getMediaClickTimes(int mediaId) 
+    {
+        return avDao.getMediaClickTimes(mediaId);
+    }
+
+    @Override
+    public List<Media> getMediaBetweenAnd() 
+    {
+        return avDao.getMediaBetweenAnd();
     }
     
 }

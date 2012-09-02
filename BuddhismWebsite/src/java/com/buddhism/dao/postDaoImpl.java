@@ -8,8 +8,13 @@ import com.buddhism.model.Administrator;
 import com.buddhism.model.Constants;
 import com.buddhism.model.Post;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -316,5 +321,75 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         query.executeUpdate();
         
         s.getTransaction().commit();
+    }
+
+    @Override
+    public void addPostClickTimes(int postId) 
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        String hqlString = "update Post as p set p.postClickTimes = p.postClickTimes + 1 where p.id = :id";
+        Query query = s.createQuery(hqlString);
+        
+        query.setParameter("id", postId);
+        
+        query.executeUpdate();
+        s.getTransaction().commit();
+    }
+
+    @Override
+    public int getPostClickTimes(int postId)
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        String hqlString = "select new Post(p.postClickTimes) from Post p where p.id = :id";
+        Query query = s.createQuery(hqlString);
+        
+        query.setParameter("id", postId);
+        
+        List list = query.list();
+        s.close();
+        return ((Post)list.get(0)).getPostClickTimes();
+    }
+
+    @Override
+    public List<Post> getPostBetweenAnd() 
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, 6);
+        Date date2 = cal.getTime();
+        
+        String startStr = format.format(date);
+        String endStr = format.format(date2);
+        
+        Date startDate = null; //以当前时间作为起始时间
+        Date endDate = null;    //结束时间
+        
+        try 
+        {
+            startDate= format.parse(startStr);
+            endDate = format.parse(endStr);
+        } catch (ParseException ex) 
+        {
+            Logger.getLogger(AVDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String hqlString = "select p from Post p where p.postDate between :start and :end";
+        Query query = s.createQuery(hqlString);
+        
+        query.setParameter("start", startDate);
+        query.setParameter("end", endDate);
+        
+        List list = query.list();
+        s.close();
+        
+        return (List<Post>)list;
     }
 }

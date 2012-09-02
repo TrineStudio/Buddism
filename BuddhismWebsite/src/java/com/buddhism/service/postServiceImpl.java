@@ -153,5 +153,23 @@ public class postServiceImpl implements postService
        postDao.UpdatePost(id, type, title, content, date);
     }
 
+    @Override
+    public void addPostClickTimes(int postId) 
+    {
+        postDao.addPostClickTimes(postId);
+    }
+
+    @Override
+    public int getPostClickTimes(int postId) 
+    {
+        return postDao.getPostClickTimes(postId);
+    }
+
+    @Override
+    public List<Post> getPostBetweenAnd() 
+    {
+        return postDao.getPostBetweenAnd();
+    }
+
     
 }

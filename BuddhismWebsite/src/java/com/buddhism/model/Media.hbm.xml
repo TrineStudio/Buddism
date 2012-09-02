@@ -26,5 +26,8 @@
         <property name="mediaDate" type="timestamp">
             <column name="media_Date" length="19" not-null="true" />
         </property>
+        <property name="mediaClickTimes" type="int">
+            <column name="media_ClickTimes" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

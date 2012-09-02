@@ -140,7 +140,7 @@ public class UploadUtilAction extends ActionSupport implements SessionAware{
         admin.setId((short)Integer.parseInt(id));
         
         Packet packet = getAvService().getPacket(packetId);
-        getAvService().addMedia(admin, packet, imgfilePath, mediaType, null);
+        getAvService().addMedia(admin, packet, imgfilePath, mediaType, null, 0);
         return SUCCESS; //这里不需要页面转向，所以返回空就可以了 
         
     }

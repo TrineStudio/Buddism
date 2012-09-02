@@ -30,4 +30,9 @@ public interface postService
     public void deletePost(int id);
     public void removePost(int id);
     public void UpdatePost(Post post);
+    
+    public void addPostClickTimes(int postId);  //add click time by 1
+    public int getPostClickTimes(int postId);   //get click times
+    
+    public List<Post> getPostBetweenAnd();  //get post during a period of time
 }

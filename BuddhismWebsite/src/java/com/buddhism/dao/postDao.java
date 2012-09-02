@@ -33,4 +33,9 @@ public interface postDao
     public void delete(int id);
     public void remove(int id);
     public void UpdatePost(int id, int type, String title, String content, Date date);
+    
+    public void addPostClickTimes(int postId); //add post click times by 1
+    public int getPostClickTimes(int postId);   //get post click times
+    
+    public List<Post> getPostBetweenAnd(); //get post during a period of time
 }

@@ -35,6 +35,11 @@ public class Post  implements java.io.Serializable {
        this.postTop = postTop;
     }
    
+    public Post(int postClickTimes)
+    {
+        this.postClickTimes = postClickTimes;
+    }
+    
     public Integer getId() {
         return this.id;
     }

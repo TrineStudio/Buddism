@@ -32,12 +32,13 @@ CREATE TABLE `media` (
   `media_Author` smallint(5) unsigned NOT NULL,
   `media_Date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `media_Packet` smallint(5) unsigned NOT NULL,
+  `media_ClickTimes` int(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `media_Author` (`media_Author`),
   KEY `media_Packet` (`media_Packet`),
   CONSTRAINT `media_ibfk_3` FOREIGN KEY (`media_Author`) REFERENCES `administrator` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `media_ibfk_4` FOREIGN KEY (`media_Packet`) REFERENCES `packet` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +129,7 @@ CREATE TABLE `packet` (
   KEY `packetType` (`packet_Type`),
   KEY `packet_Author` (`packet_Author`),
   CONSTRAINT `packet_ibfk_1` FOREIGN KEY (`packet_Author`) REFERENCES `administrator` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +138,7 @@ CREATE TABLE `packet` (
 
 LOCK TABLES `packet` WRITE;
 /*!40000 ALTER TABLE `packet` DISABLE KEYS */;
+INSERT INTO `packet` VALUES (1,'我的一个测试的相册','2012-07-08 23:34:21','相册集',0,1);
 /*!40000 ALTER TABLE `packet` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -149,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-07 19:47:21
+-- Dump completed on 2012-09-02 16:15:32

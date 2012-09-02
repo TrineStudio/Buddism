@@ -29,7 +29,8 @@ public interface AVService
     public void updatePacket(Packet packet);
     
     public void addMedia(Media media);
-    public void addMedia(Administrator ad, Packet packet, String mediaUrl, int mediaType, String mediaDesc);
+    public void addMedia(Administrator ad, Packet packet, String mediaUrl, int mediaType, String mediaDesc,
+            int mediaClickTimes);
     
     public Media getMedia(int mediaId);
     public List<Media> getMedias(Administrator ad, int mediaType, int offset, int length);
@@ -42,4 +43,9 @@ public interface AVService
     public List<Media> getMedias(int packetId, int offset, int length);
     
     public List<Media> getMediaSet(int type, int offset,int length);
+    
+    public void addMediaClickTimes(int mediaId); //add click time by 1
+    public int getMediaClickTimes(int mediaId); //get click times
+    
+    public List<Media> getMediaBetweenAnd();    //get media during a period of time
 }

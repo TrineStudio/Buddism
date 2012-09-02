@@ -17,27 +17,26 @@ public class Media  implements java.io.Serializable {
      private short mediaType;
      private String mediaDesc;
      private Date mediaDate;
-
+     private int mediaClickTimes;
+     
     public Media() {
     }
 
 	
-    public Media(Packet packet, Administrator administrator, String mediaUrl, short mediaType, Date mediaDate) {
+    public Media(Packet packet, Administrator administrator, String mediaUrl, short mediaType, Date mediaDate, int mediaClickTimes) {
         this.packet = packet;
         this.administrator = administrator;
         this.mediaUrl = mediaUrl;
         this.mediaType = mediaType;
         this.mediaDate = mediaDate;
-    }
-    public Media(Packet packet, Administrator administrator, String mediaUrl, short mediaType, String mediaDesc, Date mediaDate) {
-       this.packet = packet;
-       this.administrator = administrator;
-       this.mediaUrl = mediaUrl;
-       this.mediaType = mediaType;
-       this.mediaDesc = mediaDesc;
-       this.mediaDate = mediaDate;
+        this.mediaClickTimes = mediaClickTimes;
     }
    
+    public Media(int mediaClickTimes)
+    {
+        this.mediaClickTimes = mediaClickTimes;
+    }
+    
     public Integer getId() {
         return this.id;
     }
@@ -88,8 +87,19 @@ public class Media  implements java.io.Serializable {
         this.mediaDate = mediaDate;
     }
 
+    /**
+     * @return the mediaClickTimes
+     */
+    public int getMediaClickTimes() {
+        return mediaClickTimes;
+    }
 
-
+    /**
+     * @param mediaClickTimes the mediaClickTimes to set
+     */
+    public void setMediaClickTimes(int mediaClickTimes) {
+        this.mediaClickTimes = mediaClickTimes;
+    }
 
 }
 
