@@ -36,7 +36,7 @@
 
                             <div class="article-list-item">
                                 <div class="title  f16 cb1"><a href="articlePage?id=<%= posts.get(i).getId() %>&&index=<%= i %>&&parentType=<s:property value="type"/>" style="color: black"><%= posts.get(i).getPostTitle() %></a></div>
-                                <div class="bold cr1">浏览10次</div>
+                                <div class="bold cr1">浏览次数 ; <%= posts.get(i).getPostClickTimes() %></div>
                                 <div class="info cb2">asdfasdfasdfasdfasdf</div>
                             </div>
                             <div class="dashline"></div>

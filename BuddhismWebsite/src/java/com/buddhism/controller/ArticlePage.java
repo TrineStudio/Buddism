@@ -64,6 +64,7 @@ public class ArticlePage extends ActionSupport implements SessionAware{
     public String execute() throws Exception {
         
         post = service.getPost(id);
+        service.addPostClickTimes(id);
         
         List<ActionPair> actionPair = new ArrayList<ActionPair>();
         

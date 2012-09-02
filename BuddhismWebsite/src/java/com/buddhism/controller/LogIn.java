@@ -6,9 +6,9 @@ package com.buddhism.controller;
 
 import com.buddhism.model.Administrator;
 import com.buddhism.service.administratorServiceImpl;
+import com.buddhism.service.postService;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
-import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.SessionAware;
 
 /**
@@ -20,8 +20,18 @@ public class LogIn extends ActionSupport implements SessionAware{
     private String userName = null;
     private String password;
     private administratorServiceImpl administratorService;
+    
+    private postService pService;
 
     private Map session;   
+
+    public postService getpService() {
+        return pService;
+    }
+
+    public void setpService(postService pService) {
+        this.pService = pService;
+    }    
   
     @Override
     public void setSession(Map session) {   
