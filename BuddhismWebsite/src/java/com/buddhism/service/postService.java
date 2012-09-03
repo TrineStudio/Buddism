@@ -35,4 +35,7 @@ public interface postService
     public int getPostClickTimes(int postId);   //get click times
     
     public List<Post> getPostBetweenAnd();  //get post during a period of time
+    
+    public List<Post> getPostNameLike(String queryStr);
+    
 }

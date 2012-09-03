@@ -171,5 +171,17 @@ public class postServiceImpl implements postService
         return postDao.getPostBetweenAnd();
     }
 
+    @Override
+    public List<Post> getPostNameLike(String queryStr) 
+    {
+        return postDao.getPostNameLike(queryStr);
+    }
+
+    @Override
+    public int getPostBetweenAnd(String start, String end) 
+    {
+        return postDao.getPostBetweenAnd(start, end);
+    }
+
     
 }

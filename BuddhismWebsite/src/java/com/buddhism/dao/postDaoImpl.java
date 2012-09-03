@@ -15,9 +15,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -349,6 +352,7 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         query.setParameter("id", postId);
         
         List list = query.list();
+        s.getTransaction().commit();
         s.close();
         return ((Post)list.get(0)).getPostClickTimes();
     }
@@ -391,5 +395,45 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         s.close();
         
         return (List<Post>)list;
+    }
+
+    @Override
+    public List<Post> getPostNameLike(String str) 
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        Criteria criteria = s.createCriteria(Post.class);
+        criteria.add(Expression.like("postTitle", "%" + str +"%"));
+        
+        List list = criteria.list();
+        s.getTransaction().commit();
+        s.close();
+        
+        return (List<Post>)list;
+    }
+    
+    public int getPostBetweenAnd(String start, String end)
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        Criteria criteria = s.createCriteria(Post.class);
+        Date startDate = null;
+        Date endDate = null;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        
+        try 
+        {
+            startDate = format.parse(start);
+            endDate = format.parse(end);
+        } catch (ParseException ex) 
+        {
+            Logger.getLogger(postDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        criteria.add(Restrictions.between("postDate", startDate, endDate));
+        
+        return criteria.list().size();
     }
 }

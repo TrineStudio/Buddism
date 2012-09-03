@@ -38,4 +38,8 @@ public interface postDao
     public int getPostClickTimes(int postId);   //get post click times
     
     public List<Post> getPostBetweenAnd(); //get post during a period of time
+    
+    public List<Post> getPostNameLike(String str);
+    
+    public int getPostBetweenAnd(String start, String end); //get post between the start and end time
 }
