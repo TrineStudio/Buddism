@@ -38,5 +38,5 @@ public interface postService
     
     public List<Post> getPostNameLike(String queryStr);
     
-    public int getPostBetweenAnd(String start, String end);
+    public int getPostBetweenAnd(String start, String end);       
 }

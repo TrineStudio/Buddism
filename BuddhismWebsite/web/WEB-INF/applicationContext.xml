@@ -152,7 +152,12 @@
         </property>                
     </bean>
     <bean id="adminIndex" class="com.buddhism.controller.AdminIndex">
-        
+        <property name="pService">
+            <ref bean="postService"/>
+        </property>               
+        <property name="avService">
+            <ref bean="avService"/>
+        </property>            
     </bean>
     <bean id="articleTrash" class="com.buddhism.controller.ArticleTrash">
         <property name="service">
@@ -233,5 +238,10 @@
         <property name="service">
             <ref bean="avService"/>
         </property>        
+    </bean>
+    <bean id="findArticles" class="com.buddhism.controller.FindArticles">
+        <property name="service">
+            <ref bean="postService"/>
+        </property>
     </bean>
 </beans>

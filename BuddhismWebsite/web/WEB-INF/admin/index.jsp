@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <%
@@ -22,9 +23,10 @@
 	<div id="header">
     	<a href="" title=""><img src="<%=path%>/admin/img/cp_logo.png" alt="Control Panel" class="logo" /></a>
     	<div id="searcharea">
-            
-            <input type="text" class="searchbox" value="输入查询内容" onclick="if (this.value =='输入查询内容'){this.value=''}"/>
-            <input type="submit" value="查找" class="searchbtn" />
+            <form action="findArticles">
+                <input type="text" class="searchbox" value="输入查询内容" name="keyWords" onclick="if (this.value =='输入查询内容'){this.value=''}"/>
+                <input type="submit" value="查找" class="searchbtn" />
+            </form>
         </div>
     </div>
         
@@ -55,23 +57,17 @@
                         <thead>
                             <tr>
                                 <td></td>
-                                <th scope="col">Jan</th>
-                                <th scope="col">Feb</th>
-                                <th scope="col">March</th>
-                                <th scope="col">April</th>
-                                <th scope="col">May</th>
-                                <th scope="col">June</th>
+                                <s:iterator value="month" id="singleMonth">
+                                    <th scope="col"><s:property value="singleMonth"/></th>
+                                </s:iterator>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">2012</th>
-                                <td>40</td>
-                                <td>30</td>
-                                <td>20</td>
-                                <td>10</td>
-                                <td>5</td>
-                                <td>1</td>
+                                <th scope="row"><s:property value="currentYear"  /></th>
+                                <s:iterator value="postNumbers" id="number">
+                                    <td><s:property value="number"/></td>
+                                </s:iterator>
                             </tr>
                         </tbody>
                     </table>
@@ -82,24 +78,18 @@
 			            <thead>
 			                <tr>
 			                    <td></td>
-			                    <th scope="col">Jan</th>
-			                    <th scope="col">Feb</th>
-			                    <th scope="col">March</th>
-			                    <th scope="col">April</th>
-			                    <th scope="col">May</th>
-			                    <th scope="col">June</th>
+                                            <s:iterator value="month" id="singleMonth">
+                                                <th scope="col"><s:property value="singleMonth"/></th>
+                                            </s:iterator>
 			                </tr>
 			            </thead>
 			            <tbody>
 
 			                <tr>
-			                    <th scope="row">2012</th>
-			                    <td>3</td>
-			                    <td>40</td>
-			                    <td>30</td>
-			                    <td>45</td>
-			                    <td>35</td>
-			                    <td>49</td>
+			                    <th scope="row"><s:property value="currentYear" /></th>
+                                            <s:iterator value="avNumbers" id="number">
+                                                <td><s:property value="number"/></td>
+                                            </s:iterator>
 			                </tr>	
 			            </tbody>
 			        </table>

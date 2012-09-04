@@ -67,9 +67,10 @@
 	<div id="header">
     	<a href="" title=""><img src="<%=path%>/admin/img/cp_logo.png" alt="Control Panel" class="logo" /></a>
     	<div id="searcharea">
-            
-            <input type="text" class="searchbox" value="输入查询内容" onclick="if (this.value =='输入查询内容'){this.value=''}"/>
-            <input type="submit" value="查找" class="searchbtn" />
+            <form action="findArticles">
+                <input type="text" class="searchbox" value="输入查询内容" name="keyWords" onclick="if (this.value =='输入查询内容'){this.value=''}"/>
+                <input type="submit" value="查找" class="searchbtn" />
+            </form>
         </div>
     </div>
         

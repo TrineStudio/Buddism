@@ -43,7 +43,7 @@
         </action>            
             
         <action name="logIn" class="logAction">
-            <result name="SUCCESS">/WEB-INF/admin/index.jsp</result>
+            <result name="SUCCESS" type="redirect">adminIndex.action</result>
             <result name="INPUT">/WEB-INF/admin/login.jsp</result>
         </action>
         <action name="nextPageAction" class="manage" method="nextPage">
@@ -98,7 +98,7 @@
         </action>
         <action name="UpAction" class="UpAction">
             <interceptor-ref name="myDefault" />
-            <result name="login">/WEB-INF/admin/login.jsp</result>            
+            <result name="login" >/WEB-INF/admin/login.jsp</result>            
             <result name="SUCCESS" type="redirect">managementAction.action</result>
         </action>
         <action name="aboutUs" class="aboutUs">
@@ -283,6 +283,11 @@
         </action>
         <action name="photoListAction" class="photoListAction">
             <result name="SUCCESS">/galleria/viewphotos.jsp</result>
+        </action>
+        <action name="findArticles" class="findArticles">
+            <interceptor-ref name="myDefault" />
+            <result name="SUCCESS">/WEB-INF/admin/findResult.jsp</result>
+            <result name="login">/WEB-INF/admin/login.jsp</result>
         </action>
 
     </package>
