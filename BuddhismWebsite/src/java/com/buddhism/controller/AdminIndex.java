@@ -111,7 +111,7 @@ public class AdminIndex extends ActionSupport {
             String end = sdf.format(cal.getTime());
             
             postNumbers.add(Integer.toString(pService.getPostBetweenAnd(start, end)));
-            // avNumbers.add(avService.getMediaBetweenAnd());
+            avNumbers.add(Integer.toString(avService.getMediaBetweenAnd(start, end, 0)));
         }
         
         for (int i = tempMonth.size() - 1; i != -1; i--)
