@@ -18,9 +18,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Expression;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -320,6 +322,7 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         
         query.executeUpdate();
         s.getTransaction().commit();
+        s.close();
     }
 
     @Override
@@ -327,13 +330,16 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
     {
         Session s = this.getSession();
         s.beginTransaction();
+        
         String hqlString = "select new Media(m.mediaClickTimes) from Media m where m.id = :id";
         Query query = s.createQuery(hqlString);
         
         query.setParameter("id", mediaId);
         
         List list = query.list();
+        s.getTransaction().commit();
         s.close();
+        
         return ((Media)list.get(0)).getMediaClickTimes();
     }
 
@@ -372,8 +378,28 @@ public class AVDaoImpl extends HibernateDaoSupport implements AVDao
         query.setParameter("end", endDate);
         
         List list = query.list();
+        s.getTransaction().commit();
         s.close();
         
         return (List<Media>)list;
+    }
+
+    @Override
+    public int getMediaBetweenAnd(String start, String end, int type) 
+    {
+        Session s = this.getSession();
+        s.beginTransaction();
+        
+        Criteria criteria = s.createCriteria(Media.class);
+        Date startDate = java.sql.Date.valueOf(start);
+        Date endDate = java.sql.Date.valueOf(end);
+        
+        criteria.add(Expression.between("mediaDate", endDate, startDate));
+        criteria.add(Expression.eq("mediaType", (short)type));
+        List list = criteria.list();
+        s.getTransaction().commit();
+        s.close();
+        
+        return list.size();
     }
 }

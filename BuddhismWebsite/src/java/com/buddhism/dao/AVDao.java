@@ -49,4 +49,6 @@ public interface AVDao
     public int getMediaClickTimes(int mediaId); //获取该media的点击数
     
     public List<Media> getMediaBetweenAnd(); //获取近六个月的media的list
+    
+    public int getMediaBetweenAnd(String start, String end, int type);
 }

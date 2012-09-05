@@ -422,17 +422,6 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         Criteria criteria = s.createCriteria(Post.class);
         Date startDate = java.sql.Date.valueOf(start);
         Date endDate = java.sql.Date.valueOf(end);
-        //SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        
-        /*try 
-        {
-            startDate = format.parse(start);
-            endDate = format.parse(end);
-            criteria.add(Expression.between("postDate", startDate, endDate));
-        } catch (ParseException ex) 
-        {
-            Logger.getLogger(postDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         
         criteria.add(Expression.between("postDate", endDate, startDate));
         List list = criteria.list();

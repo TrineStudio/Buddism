@@ -95,6 +95,7 @@ public class AdminIndex extends ActionSupport {
     
     private void getData()
     {
+        //请注意一下这里的日期格式
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         

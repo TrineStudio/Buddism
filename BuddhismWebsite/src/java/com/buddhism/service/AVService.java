@@ -48,4 +48,6 @@ public interface AVService
     public int getMediaClickTimes(int mediaId); //get click times
     
     public List<Media> getMediaBetweenAnd();    //get media during a period of time
+    
+    public int getMediaBetweenAnd(String start, String end, int type); //get media amount between start and end which type is type.
 }
