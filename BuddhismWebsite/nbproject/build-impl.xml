@@ -1145,7 +1145,7 @@ exists or setup the property manually. For example like this:
         <condition property="listeningcp" value="sourcepath">
             <istrue value="${j2ee.compile.on.save}"/>
         </condition>
-        <nbjpdaconnect address="${jpda.address}" host="${jpda.host}" listeningcp="${listeningcp}" name="${name}" transport="${jpda.transport}">
+        <nbjpdaconnect address="${jpda.address}" host="${jpda.host}" name="${name}" transport="${jpda.transport}">
             <classpath>
                 <path path="${debug.classpath}:${j2ee.platform.classpath}"/>
             </classpath>

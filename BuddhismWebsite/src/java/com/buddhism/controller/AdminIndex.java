@@ -95,7 +95,7 @@ public class AdminIndex extends ActionSupport {
     
     private void getData()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         
         List<String> tempMonth = new ArrayList<String>();

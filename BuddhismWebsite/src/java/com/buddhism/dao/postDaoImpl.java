@@ -413,27 +413,32 @@ public class postDaoImpl extends HibernateDaoSupport implements postDao
         return (List<Post>)list;
     }
     
+    @Override
     public int getPostBetweenAnd(String start, String end)
     {
         Session s = this.getSession();
         s.beginTransaction();
         
         Criteria criteria = s.createCriteria(Post.class);
-        Date startDate = null;
-        Date endDate = null;
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        Date startDate = java.sql.Date.valueOf(start);
+        Date endDate = java.sql.Date.valueOf(end);
+        //SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         
-        try 
+        /*try 
         {
             startDate = format.parse(start);
             endDate = format.parse(end);
+            criteria.add(Expression.between("postDate", startDate, endDate));
         } catch (ParseException ex) 
         {
             Logger.getLogger(postDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
-        criteria.add(Restrictions.between("postDate", startDate, endDate));
+        criteria.add(Expression.between("postDate", endDate, startDate));
+        List list = criteria.list();
+        s.getTransaction().commit();
+        s.close();
         
-        return criteria.list().size();
+        return list.size();
     }
 }
