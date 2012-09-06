@@ -30,6 +30,8 @@ public class AdminIndex extends ActionSupport {
     public List<String> getMonth() {
         return month;
     }
+    
+    
 
     public void setMonth(List<String> month) {
         this.month = month;
@@ -101,21 +103,32 @@ public class AdminIndex extends ActionSupport {
         
         List<String> tempMonth = new ArrayList<String>();
         
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        
         currentYear = Integer.toString(cal.get(Calendar.YEAR));
+        
+        List<String> tempPostNumbers = new ArrayList<String>();
+        List<String> tempAvNumbers = new ArrayList<String>();
         
         for (int i = 0; i != 6; i++)
         {
             tempMonth.add(months[cal.get(Calendar.MONTH)]);
             String start = sdf.format(cal.getTime());            
             cal.add(Calendar.MONTH, -1);
-            String end = sdf.format(cal.getTime());
+            String end = sdf.format(cal.getTime());           
             
-            postNumbers.add(Integer.toString(pService.getPostBetweenAnd(start, end)));
-            avNumbers.add(Integer.toString(avService.getMediaBetweenAnd(start, end, 0)));
+            tempPostNumbers.add(Integer.toString(pService.getPostBetweenAnd(start, end)));
+            tempAvNumbers.add(Integer.toString(avService.getMediaBetweenAnd(start, end, 0)));
         }
         
         for (int i = tempMonth.size() - 1; i != -1; i--)
             month.add(tempMonth.get(i));
+        
+        for (int i = tempPostNumbers.size() - 1; i != -1; i--)
+            postNumbers.add(tempPostNumbers.get(i));
+        
+        for (int i = tempAvNumbers.size() - 1; i != -1; i--)
+            avNumbers.add(tempAvNumbers.get(i));
         
         
     }
